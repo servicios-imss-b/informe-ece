@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Informe hospitales – Transición al Sistema ECE</title>
+
+<style>
+    * { box-sizing: border-box; }
+
+    body {
+        margin: 0;
+        background: #dfeeee;
+        font-family: Arial, Helvetica, sans-serif;
+        color: #172033;
+    }
+
+    .dashboard {
+        width: 1335px;
+        height: 752px;
+        margin: 9px auto;
+        background: #fff;
+        border: 1px solid #c8c8c8;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* HEADER */
+    .header {
+        height: 105px;
+        position: relative;
+        padding: 3px 13px 0 13px;
+    }
+
+    .title {
+        font-size: 40px;
+        line-height: 45px;
+        font-weight: 800;
+        letter-spacing: -1.2px;
+        color: #080808;
+        white-space: nowrap;
+    }
+
+    .date {
+        margin-left: 60px;
+        margin-top: 18px;
+        font-size: 24px;
+        font-weight: 700;
+        color: #374257;
+    }
+
+    .top-line {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 1007px;
+        height: 4px;
+        background: #a51c4c;
+    }
+
+    .logos {
+        position: absolute;
+        right: 17px;
+        top: 7px;
+        width: 365px;
+        height: 72px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 12px;
+    }
+
+    .mexico-logo {
+        color: #9d8a5d;
+        text-align: center;
+        font-family: Georgia, serif;
+        font-size: 8px;
+        width: 64px;
+        line-height: 10px;
+    }
+
+    .mexico-logo .seal {
+        font-size: 43px;
+        line-height: 38px;
+    }
+
+    .gob {
+        border-left: 1px solid #aaa;
+        padding-left: 10px;
+        font-family: Georgia, serif;
+        line-height: 20px;
+        font-size: 16px;
+        color: #756b62;
+    }
+
+    .gob strong {
+        display: block;
+        font-size: 22px;
+        color: #625950;
+        font-weight: 700;
+    }
+
+    .imss {
+        border-left: 1px solid #aaa;
+        padding-left: 10px;
+        color: #006f65;
+        font-weight: 700;
+        line-height: 18px;
+        font-size: 15px;
+    }
+
+    .imss .mark {
+        font-size: 28px;
+        display: inline-block;
+        margin-right: 4px;
+        vertical-align: middle;
+    }
+
+    /* SECTION */
+    .section {
+        position: relative;
+        width: 100%;
+    }
+
+    .section-title {
+        height: 43px;
+        padding-top: 9px;
+        margin-left: 125px;
+        font-size: 24px;
+        font-weight: 800;
+        color: #37445b;
+        border-bottom: 4px solid #37445b;
+        width: 680px;
+        text-align: center;
+    }
+
+    .section-grid {
+        display: grid;
+        grid-template-columns: 260px 260px 260px 415px;
+        gap: 20px;
+        margin-left: 18px;
+        margin-top: 14px;
+        align-items: center;
+    }
+
+    /* STATUS CARD */
+    .status {
+        height: 126px;
+        border: 1px solid #ccd3dc;
+        border-radius: 14px;
+        position: relative;
+        background: #fff;
+        text-align: center;
+        padding-top: 14px;
+    }
+
+    .status::before {
+        content: "";
+        position: absolute;
+        left: 4px;
+        top: 5px;
+        bottom: 5px;
+        width: 5px;
+        border-radius: 2px;
+    }
+
+    .green::before { background: #16b56d; }
+    .yellow::before { background: #f5d51c; }
+    .red::before { background: #ef1515; }
+
+    .status-number {
+        font-size: 38px;
+        font-weight: 700;
+        color: #aa7f23;
+        line-height: 40px;
+    }
+
+    .status-label {
+        font-size: 15px;
+        font-weight: 800;
+        margin-top: 4px;
+    }
+
+    .change {
+        position: absolute;
+        left: 8px;
+        bottom: 9px;
+        font-size: 15px;
+        color: #667083;
+        font-weight: 600;
+        white-space: nowrap;
+    }
+
+    .up { color: #687383; }
+    .down { color: #687383; }
+
+    /* TOTAL CARD */
+    .total {
+        height: 126px;
+        border: 1px solid #ccd3dc;
+        border-radius: 14px;
+        position: relative;
+        background: #fff;
+        padding: 11px 12px;
+        font-size: 18px;
+    }
+
+    .total::before {
+        content: "➜";
+        position: absolute;
+        left: -39px;
+        top: 40px;
+        font-size: 40px;
+        color: #999;
+    }
+
+    .total-row {
+        display: grid;
+        grid-template-columns: 115px 1fr;
+        align-items: center;
+        min-height: 35px;
+        font-weight: 700;
+    }
+
+    .total-row .system {
+        color: #a77e22;
+        font-size: 20px;
+    }
+
+    .total-row .value {
+        color: #111;
+        font-size: 20px;
+    }
+
+    .total-row.final {
+        border-top: 2px solid #007d9e;
+        margin-top: 2px;
+        padding-top: 2px;
+    }
+
+    /* SECOND/THIRD SECTION */
+    .section.second .section-title,
+    .section.third .section-title {
+        margin-left: 18px;
+        width: 787px;
+        text-align: left;
+        padding-left: 1px;
+    }
+
+    .section.second { margin-top: 0px; }
+    .section.third { margin-top: 0px; }
+
+    .section.second .section-grid,
+    .section.third .section-grid {
+        margin-top: 13px;
+    }
+
+    .small-title {
+        position: absolute;
+        top: -32px;
+        right: 210px;
+        font-size: 15px;
+        font-weight: 800;
+    }
+
+    /* Layout sizing */
+    .first .section-title { margin-top: 0; }
+
+    @media (max-width: 1400px) {
+        .dashboard {
+            transform-origin: top left;
+            margin: 0;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <header class="header">
+        <div class="title">Informe hospitales – Transición al Sistema ECE</div>
+
+        <div class="date">Fecha de corte: 06 de agosto, 2026.</div>
+
+        <div class="logos">
+            <div class="mexico-logo">
+                <div class="seal">◉</div>
+                ESTADOS UNIDOS<br>MEXICANOS
+            </div>
+            <div class="gob">
+                <strong>Gobierno de</strong>
+                México
+            </div>
+            <div class="imss">
+                <span class="mark">▣</span> IMSS BIENESTAR<br>
+                <small>INSTITUTO MEXICANO DEL SEGURO<br>PÚBLICOS DE SALUD</small>
+            </div>
+        </div>
+
+        <div class="top-line"></div>
+    </header>
+
+
+    <!-- CONSULTAS -->
+    <section class="section first">
+        <div class="section-title">
+            Consultas (572 de 584 reportaron el último mes)
+        </div>
+
+        <div class="section-grid">
+
+            <div>
+                <div style="text-align:center;font-size:15px;font-weight:800;margin-bottom:8px;">
+                    Únicamente en ECE
+                </div>
+                <div class="status green">
+                    <div class="status-number">8</div>
+                    <div class="status-label">CLUES</div>
+                    <div class="change">▲ +4 vs corte anterior (+100%)</div>
+                </div>
+            </div>
+
+            <div>
+                <div style="text-align:center;font-size:15px;font-weight:800;margin-bottom:8px;">
+                    Ambos sistemas
+                </div>
+                <div class="status yellow">
+                    <div class="status-number">69</div>
+                    <div class="status-label">CLUES</div>
+                    <div class="change">▼ -1 vs corte anterior (-1%)</div>
+                </div>
+            </div>
+
+            <div>
+                <div style="text-align:center;font-size:15px;font-weight:800;margin-bottom:8px;">
+                    Únicamente en SINBA
+                </div>
+                <div class="status red">
+                    <div class="status-number">495</div>
+                    <div class="status-label">CLUES</div>
+                    <div class="change">▲ -15 vs corte anterior (-3%)</div>
+                </div>
+            </div>
+
+            <div class="total">
+                <div class="total-row">
+                    <span class="system">ECE:</span>
+                    <span class="value">233,974 &nbsp; consultas</span>
+                </div>
+                <div class="total-row">
+                    <span class="system">SINBA:</span>
+                    <span class="value">6,287,971 &nbsp; consultas</span>
+                </div>
+                <div class="total-row final">
+                    <span class="system">Total:</span>
+                    <span class="value">6,388,333 &nbsp; (sin duplicados)</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- PROCEDIMIENTOS -->
+    <section class="section second">
+        <div class="section-title">
+            Procedimientos Quirúrgicos (474 de 573)
+        </div>
+
+        <div class="section-grid">
+
+            <div class="status green">
+                <div class="status-number">9</div>
+                <div class="status-label">CLUES</div>
+                <div class="change">● +5 vs corte anterior (125%)</div>
+            </div>
+
+            <div class="status yellow">
+                <div class="status-number">39</div>
+                <div class="status-label">CLUES</div>
+                <div class="change">▼ -5 vs corte anterior (-11%)</div>
+            </div>
+
+            <div class="status red">
+                <div class="status-number">426</div>
+                <div class="status-label">CLUES</div>
+                <div class="change">▲ -8 vs corte anterior (-2%)</div>
+            </div>
+
+            <div class="total">
+                <div class="total-row">
+                    <span class="system">ECE:</span>
+                    <span class="value">12,838 &nbsp; procedimientos</span>
+                </div>
+                <div class="total-row">
+                    <span class="system">SINBA:</span>
+                    <span class="value">513,479 &nbsp; procedimientos</span>
+                </div>
+                <div class="total-row final">
+                    <span class="system">Total:</span>
+                    <span class="value">520,675 &nbsp; (sin duplicados)</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- EGRESOS -->
+    <section class="section third">
+        <div class="section-title">
+            Egresos Hospitalarios (539 de 581)
+        </div>
+
+        <div class="section-grid">
+
+            <div class="status green">
+                <div class="status-number">8</div>
+                <div class="status-label">CLUES</div>
+                <div class="change">● +5 vs corte anterior (+167%)</div>
+            </div>
+
+            <div class="status yellow">
+                <div class="status-number">52</div>
+                <div class="status-label">CLUES</div>
+                <div class="change">▼ -4 vs corte anterior (-7%)</div>
+            </div>
+
+            <div class="status red">
+                <div class="status-number">479</div>
+                <div class="status-label">CLUES</div>
+                <div class="change">▼ -17 vs corte anterior (-3%)</div>
+            </div>
+
+            <div class="total">
+                <div class="total-row">
+                    <span class="system">ECE:</span>
+                    <span class="value">34,830 &nbsp; egresos</span>
+                </div>
+                <div class="total-row">
+                    <span class="system">SINBA:</span>
+                    <span class="value">867,743 &nbsp; egresos</span>
+                </div>
+                <div class="total-row final">
+                    <span class="system">Total:</span>
+                    <span class="value">886,452 &nbsp; (sin duplicados)</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</div>
+
+</body>
+</html>
