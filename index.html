@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="refresh" content="0; url=./docs/" />
+    <script>
+      const current = window.location.pathname;
+      if (!current.includes('/docs/')) {
+        window.location.href = current.endsWith('/') ? current + 'docs/' : current + '/docs/';
+      }
+    </script>
+    <title>Redirigiendo...</title>
+  </head>
+  <body>
+    <p>Redirigiendo al informe...</p>
+  </body>
+</html>
