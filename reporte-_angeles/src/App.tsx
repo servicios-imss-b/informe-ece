@@ -225,9 +225,9 @@ function formatThousands(value: number): string {
 }
 
 function formatDeltaLabel(delta: number): string {
-  if (delta > 0) return '▲ Aumentó vs corte anterior (historico)';
-  if (delta < 0) return '▼ Disminuyó vs corte anterior (historico)';
-  return '● Sin cambio vs corte anterior (historico)';
+  if (delta > 0) return `▲ +${formatThousands(delta)} vs corte anterior (historico)`;
+  if (delta < 0) return `▼ ${formatThousands(delta)} vs corte anterior (historico)`;
+  return '● 0 vs corte anterior (historico)';
 }
 
 export default function App() {
