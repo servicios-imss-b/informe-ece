@@ -1605,9 +1605,6 @@ export default function App() {
                                             {bloque.conectado ? formatThousands(item.valor) : '--'}
                                           </div>
                                           <div className="ece-status-label">CLUES</div>
-                                          <div className="ece-change">
-                                            {bloque.conectado ? item.variacion : 'Pendiente de conexion'}
-                                          </div>
                                         </div>
                                       </div>
                                     );
@@ -1683,7 +1680,6 @@ export default function App() {
                                           <th className="px-4 py-3 font-semibold">Entidad</th>
                                           <th className="px-4 py-3 font-semibold">Unidad</th>
                                           <th className="px-4 py-3 font-semibold">Cambio</th>
-                                          <th className="px-4 py-3 font-semibold text-right">Delta</th>
                                         </tr>
                                       </thead>
                                       <tbody>
@@ -1707,7 +1703,6 @@ export default function App() {
                                                   {item.cambio} en {item.tipo}
                                                 </span>
                                               </td>
-                                              <td className="px-4 py-3 text-right font-semibold text-gray-800">{item.delta}</td>
                                             </tr>
                                           );
                                         })}
