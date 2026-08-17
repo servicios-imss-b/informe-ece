@@ -16,8 +16,8 @@ export function Header({
 }) {
 
   const resolvedEyebrow = eyebrow ?? 'Panel Principal';
-  const resolvedTitle = title ?? 'Informe hospitales - Transicion al Sistema ECE';
-  const resolvedSubtitle = subtitle ?? 'Fecha de corte: 07 de agosto, 2026. Estado';
+  const resolvedTitle = title ?? 'Informe hospitales – Transición al Sistema ECE';
+  const resolvedSubtitle = subtitle ?? '';
 
   return (
     <>
@@ -48,9 +48,11 @@ export function Header({
             <h1 className="max-w-3xl text-3xl font-black leading-tight tracking-tight text-imss-green sm:text-4xl lg:text-5xl">
               {resolvedTitle}
             </h1>
-            <p className="mt-2 max-w-xl text-base text-gray-500">
-              {resolvedSubtitle}
-            </p>
+            {resolvedSubtitle ? (
+              <p className="mt-2 max-w-xl text-base text-gray-500">
+                {resolvedSubtitle}
+              </p>
+            ) : null}
           </div>
         </div>
       )}

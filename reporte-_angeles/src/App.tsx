@@ -1071,7 +1071,7 @@ export default function App() {
   }, [cluesFilterOptionsByEntidad, selectedCluesFilter]);
 
   const mainTabs: { key: MainTabKey; label: string; icon: typeof LayoutGrid }[] = [
-    { key: 'infraestructura', label: 'Reporte ECE', icon: LayoutGrid },
+    { key: 'infraestructura', label: 'Informe hospitales – Transición al Sistema ECE', icon: LayoutGrid },
     { key: 'avance', label: 'Tablero de avance', icon: Gauge },
     { key: 'pendientes', label: 'Informe de clues pendientes', icon: FileSearch },
   ];
@@ -1106,8 +1106,8 @@ export default function App() {
 
     return {
       eyebrow: 'Panel Principal',
-      title: 'Reporte ECE',
-      subtitle: 'Fecha de corte: 07 de agosto, 2026. Estado',
+      title: 'Informe hospitales – Transición al Sistema ECE',
+      subtitle: '',
     };
   }, [mainTab]);
 

@@ -33,7 +33,7 @@ export async function descargarResumenPDF(sections: SummarySection[]): Promise<v
   // Título
   doc.setFontSize(18);
   doc.setTextColor(27, 92, 78); // Color IMSS verde
-  doc.text('Resumen de Cambios - Reporte ECE', pageWidth / 2, yPosition, { align: 'center' });
+  doc.text('Informe hospitales – Transición al Sistema ECE', pageWidth / 2, yPosition, { align: 'center' });
 
   yPosition += 12;
 
