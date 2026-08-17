@@ -105,8 +105,10 @@ export async function descargarResumenPDF(sections: SummarySection[]): Promise<v
       // Total
       doc.text(String(row.valor), xPos + col1Width + 2, yPosition, { align: 'center' });
 
-      // Variación (con color según delta)
-      const deltaColor = row.delta > 0 ? [4, 120, 87] : row.delta < 0 ? [185, 28, 28] : [165, 127, 44];
+      // Color fijo por sistema (ECE = verde, Ambos = dorado, SINBA = rojo)
+      const isEce = row.tipo.includes('ECE');
+      const isAmbos = row.tipo.includes('Ambos');
+      const deltaColor = isEce ? [4, 120, 87] : isAmbos ? [165, 127, 44] : [185, 28, 28];
       doc.setTextColor(deltaColor[0], deltaColor[1], deltaColor[2]);
       doc.text(
         row.variacion,

@@ -1573,14 +1573,16 @@ export default function App() {
                               <div className="ece-section-grid">
                                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-3">
                                   {bloque.clues.map((item) => {
+                                    const isEce = item.tipo.includes('ECE');
+                                    const isAmbos = item.tipo.includes('Ambos');
                                     const color = !bloque.conectado
                                       ? { bg: '#6B7280' }
-                                      : item.delta > 0
-                                        ? { bg: '#047857' }
-                                        : item.delta < 0
-                                          ? { bg: '#B91C1C' }
-                                          : { bg: '#A57F2C' };
-                                    const badge = item.tipo.includes('ECE') ? 'ECE' : item.tipo.includes('Ambos') ? 'AMBOS' : 'SINBA';
+                                      : isEce
+                                        ? { bg: '#047857' } // Verde para ECE
+                                        : isAmbos
+                                          ? { bg: '#A57F2C' } // Dorado para Ambos sistemas
+                                          : { bg: '#B91C1C' }; // Rojo para SINBA
+                                    const badge = isEce ? 'ECE' : isAmbos ? 'AMBOS' : 'SINBA';
 
                                     return (
                                       <div key={item.tipo}>
