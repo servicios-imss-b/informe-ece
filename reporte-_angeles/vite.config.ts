@@ -8,6 +8,10 @@ export default defineConfig(({ mode }) => ({
     outDir: '../docs',
     emptyOutDir: true,
   },
+  server: {
+    port: 5173,
+    host: true,
+  },
   plugins: [react()],
   optimizeDeps: {
     exclude: ['lucide-react'],
