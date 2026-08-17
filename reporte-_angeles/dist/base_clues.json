@@ -1,0 +1,6575 @@
+[
+  {
+    "clues_imb": "BCIMB000051"
+  },
+  {
+    "clues_imb": "BCIMB000092"
+  },
+  {
+    "clues_imb": "BCIMB000162"
+  },
+  {
+    "clues_imb": "BCIMB000186"
+  },
+  {
+    "clues_imb": "BCIMB000191"
+  },
+  {
+    "clues_imb": "BCIMB000285"
+  },
+  {
+    "clues_imb": "BCIMB000302"
+  },
+  {
+    "clues_imb": "BCIMB000314"
+  },
+  {
+    "clues_imb": "BCIMB000466"
+  },
+  {
+    "clues_imb": "BCIMB000536"
+  },
+  {
+    "clues_imb": "BCIMB000640"
+  },
+  {
+    "clues_imb": "BCIMB000886"
+  },
+  {
+    "clues_imb": "BCIMB000990"
+  },
+  {
+    "clues_imb": "BCIMB001101"
+  },
+  {
+    "clues_imb": "BCIMB001270"
+  },
+  {
+    "clues_imb": "BCIMB001451"
+  },
+  {
+    "clues_imb": "BCIMB001463"
+  },
+  {
+    "clues_imb": "BCIMB001475"
+  },
+  {
+    "clues_imb": "BCIMB001516"
+  },
+  {
+    "clues_imb": "BSIMB000025"
+  },
+  {
+    "clues_imb": "BSIMB000030"
+  },
+  {
+    "clues_imb": "BSIMB000066"
+  },
+  {
+    "clues_imb": "BSIMB000071"
+  },
+  {
+    "clues_imb": "BSIMB000083"
+  },
+  {
+    "clues_imb": "BSIMB000095"
+  },
+  {
+    "clues_imb": "BSIMB000100"
+  },
+  {
+    "clues_imb": "BSIMB000112"
+  },
+  {
+    "clues_imb": "BSIMB000136"
+  },
+  {
+    "clues_imb": "BSIMB000153"
+  },
+  {
+    "clues_imb": "BSIMB000165"
+  },
+  {
+    "clues_imb": "BSIMB000170"
+  },
+  {
+    "clues_imb": "BSIMB000211"
+  },
+  {
+    "clues_imb": "BSIMB000305"
+  },
+  {
+    "clues_imb": "BSIMB000310"
+  },
+  {
+    "clues_imb": "BSIMB000392"
+  },
+  {
+    "clues_imb": "BSIMB000421"
+  },
+  {
+    "clues_imb": "BSIMB000433"
+  },
+  {
+    "clues_imb": "BSIMB000532"
+  },
+  {
+    "clues_imb": "CCIMB000085"
+  },
+  {
+    "clues_imb": "CCIMB000090"
+  },
+  {
+    "clues_imb": "CCIMB000102"
+  },
+  {
+    "clues_imb": "CCIMB000114"
+  },
+  {
+    "clues_imb": "CCIMB000126"
+  },
+  {
+    "clues_imb": "CCIMB000213"
+  },
+  {
+    "clues_imb": "CCIMB000225"
+  },
+  {
+    "clues_imb": "CCIMB000242"
+  },
+  {
+    "clues_imb": "CCIMB000254"
+  },
+  {
+    "clues_imb": "CCIMB000592"
+  },
+  {
+    "clues_imb": "CCIMB000790"
+  },
+  {
+    "clues_imb": "CCIMB000826"
+  },
+  {
+    "clues_imb": "CCIMB000843"
+  },
+  {
+    "clues_imb": "CCIMB000872"
+  },
+  {
+    "clues_imb": "CMIMB000144"
+  },
+  {
+    "clues_imb": "CMIMB000161"
+  },
+  {
+    "clues_imb": "CMIMB000173"
+  },
+  {
+    "clues_imb": "CMIMB000226"
+  },
+  {
+    "clues_imb": "CMIMB000231"
+  },
+  {
+    "clues_imb": "CMIMB000400"
+  },
+  {
+    "clues_imb": "CMIMB000412"
+  },
+  {
+    "clues_imb": "CMIMB000424"
+  },
+  {
+    "clues_imb": "CMIMB000441"
+  },
+  {
+    "clues_imb": "CMIMB000535"
+  },
+  {
+    "clues_imb": "CMIMB000540"
+  },
+  {
+    "clues_imb": "CMIMB000576"
+  },
+  {
+    "clues_imb": "CMIMB000581"
+  },
+  {
+    "clues_imb": "CMIMB000593"
+  },
+  {
+    "clues_imb": "CMIMB000622"
+  },
+  {
+    "clues_imb": "CMIMB000634"
+  },
+  {
+    "clues_imb": "CMIMB000646"
+  },
+  {
+    "clues_imb": "CMIMB000651"
+  },
+  {
+    "clues_imb": "CMIMB000680"
+  },
+  {
+    "clues_imb": "CMIMB000692"
+  },
+  {
+    "clues_imb": "CMIMB000704"
+  },
+  {
+    "clues_imb": "CMIMB000716"
+  },
+  {
+    "clues_imb": "CMIMB000721"
+  },
+  {
+    "clues_imb": "CMIMB000733"
+  },
+  {
+    "clues_imb": "CMIMB000745"
+  },
+  {
+    "clues_imb": "CMIMB000750"
+  },
+  {
+    "clues_imb": "CMIMB000762"
+  },
+  {
+    "clues_imb": "CMIMB000774"
+  },
+  {
+    "clues_imb": "CMIMB001013"
+  },
+  {
+    "clues_imb": "CMIMB001030"
+  },
+  {
+    "clues_imb": "CMIMB001042"
+  },
+  {
+    "clues_imb": "CMIMB001054"
+  },
+  {
+    "clues_imb": "CMIMB001066"
+  },
+  {
+    "clues_imb": "CMIMB001095"
+  },
+  {
+    "clues_imb": "CMIMB001124"
+  },
+  {
+    "clues_imb": "CMIMB001293"
+  },
+  {
+    "clues_imb": "CMIMB001450"
+  },
+  {
+    "clues_imb": "CSIMB003651"
+  },
+  {
+    "clues_imb": "DFIMB000055"
+  },
+  {
+    "clues_imb": "DFIMB000060"
+  },
+  {
+    "clues_imb": "DFIMB000072"
+  },
+  {
+    "clues_imb": "DFIMB000084"
+  },
+  {
+    "clues_imb": "DFIMB000096"
+  },
+  {
+    "clues_imb": "DFIMB000101"
+  },
+  {
+    "clues_imb": "DFIMB000130"
+  },
+  {
+    "clues_imb": "DFIMB000171"
+  },
+  {
+    "clues_imb": "DFIMB000195"
+  },
+  {
+    "clues_imb": "DFIMB000200"
+  },
+  {
+    "clues_imb": "DFIMB000212"
+  },
+  {
+    "clues_imb": "DFIMB000236"
+  },
+  {
+    "clues_imb": "DFIMB000265"
+  },
+  {
+    "clues_imb": "DFIMB000282"
+  },
+  {
+    "clues_imb": "DFIMB000294"
+  },
+  {
+    "clues_imb": "DFIMB000311"
+  },
+  {
+    "clues_imb": "DFIMB000364"
+  },
+  {
+    "clues_imb": "DFIMB000480"
+  },
+  {
+    "clues_imb": "DFIMB000492"
+  },
+  {
+    "clues_imb": "DFIMB000516"
+  },
+  {
+    "clues_imb": "DFIMB000533"
+  },
+  {
+    "clues_imb": "DFIMB000545"
+  },
+  {
+    "clues_imb": "DFIMB000562"
+  },
+  {
+    "clues_imb": "DFIMB000574"
+  },
+  {
+    "clues_imb": "DFIMB000615"
+  },
+  {
+    "clues_imb": "DFIMB000644"
+  },
+  {
+    "clues_imb": "DFIMB000690"
+  },
+  {
+    "clues_imb": "DFIMB000702"
+  },
+  {
+    "clues_imb": "DFIMB000726"
+  },
+  {
+    "clues_imb": "DFIMB000731"
+  },
+  {
+    "clues_imb": "DFIMB000743"
+  },
+  {
+    "clues_imb": "DFIMB000755"
+  },
+  {
+    "clues_imb": "DFIMB000813"
+  },
+  {
+    "clues_imb": "DFIMB000871"
+  },
+  {
+    "clues_imb": "DFIMB000900"
+  },
+  {
+    "clues_imb": "DFIMB000965"
+  },
+  {
+    "clues_imb": "DFIMB001006"
+  },
+  {
+    "clues_imb": "DFIMB001011"
+  },
+  {
+    "clues_imb": "DFIMB001040"
+  },
+  {
+    "clues_imb": "DFIMB001076"
+  },
+  {
+    "clues_imb": "DFIMB001081"
+  },
+  {
+    "clues_imb": "DFIMB001093"
+  },
+  {
+    "clues_imb": "DFIMB001105"
+  },
+  {
+    "clues_imb": "DFIMB001146"
+  },
+  {
+    "clues_imb": "DFIMB001262"
+  },
+  {
+    "clues_imb": "DFIMB001274"
+  },
+  {
+    "clues_imb": "DFIMB001286"
+  },
+  {
+    "clues_imb": "DFIMB001455"
+  },
+  {
+    "clues_imb": "DFIMB001496"
+  },
+  {
+    "clues_imb": "DFIMB001513"
+  },
+  {
+    "clues_imb": "DFIMB001525"
+  },
+  {
+    "clues_imb": "DFIMB001583"
+  },
+  {
+    "clues_imb": "DFIMB001612"
+  },
+  {
+    "clues_imb": "DFIMB001624"
+  },
+  {
+    "clues_imb": "DFIMB001670"
+  },
+  {
+    "clues_imb": "DFIMB001752"
+  },
+  {
+    "clues_imb": "DFIMB001793"
+  },
+  {
+    "clues_imb": "DFIMB001810"
+  },
+  {
+    "clues_imb": "DFIMB001846"
+  },
+  {
+    "clues_imb": "DFIMB001851"
+  },
+  {
+    "clues_imb": "DFIMB001974"
+  },
+  {
+    "clues_imb": "DFIMB002032"
+  },
+  {
+    "clues_imb": "DFIMB002061"
+  },
+  {
+    "clues_imb": "DFIMB002073"
+  },
+  {
+    "clues_imb": "DFIMB002131"
+  },
+  {
+    "clues_imb": "DFIMB002155"
+  },
+  {
+    "clues_imb": "DFIMB002160"
+  },
+  {
+    "clues_imb": "DFIMB002201"
+  },
+  {
+    "clues_imb": "DFIMB002230"
+  },
+  {
+    "clues_imb": "DFIMB002295"
+  },
+  {
+    "clues_imb": "DFIMB002481"
+  },
+  {
+    "clues_imb": "DFIMB002493"
+  },
+  {
+    "clues_imb": "DFIMB002534"
+  },
+  {
+    "clues_imb": "DFIMB002580"
+  },
+  {
+    "clues_imb": "DFIMB003111"
+  },
+  {
+    "clues_imb": "DFIMB003123"
+  },
+  {
+    "clues_imb": "DFIMB003140"
+  },
+  {
+    "clues_imb": "DFIMB003164"
+  },
+  {
+    "clues_imb": "DFIMB003181"
+  },
+  {
+    "clues_imb": "HGIMB000530"
+  },
+  {
+    "clues_imb": "HGIMB002321"
+  },
+  {
+    "clues_imb": "HGIMB003016"
+  },
+  {
+    "clues_imb": "HGIMB003021"
+  },
+  {
+    "clues_imb": "HGIMB003173"
+  },
+  {
+    "clues_imb": "HGIMB003190"
+  },
+  {
+    "clues_imb": "HGIMB003400"
+  },
+  {
+    "clues_imb": "HGIMB003762"
+  },
+  {
+    "clues_imb": "HGIMB003774"
+  },
+  {
+    "clues_imb": "HGIMB004276"
+  },
+  {
+    "clues_imb": "MCIMB000214"
+  },
+  {
+    "clues_imb": "MCIMB000902"
+  },
+  {
+    "clues_imb": "MCIMB000926"
+  },
+  {
+    "clues_imb": "MCIMB000943"
+  },
+  {
+    "clues_imb": "MCIMB000955"
+  },
+  {
+    "clues_imb": "MCIMB000972"
+  },
+  {
+    "clues_imb": "MCIMB000984"
+  },
+  {
+    "clues_imb": "MCIMB000996"
+  },
+  {
+    "clues_imb": "MCIMB001276"
+  },
+  {
+    "clues_imb": "MCIMB001334"
+  },
+  {
+    "clues_imb": "MCIMB001346"
+  },
+  {
+    "clues_imb": "MCIMB001713"
+  },
+  {
+    "clues_imb": "MCIMB002010"
+  },
+  {
+    "clues_imb": "MCIMB002022"
+  },
+  {
+    "clues_imb": "MCIMB002034"
+  },
+  {
+    "clues_imb": "MCIMB002046"
+  },
+  {
+    "clues_imb": "MCIMB002051"
+  },
+  {
+    "clues_imb": "MCIMB002063"
+  },
+  {
+    "clues_imb": "MCIMB002145"
+  },
+  {
+    "clues_imb": "MCIMB002191"
+  },
+  {
+    "clues_imb": "MCIMB002261"
+  },
+  {
+    "clues_imb": "MCIMB002454"
+  },
+  {
+    "clues_imb": "MCIMB002512"
+  },
+  {
+    "clues_imb": "MCIMB002524"
+  },
+  {
+    "clues_imb": "MCIMB002536"
+  },
+  {
+    "clues_imb": "MCIMB003591"
+  },
+  {
+    "clues_imb": "MCIMB003615"
+  },
+  {
+    "clues_imb": "MCIMB003760"
+  },
+  {
+    "clues_imb": "MCIMB003796"
+  },
+  {
+    "clues_imb": "MCIMB003813"
+  },
+  {
+    "clues_imb": "MCIMB003883"
+  },
+  {
+    "clues_imb": "MCIMB003941"
+  },
+  {
+    "clues_imb": "MCIMB004110"
+  },
+  {
+    "clues_imb": "MCIMB004146"
+  },
+  {
+    "clues_imb": "MCIMB004163"
+  },
+  {
+    "clues_imb": "MCIMB004175"
+  },
+  {
+    "clues_imb": "MCIMB004180"
+  },
+  {
+    "clues_imb": "MCIMB004221"
+  },
+  {
+    "clues_imb": "MCIMB004245"
+  },
+  {
+    "clues_imb": "MCIMB004595"
+  },
+  {
+    "clues_imb": "MCIMB004974"
+  },
+  {
+    "clues_imb": "MCIMB004991"
+  },
+  {
+    "clues_imb": "MCIMB005382"
+  },
+  {
+    "clues_imb": "MCIMB006321"
+  },
+  {
+    "clues_imb": "MCIMB006333"
+  },
+  {
+    "clues_imb": "MCIMB006345"
+  },
+  {
+    "clues_imb": "MCIMB006374"
+  },
+  {
+    "clues_imb": "MCIMB006420"
+  },
+  {
+    "clues_imb": "MCIMB006596"
+  },
+  {
+    "clues_imb": "MCIMB006613"
+  },
+  {
+    "clues_imb": "MCIMB006625"
+  },
+  {
+    "clues_imb": "MCIMB006654"
+  },
+  {
+    "clues_imb": "MCIMB006666"
+  },
+  {
+    "clues_imb": "MCIMB006671"
+  },
+  {
+    "clues_imb": "MCIMB006712"
+  },
+  {
+    "clues_imb": "MCIMB006736"
+  },
+  {
+    "clues_imb": "MCIMB006753"
+  },
+  {
+    "clues_imb": "MCIMB006765"
+  },
+  {
+    "clues_imb": "MCIMB006770"
+  },
+  {
+    "clues_imb": "MCIMB006963"
+  },
+  {
+    "clues_imb": "MCIMB006975"
+  },
+  {
+    "clues_imb": "MCIMB007021"
+  },
+  {
+    "clues_imb": "MCIMB007074"
+  },
+  {
+    "clues_imb": "MCIMB007132"
+  },
+  {
+    "clues_imb": "MCIMB008293"
+  },
+  {
+    "clues_imb": "MCIMB008346"
+  },
+  {
+    "clues_imb": "MCIMB008375"
+  },
+  {
+    "clues_imb": "MCIMB008380"
+  },
+  {
+    "clues_imb": "MCIMB008392"
+  },
+  {
+    "clues_imb": "MCIMB008416"
+  },
+  {
+    "clues_imb": "MCIMB008433"
+  },
+  {
+    "clues_imb": "MCIMB008474"
+  },
+  {
+    "clues_imb": "MCIMB008730"
+  },
+  {
+    "clues_imb": "MCIMB008800"
+  },
+  {
+    "clues_imb": "MCIMB008952"
+  },
+  {
+    "clues_imb": "MCIMB009005"
+  },
+  {
+    "clues_imb": "MCIMB009355"
+  },
+  {
+    "clues_imb": "MCIMB009705"
+  },
+  {
+    "clues_imb": "MCIMB010043"
+  },
+  {
+    "clues_imb": "MCIMB010200"
+  },
+  {
+    "clues_imb": "MCIMB010253"
+  },
+  {
+    "clues_imb": "MCIMB011093"
+  },
+  {
+    "clues_imb": "MCIMB011180"
+  },
+  {
+    "clues_imb": "MCIMB011962"
+  },
+  {
+    "clues_imb": "MCIMB012336"
+  },
+  {
+    "clues_imb": "MNIMB001316"
+  },
+  {
+    "clues_imb": "MNIMB001321"
+  },
+  {
+    "clues_imb": "MNIMB001350"
+  },
+  {
+    "clues_imb": "MNIMB001444"
+  },
+  {
+    "clues_imb": "MNIMB001456"
+  },
+  {
+    "clues_imb": "MNIMB001473"
+  },
+  {
+    "clues_imb": "MNIMB001490"
+  },
+  {
+    "clues_imb": "MNIMB001526"
+  },
+  {
+    "clues_imb": "MNIMB001531"
+  },
+  {
+    "clues_imb": "MNIMB001543"
+  },
+  {
+    "clues_imb": "MNIMB002366"
+  },
+  {
+    "clues_imb": "MNIMB002914"
+  },
+  {
+    "clues_imb": "MNIMB002955"
+  },
+  {
+    "clues_imb": "MNIMB003602"
+  },
+  {
+    "clues_imb": "MNIMB003894"
+  },
+  {
+    "clues_imb": "MNIMB004010"
+  },
+  {
+    "clues_imb": "MSIMB000403"
+  },
+  {
+    "clues_imb": "MSIMB000473"
+  },
+  {
+    "clues_imb": "MSIMB000514"
+  },
+  {
+    "clues_imb": "MSIMB000560"
+  },
+  {
+    "clues_imb": "MSIMB000584"
+  },
+  {
+    "clues_imb": "MSIMB000596"
+  },
+  {
+    "clues_imb": "MSIMB000601"
+  },
+  {
+    "clues_imb": "MSIMB000700"
+  },
+  {
+    "clues_imb": "MSIMB000724"
+  },
+  {
+    "clues_imb": "MSIMB000753"
+  },
+  {
+    "clues_imb": "MSIMB000811"
+  },
+  {
+    "clues_imb": "MSIMB002375"
+  },
+  {
+    "clues_imb": "NTIMB000155"
+  },
+  {
+    "clues_imb": "NTIMB000184"
+  },
+  {
+    "clues_imb": "NTIMB000201"
+  },
+  {
+    "clues_imb": "NTIMB000423"
+  },
+  {
+    "clues_imb": "NTIMB000435"
+  },
+  {
+    "clues_imb": "NTIMB000440"
+  },
+  {
+    "clues_imb": "NTIMB000452"
+  },
+  {
+    "clues_imb": "NTIMB000464"
+  },
+  {
+    "clues_imb": "NTIMB000481"
+  },
+  {
+    "clues_imb": "NTIMB000493"
+  },
+  {
+    "clues_imb": "NTIMB000505"
+  },
+  {
+    "clues_imb": "NTIMB001251"
+  },
+  {
+    "clues_imb": "NTIMB001280"
+  },
+  {
+    "clues_imb": "NTIMB001292"
+  },
+  {
+    "clues_imb": "NTIMB001316"
+  },
+  {
+    "clues_imb": "NTIMB001321"
+  },
+  {
+    "clues_imb": "NTIMB001333"
+  },
+  {
+    "clues_imb": "NTIMB001350"
+  },
+  {
+    "clues_imb": "NTIMB001362"
+  },
+  {
+    "clues_imb": "NTIMB001374"
+  },
+  {
+    "clues_imb": "NTIMB001391"
+  },
+  {
+    "clues_imb": "NTIMB001415"
+  },
+  {
+    "clues_imb": "NTIMB001420"
+  },
+  {
+    "clues_imb": "NTIMB001444"
+  },
+  {
+    "clues_imb": "NTIMB001456"
+  },
+  {
+    "clues_imb": "NTIMB001461"
+  },
+  {
+    "clues_imb": "NTIMB001473"
+  },
+  {
+    "clues_imb": "NTIMB001596"
+  },
+  {
+    "clues_imb": "NTIMB001601"
+  },
+  {
+    "clues_imb": "NTIMB001613"
+  },
+  {
+    "clues_imb": "NTIMB001625"
+  },
+  {
+    "clues_imb": "NTIMB001642"
+  },
+  {
+    "clues_imb": "NTIMB001671"
+  },
+  {
+    "clues_imb": "NTIMB001700"
+  },
+  {
+    "clues_imb": "NTIMB001753"
+  },
+  {
+    "clues_imb": "NTIMB001835"
+  },
+  {
+    "clues_imb": "NTIMB002050"
+  },
+  {
+    "clues_imb": "NTIMB002651"
+  },
+  {
+    "clues_imb": "NTIMB002721"
+  },
+  {
+    "clues_imb": "OCIMB000246"
+  },
+  {
+    "clues_imb": "OCIMB000251"
+  },
+  {
+    "clues_imb": "OCIMB000893"
+  },
+  {
+    "clues_imb": "OCIMB000905"
+  },
+  {
+    "clues_imb": "OCIMB000910"
+  },
+  {
+    "clues_imb": "OCIMB000922"
+  },
+  {
+    "clues_imb": "OCIMB000934"
+  },
+  {
+    "clues_imb": "OCIMB001050"
+  },
+  {
+    "clues_imb": "OCIMB001062"
+  },
+  {
+    "clues_imb": "OCIMB001226"
+  },
+  {
+    "clues_imb": "OCIMB001325"
+  },
+  {
+    "clues_imb": "OCIMB003220"
+  },
+  {
+    "clues_imb": "OCIMB003751"
+  },
+  {
+    "clues_imb": "OCIMB003763"
+  },
+  {
+    "clues_imb": "OCIMB005974"
+  },
+  {
+    "clues_imb": "OCIMB006143"
+  },
+  {
+    "clues_imb": "OCIMB006160"
+  },
+  {
+    "clues_imb": "OCIMB006184"
+  },
+  {
+    "clues_imb": "OCIMB006592"
+  },
+  {
+    "clues_imb": "OCIMB006604"
+  },
+  {
+    "clues_imb": "OCIMB007024"
+  },
+  {
+    "clues_imb": "OCIMB007222"
+  },
+  {
+    "clues_imb": "OCIMB007362"
+  },
+  {
+    "clues_imb": "OCIMB007391"
+  },
+  {
+    "clues_imb": "OCIMB007420"
+  },
+  {
+    "clues_imb": "OCIMB007490"
+  },
+  {
+    "clues_imb": "OCIMB007526"
+  },
+  {
+    "clues_imb": "OCIMB007770"
+  },
+  {
+    "clues_imb": "OCIMB008296"
+  },
+  {
+    "clues_imb": "OCIMB008313"
+  },
+  {
+    "clues_imb": "OCIMB009112"
+  },
+  {
+    "clues_imb": "OCIMB009170"
+  },
+  {
+    "clues_imb": "OCIMB009392"
+  },
+  {
+    "clues_imb": "QRIMB000363"
+  },
+  {
+    "clues_imb": "QRIMB000392"
+  },
+  {
+    "clues_imb": "QRIMB000416"
+  },
+  {
+    "clues_imb": "QRIMB000450"
+  },
+  {
+    "clues_imb": "QRIMB000491"
+  },
+  {
+    "clues_imb": "QRIMB000515"
+  },
+  {
+    "clues_imb": "QRIMB000532"
+  },
+  {
+    "clues_imb": "QRIMB000544"
+  },
+  {
+    "clues_imb": "QRIMB000561"
+  },
+  {
+    "clues_imb": "QRIMB000614"
+  },
+  {
+    "clues_imb": "QRIMB000730"
+  },
+  {
+    "clues_imb": "QRIMB000754"
+  },
+  {
+    "clues_imb": "QRIMB000783"
+  },
+  {
+    "clues_imb": "QRIMB000795"
+  },
+  {
+    "clues_imb": "QRIMB000812"
+  },
+  {
+    "clues_imb": "QRIMB000841"
+  },
+  {
+    "clues_imb": "QRIMB000870"
+  },
+  {
+    "clues_imb": "QRIMB000911"
+  },
+  {
+    "clues_imb": "QRIMB000952"
+  },
+  {
+    "clues_imb": "QRIMB000964"
+  },
+  {
+    "clues_imb": "QRIMB000976"
+  },
+  {
+    "clues_imb": "QRIMB001005"
+  },
+  {
+    "clues_imb": "QRIMB001010"
+  },
+  {
+    "clues_imb": "QRIMB001034"
+  },
+  {
+    "clues_imb": "QRIMB001430"
+  },
+  {
+    "clues_imb": "QRIMB001442"
+  },
+  {
+    "clues_imb": "QRIMB001640"
+  },
+  {
+    "clues_imb": "QRIMB001652"
+  },
+  {
+    "clues_imb": "QRIMB001664"
+  },
+  {
+    "clues_imb": "QRIMB001746"
+  },
+  {
+    "clues_imb": "QRIMB001915"
+  },
+  {
+    "clues_imb": "QRIMB001961"
+  },
+  {
+    "clues_imb": "SLIMB000043"
+  },
+  {
+    "clues_imb": "SLIMB000055"
+  },
+  {
+    "clues_imb": "SLIMB000060"
+  },
+  {
+    "clues_imb": "SLIMB000084"
+  },
+  {
+    "clues_imb": "SLIMB000166"
+  },
+  {
+    "clues_imb": "SLIMB000171"
+  },
+  {
+    "clues_imb": "SLIMB000224"
+  },
+  {
+    "clues_imb": "SLIMB000632"
+  },
+  {
+    "clues_imb": "SLIMB000644"
+  },
+  {
+    "clues_imb": "SLIMB000656"
+  },
+  {
+    "clues_imb": "SLIMB000661"
+  },
+  {
+    "clues_imb": "SLIMB000702"
+  },
+  {
+    "clues_imb": "SLIMB000726"
+  },
+  {
+    "clues_imb": "SLIMB000731"
+  },
+  {
+    "clues_imb": "SLIMB000743"
+  },
+  {
+    "clues_imb": "SLIMB000755"
+  },
+  {
+    "clues_imb": "SLIMB000760"
+  },
+  {
+    "clues_imb": "SLIMB000784"
+  },
+  {
+    "clues_imb": "SLIMB000796"
+  },
+  {
+    "clues_imb": "SLIMB000801"
+  },
+  {
+    "clues_imb": "SLIMB000813"
+  },
+  {
+    "clues_imb": "SLIMB000825"
+  },
+  {
+    "clues_imb": "SLIMB000830"
+  },
+  {
+    "clues_imb": "SLIMB000866"
+  },
+  {
+    "clues_imb": "SLIMB000883"
+  },
+  {
+    "clues_imb": "SLIMB001414"
+  },
+  {
+    "clues_imb": "SLIMB001431"
+  },
+  {
+    "clues_imb": "SLIMB001472"
+  },
+  {
+    "clues_imb": "SLIMB001484"
+  },
+  {
+    "clues_imb": "SLIMB001496"
+  },
+  {
+    "clues_imb": "SLIMB001501"
+  },
+  {
+    "clues_imb": "SLIMB001781"
+  },
+  {
+    "clues_imb": "SLIMB001793"
+  },
+  {
+    "clues_imb": "SLIMB001805"
+  },
+  {
+    "clues_imb": "SLIMB001810"
+  },
+  {
+    "clues_imb": "SLIMB001822"
+  },
+  {
+    "clues_imb": "SLIMB001834"
+  },
+  {
+    "clues_imb": "SLIMB001846"
+  },
+  {
+    "clues_imb": "SLIMB002073"
+  },
+  {
+    "clues_imb": "SLIMB002085"
+  },
+  {
+    "clues_imb": "SLIMB002090"
+  },
+  {
+    "clues_imb": "SLIMB002102"
+  },
+  {
+    "clues_imb": "SLIMB002114"
+  },
+  {
+    "clues_imb": "SLIMB002126"
+  },
+  {
+    "clues_imb": "SLIMB002160"
+  },
+  {
+    "clues_imb": "SLIMB002196"
+  },
+  {
+    "clues_imb": "SLIMB002283"
+  },
+  {
+    "clues_imb": "SLIMB002300"
+  },
+  {
+    "clues_imb": "SLIMB002370"
+  },
+  {
+    "clues_imb": "SLIMB002394"
+  },
+  {
+    "clues_imb": "SLIMB002440"
+  },
+  {
+    "clues_imb": "SLIMB002452"
+  },
+  {
+    "clues_imb": "SLIMB002662"
+  },
+  {
+    "clues_imb": "SLIMB003041"
+  },
+  {
+    "clues_imb": "SPIMB000520"
+  },
+  {
+    "clues_imb": "SPIMB000701"
+  },
+  {
+    "clues_imb": "SPIMB000993"
+  },
+  {
+    "clues_imb": "SPIMB002101"
+  },
+  {
+    "clues_imb": "SPIMB002521"
+  },
+  {
+    "clues_imb": "SRIMB000470"
+  },
+  {
+    "clues_imb": "SRIMB000482"
+  },
+  {
+    "clues_imb": "SRIMB000494"
+  },
+  {
+    "clues_imb": "SRIMB000506"
+  },
+  {
+    "clues_imb": "SRIMB000564"
+  },
+  {
+    "clues_imb": "SRIMB000651"
+  },
+  {
+    "clues_imb": "SRIMB000820"
+  },
+  {
+    "clues_imb": "SRIMB000861"
+  },
+  {
+    "clues_imb": "SRIMB000890"
+  },
+  {
+    "clues_imb": "SRIMB000972"
+  },
+  {
+    "clues_imb": "SRIMB001083"
+  },
+  {
+    "clues_imb": "SRIMB001334"
+  },
+  {
+    "clues_imb": "SRIMB001392"
+  },
+  {
+    "clues_imb": "SRIMB001421"
+  },
+  {
+    "clues_imb": "SRIMB001433"
+  },
+  {
+    "clues_imb": "SRIMB001474"
+  },
+  {
+    "clues_imb": "SRIMB001515"
+  },
+  {
+    "clues_imb": "SRIMB001520"
+  },
+  {
+    "clues_imb": "SRIMB001631"
+  },
+  {
+    "clues_imb": "SRIMB001643"
+  },
+  {
+    "clues_imb": "SRIMB001655"
+  },
+  {
+    "clues_imb": "SRIMB002133"
+  },
+  {
+    "clues_imb": "SRIMB002145"
+  },
+  {
+    "clues_imb": "SRIMB002150"
+  },
+  {
+    "clues_imb": "SRIMB002763"
+  },
+  {
+    "clues_imb": "SRIMB002780"
+  },
+  {
+    "clues_imb": "TCIMB000856"
+  },
+  {
+    "clues_imb": "TCIMB000873"
+  },
+  {
+    "clues_imb": "TCIMB000890"
+  },
+  {
+    "clues_imb": "TCIMB000926"
+  },
+  {
+    "clues_imb": "TCIMB000943"
+  },
+  {
+    "clues_imb": "TCIMB001001"
+  },
+  {
+    "clues_imb": "TCIMB001013"
+  },
+  {
+    "clues_imb": "TCIMB001030"
+  },
+  {
+    "clues_imb": "TCIMB001042"
+  },
+  {
+    "clues_imb": "TCIMB001054"
+  },
+  {
+    "clues_imb": "TCIMB001100"
+  },
+  {
+    "clues_imb": "TCIMB001124"
+  },
+  {
+    "clues_imb": "TCIMB001165"
+  },
+  {
+    "clues_imb": "TCIMB001170"
+  },
+  {
+    "clues_imb": "TCIMB001182"
+  },
+  {
+    "clues_imb": "TCIMB001206"
+  },
+  {
+    "clues_imb": "TCIMB001223"
+  },
+  {
+    "clues_imb": "TCIMB001235"
+  },
+  {
+    "clues_imb": "TCIMB001264"
+  },
+  {
+    "clues_imb": "TCIMB003900"
+  },
+  {
+    "clues_imb": "TCIMB003924"
+  },
+  {
+    "clues_imb": "TCIMB004385"
+  },
+  {
+    "clues_imb": "TCIMB004402"
+  },
+  {
+    "clues_imb": "TCIMB004414"
+  },
+  {
+    "clues_imb": "TCIMB004426"
+  },
+  {
+    "clues_imb": "TCIMB004455"
+  },
+  {
+    "clues_imb": "TCIMB004460"
+  },
+  {
+    "clues_imb": "TCIMB004496"
+  },
+  {
+    "clues_imb": "TCIMB004501"
+  },
+  {
+    "clues_imb": "TCIMB004525"
+  },
+  {
+    "clues_imb": "TCIMB004554"
+  },
+  {
+    "clues_imb": "TCIMB004566"
+  },
+  {
+    "clues_imb": "TCIMB004571"
+  },
+  {
+    "clues_imb": "TCIMB004595"
+  },
+  {
+    "clues_imb": "TCIMB004665"
+  },
+  {
+    "clues_imb": "TCIMB005336"
+  },
+  {
+    "clues_imb": "TCIMB005510"
+  },
+  {
+    "clues_imb": "TSIMB000152"
+  },
+  {
+    "clues_imb": "TSIMB000193"
+  },
+  {
+    "clues_imb": "TSIMB000321"
+  },
+  {
+    "clues_imb": "TSIMB000642"
+  },
+  {
+    "clues_imb": "TSIMB000683"
+  },
+  {
+    "clues_imb": "TSIMB000695"
+  },
+  {
+    "clues_imb": "TSIMB000724"
+  },
+  {
+    "clues_imb": "TSIMB000736"
+  },
+  {
+    "clues_imb": "TSIMB000753"
+  },
+  {
+    "clues_imb": "TSIMB000770"
+  },
+  {
+    "clues_imb": "TSIMB000905"
+  },
+  {
+    "clues_imb": "TSIMB000910"
+  },
+  {
+    "clues_imb": "TSIMB000922"
+  },
+  {
+    "clues_imb": "TSIMB000934"
+  },
+  {
+    "clues_imb": "TSIMB000951"
+  },
+  {
+    "clues_imb": "TSIMB000975"
+  },
+  {
+    "clues_imb": "TSIMB001115"
+  },
+  {
+    "clues_imb": "TSIMB001132"
+  },
+  {
+    "clues_imb": "TSIMB001144"
+  },
+  {
+    "clues_imb": "TSIMB001161"
+  },
+  {
+    "clues_imb": "TSIMB001185"
+  },
+  {
+    "clues_imb": "TSIMB001284"
+  },
+  {
+    "clues_imb": "TSIMB001371"
+  },
+  {
+    "clues_imb": "TSIMB001383"
+  },
+  {
+    "clues_imb": "TSIMB001395"
+  },
+  {
+    "clues_imb": "TSIMB001412"
+  },
+  {
+    "clues_imb": "TSIMB001424"
+  },
+  {
+    "clues_imb": "TSIMB001436"
+  },
+  {
+    "clues_imb": "TSIMB001441"
+  },
+  {
+    "clues_imb": "TSIMB001453"
+  },
+  {
+    "clues_imb": "TSIMB001482"
+  },
+  {
+    "clues_imb": "TSIMB001733"
+  },
+  {
+    "clues_imb": "TSIMB001786"
+  },
+  {
+    "clues_imb": "TSIMB001791"
+  },
+  {
+    "clues_imb": "TSIMB002042"
+  },
+  {
+    "clues_imb": "TSIMB002054"
+  },
+  {
+    "clues_imb": "TSIMB002083"
+  },
+  {
+    "clues_imb": "TSIMB002141"
+  },
+  {
+    "clues_imb": "TSIMB002165"
+  },
+  {
+    "clues_imb": "TSIMB002235"
+  },
+  {
+    "clues_imb": "TSIMB002421"
+  },
+  {
+    "clues_imb": "TSIMB002515"
+  },
+  {
+    "clues_imb": "TSIMB002923"
+  },
+  {
+    "clues_imb": "TSIMB003034"
+  },
+  {
+    "clues_imb": "TSIMB003046"
+  },
+  {
+    "clues_imb": "TSIMB003092"
+  },
+  {
+    "clues_imb": "TSIMB003145"
+  },
+  {
+    "clues_imb": "TSIMB003215"
+  },
+  {
+    "clues_imb": "TSIMB003220"
+  },
+  {
+    "clues_imb": "TSIMB003232"
+  },
+  {
+    "clues_imb": "TSIMB003244"
+  },
+  {
+    "clues_imb": "TSIMB003256"
+  },
+  {
+    "clues_imb": "TSIMB003273"
+  },
+  {
+    "clues_imb": "TSIMB003331"
+  },
+  {
+    "clues_imb": "TSIMB003401"
+  },
+  {
+    "clues_imb": "TSIMB003471"
+  },
+  {
+    "clues_imb": "TSIMB003565"
+  },
+  {
+    "clues_imb": "TSIMB003623"
+  },
+  {
+    "clues_imb": "TSIMB003640"
+  },
+  {
+    "clues_imb": "TSIMB003746"
+  },
+  {
+    "clues_imb": "VZIMB000814"
+  },
+  {
+    "clues_imb": "VZIMB000831"
+  },
+  {
+    "clues_imb": "VZIMB000860"
+  },
+  {
+    "clues_imb": "VZIMB000872"
+  },
+  {
+    "clues_imb": "VZIMB001036"
+  },
+  {
+    "clues_imb": "VZIMB001135"
+  },
+  {
+    "clues_imb": "VZIMB001140"
+  },
+  {
+    "clues_imb": "VZIMB001164"
+  },
+  {
+    "clues_imb": "VZIMB001193"
+  },
+  {
+    "clues_imb": "VZIMB001205"
+  },
+  {
+    "clues_imb": "VZIMB001770"
+  },
+  {
+    "clues_imb": "VZIMB001782"
+  },
+  {
+    "clues_imb": "VZIMB002255"
+  },
+  {
+    "clues_imb": "VZIMB002260"
+  },
+  {
+    "clues_imb": "VZIMB002366"
+  },
+  {
+    "clues_imb": "VZIMB002371"
+  },
+  {
+    "clues_imb": "VZIMB002395"
+  },
+  {
+    "clues_imb": "VZIMB002400"
+  },
+  {
+    "clues_imb": "VZIMB002412"
+  },
+  {
+    "clues_imb": "VZIMB002453"
+  },
+  {
+    "clues_imb": "VZIMB002774"
+  },
+  {
+    "clues_imb": "VZIMB002786"
+  },
+  {
+    "clues_imb": "VZIMB002815"
+  },
+  {
+    "clues_imb": "VZIMB002861"
+  },
+  {
+    "clues_imb": "VZIMB002873"
+  },
+  {
+    "clues_imb": "VZIMB002885"
+  },
+  {
+    "clues_imb": "VZIMB002890"
+  },
+  {
+    "clues_imb": "VZIMB002926"
+  },
+  {
+    "clues_imb": "VZIMB002943"
+  },
+  {
+    "clues_imb": "VZIMB003252"
+  },
+  {
+    "clues_imb": "VZIMB003264"
+  },
+  {
+    "clues_imb": "VZIMB005475"
+  },
+  {
+    "clues_imb": "VZIMB005562"
+  },
+  {
+    "clues_imb": "VZIMB005603"
+  },
+  {
+    "clues_imb": "VZIMB005615"
+  },
+  {
+    "clues_imb": "VZIMB005620"
+  },
+  {
+    "clues_imb": "VZIMB005632"
+  },
+  {
+    "clues_imb": "VZIMB005656"
+  },
+  {
+    "clues_imb": "VZIMB005661"
+  },
+  {
+    "clues_imb": "VZIMB005965"
+  },
+  {
+    "clues_imb": "VZIMB006286"
+  },
+  {
+    "clues_imb": "VZIMB006641"
+  },
+  {
+    "clues_imb": "VZIMB007160"
+  },
+  {
+    "clues_imb": "VZIMB007435"
+  },
+  {
+    "clues_imb": "VZIMB007505"
+  },
+  {
+    "clues_imb": "VZIMB007522"
+  },
+  {
+    "clues_imb": "VZIMB007604"
+  },
+  {
+    "clues_imb": "VZIMB007616"
+  },
+  {
+    "clues_imb": "VZIMB007831"
+  },
+  {
+    "clues_imb": "VZIMB007843"
+  },
+  {
+    "clues_imb": "VZIMB007855"
+  },
+  {
+    "clues_imb": "VZIMB007942"
+  },
+  {
+    "clues_imb": "VZIMB008700"
+  },
+  {
+    "clues_imb": "VZIMB008840"
+  },
+  {
+    "clues_imb": "ZSIMB000446"
+  },
+  {
+    "clues_imb": "ZSIMB001636"
+  },
+  {
+    "clues_imb": "ZSIMB001641"
+  },
+  {
+    "clues_imb": "ZSIMB002102"
+  },
+  {
+    "clues_imb": "BCIMB000063"
+  },
+  {
+    "clues_imb": "BCIMB000075"
+  },
+  {
+    "clues_imb": "BCIMB000104"
+  },
+  {
+    "clues_imb": "BCIMB000116"
+  },
+  {
+    "clues_imb": "BCIMB000121"
+  },
+  {
+    "clues_imb": "BCIMB000372"
+  },
+  {
+    "clues_imb": "BCIMB000384"
+  },
+  {
+    "clues_imb": "BCIMB000396"
+  },
+  {
+    "clues_imb": "BCIMB000401"
+  },
+  {
+    "clues_imb": "BCIMB000413"
+  },
+  {
+    "clues_imb": "BCIMB000425"
+  },
+  {
+    "clues_imb": "BCIMB000430"
+  },
+  {
+    "clues_imb": "BCIMB000442"
+  },
+  {
+    "clues_imb": "BCIMB000454"
+  },
+  {
+    "clues_imb": "BCIMB000471"
+  },
+  {
+    "clues_imb": "BCIMB000483"
+  },
+  {
+    "clues_imb": "BCIMB000495"
+  },
+  {
+    "clues_imb": "BCIMB000594"
+  },
+  {
+    "clues_imb": "BCIMB000606"
+  },
+  {
+    "clues_imb": "BCIMB000635"
+  },
+  {
+    "clues_imb": "BCIMB000845"
+  },
+  {
+    "clues_imb": "BCIMB000850"
+  },
+  {
+    "clues_imb": "BCIMB000862"
+  },
+  {
+    "clues_imb": "BCIMB000874"
+  },
+  {
+    "clues_imb": "BCIMB000891"
+  },
+  {
+    "clues_imb": "BCIMB000903"
+  },
+  {
+    "clues_imb": "BCIMB000915"
+  },
+  {
+    "clues_imb": "BCIMB000920"
+  },
+  {
+    "clues_imb": "BCIMB000932"
+  },
+  {
+    "clues_imb": "BCIMB000944"
+  },
+  {
+    "clues_imb": "BCIMB000956"
+  },
+  {
+    "clues_imb": "BCIMB000961"
+  },
+  {
+    "clues_imb": "BCIMB000973"
+  },
+  {
+    "clues_imb": "BCIMB000985"
+  },
+  {
+    "clues_imb": "BCIMB001002"
+  },
+  {
+    "clues_imb": "BCIMB001014"
+  },
+  {
+    "clues_imb": "BCIMB001026"
+  },
+  {
+    "clues_imb": "BCIMB001031"
+  },
+  {
+    "clues_imb": "BCIMB001043"
+  },
+  {
+    "clues_imb": "BCIMB001055"
+  },
+  {
+    "clues_imb": "BCIMB001060"
+  },
+  {
+    "clues_imb": "BCIMB001072"
+  },
+  {
+    "clues_imb": "BCIMB001096"
+  },
+  {
+    "clues_imb": "BCIMB001410"
+  },
+  {
+    "clues_imb": "BCIMB001446"
+  },
+  {
+    "clues_imb": "BCIMB001504"
+  },
+  {
+    "clues_imb": "BCIMB001521"
+  },
+  {
+    "clues_imb": "BCIMB001620"
+  },
+  {
+    "clues_imb": "BCIMB001661"
+  },
+  {
+    "clues_imb": "BCIMB001731"
+  },
+  {
+    "clues_imb": "BCIMB001755"
+  },
+  {
+    "clues_imb": "BCIMB001760"
+  },
+  {
+    "clues_imb": "BSIMB000194"
+  },
+  {
+    "clues_imb": "BSIMB000206"
+  },
+  {
+    "clues_imb": "BSIMB000235"
+  },
+  {
+    "clues_imb": "BSIMB000334"
+  },
+  {
+    "clues_imb": "BSIMB000351"
+  },
+  {
+    "clues_imb": "BSIMB000363"
+  },
+  {
+    "clues_imb": "BSIMB000375"
+  },
+  {
+    "clues_imb": "BSIMB000404"
+  },
+  {
+    "clues_imb": "BSIMB000416"
+  },
+  {
+    "clues_imb": "BSIMB000445"
+  },
+  {
+    "clues_imb": "BSIMB000450"
+  },
+  {
+    "clues_imb": "BSIMB000462"
+  },
+  {
+    "clues_imb": "BSIMB000474"
+  },
+  {
+    "clues_imb": "BSIMB000486"
+  },
+  {
+    "clues_imb": "BSIMB000491"
+  },
+  {
+    "clues_imb": "BSIMB000515"
+  },
+  {
+    "clues_imb": "BSIMB000696"
+  },
+  {
+    "clues_imb": "BSIMB000701"
+  },
+  {
+    "clues_imb": "BSIMB000725"
+  },
+  {
+    "clues_imb": "BSIMB000730"
+  },
+  {
+    "clues_imb": "CCIMB000814"
+  },
+  {
+    "clues_imb": "CCIMB000930"
+  },
+  {
+    "clues_imb": "CMIMB000115"
+  },
+  {
+    "clues_imb": "CMIMB000523"
+  },
+  {
+    "clues_imb": "CMIMB000564"
+  },
+  {
+    "clues_imb": "CMIMB001001"
+  },
+  {
+    "clues_imb": "CMIMB001025"
+  },
+  {
+    "clues_imb": "CMIMB001305"
+  },
+  {
+    "clues_imb": "CSIMB000472"
+  },
+  {
+    "clues_imb": "CSIMB002246"
+  },
+  {
+    "clues_imb": "CSIMB002444"
+  },
+  {
+    "clues_imb": "CSIMB002456"
+  },
+  {
+    "clues_imb": "CSIMB002461"
+  },
+  {
+    "clues_imb": "CSIMB002473"
+  },
+  {
+    "clues_imb": "CSIMB002992"
+  },
+  {
+    "clues_imb": "CSIMB003004"
+  },
+  {
+    "clues_imb": "CSIMB003016"
+  },
+  {
+    "clues_imb": "CSIMB003021"
+  },
+  {
+    "clues_imb": "CSIMB003033"
+  },
+  {
+    "clues_imb": "CSIMB003045"
+  },
+  {
+    "clues_imb": "CSIMB004573"
+  },
+  {
+    "clues_imb": "CSIMB004940"
+  },
+  {
+    "clues_imb": "DFIMB000113"
+  },
+  {
+    "clues_imb": "DFIMB000125"
+  },
+  {
+    "clues_imb": "DFIMB000154"
+  },
+  {
+    "clues_imb": "DFIMB000166"
+  },
+  {
+    "clues_imb": "DFIMB000224"
+  },
+  {
+    "clues_imb": "DFIMB000241"
+  },
+  {
+    "clues_imb": "DFIMB000253"
+  },
+  {
+    "clues_imb": "DFIMB000270"
+  },
+  {
+    "clues_imb": "DFIMB000306"
+  },
+  {
+    "clues_imb": "DFIMB000323"
+  },
+  {
+    "clues_imb": "DFIMB000335"
+  },
+  {
+    "clues_imb": "DFIMB000340"
+  },
+  {
+    "clues_imb": "DFIMB000376"
+  },
+  {
+    "clues_imb": "DFIMB000381"
+  },
+  {
+    "clues_imb": "DFIMB000393"
+  },
+  {
+    "clues_imb": "DFIMB000405"
+  },
+  {
+    "clues_imb": "DFIMB000463"
+  },
+  {
+    "clues_imb": "DFIMB000475"
+  },
+  {
+    "clues_imb": "DFIMB000504"
+  },
+  {
+    "clues_imb": "DFIMB000521"
+  },
+  {
+    "clues_imb": "DFIMB000550"
+  },
+  {
+    "clues_imb": "DFIMB000586"
+  },
+  {
+    "clues_imb": "DFIMB000591"
+  },
+  {
+    "clues_imb": "DFIMB000603"
+  },
+  {
+    "clues_imb": "DFIMB000620"
+  },
+  {
+    "clues_imb": "DFIMB000632"
+  },
+  {
+    "clues_imb": "DFIMB000656"
+  },
+  {
+    "clues_imb": "DFIMB000661"
+  },
+  {
+    "clues_imb": "DFIMB000673"
+  },
+  {
+    "clues_imb": "DFIMB000685"
+  },
+  {
+    "clues_imb": "DFIMB000714"
+  },
+  {
+    "clues_imb": "DFIMB000772"
+  },
+  {
+    "clues_imb": "DFIMB000784"
+  },
+  {
+    "clues_imb": "DFIMB000796"
+  },
+  {
+    "clues_imb": "DFIMB000801"
+  },
+  {
+    "clues_imb": "DFIMB000854"
+  },
+  {
+    "clues_imb": "DFIMB000883"
+  },
+  {
+    "clues_imb": "DFIMB000895"
+  },
+  {
+    "clues_imb": "DFIMB000912"
+  },
+  {
+    "clues_imb": "DFIMB000924"
+  },
+  {
+    "clues_imb": "DFIMB000936"
+  },
+  {
+    "clues_imb": "DFIMB000941"
+  },
+  {
+    "clues_imb": "DFIMB000953"
+  },
+  {
+    "clues_imb": "DFIMB000970"
+  },
+  {
+    "clues_imb": "DFIMB000982"
+  },
+  {
+    "clues_imb": "DFIMB000994"
+  },
+  {
+    "clues_imb": "DFIMB001023"
+  },
+  {
+    "clues_imb": "DFIMB001035"
+  },
+  {
+    "clues_imb": "DFIMB001052"
+  },
+  {
+    "clues_imb": "DFIMB001122"
+  },
+  {
+    "clues_imb": "DFIMB001134"
+  },
+  {
+    "clues_imb": "DFIMB001291"
+  },
+  {
+    "clues_imb": "DFIMB001303"
+  },
+  {
+    "clues_imb": "DFIMB001320"
+  },
+  {
+    "clues_imb": "DFIMB001332"
+  },
+  {
+    "clues_imb": "DFIMB001344"
+  },
+  {
+    "clues_imb": "DFIMB001356"
+  },
+  {
+    "clues_imb": "DFIMB001361"
+  },
+  {
+    "clues_imb": "DFIMB001373"
+  },
+  {
+    "clues_imb": "DFIMB001390"
+  },
+  {
+    "clues_imb": "DFIMB001402"
+  },
+  {
+    "clues_imb": "DFIMB001426"
+  },
+  {
+    "clues_imb": "DFIMB001443"
+  },
+  {
+    "clues_imb": "DFIMB001472"
+  },
+  {
+    "clues_imb": "DFIMB001484"
+  },
+  {
+    "clues_imb": "DFIMB001501"
+  },
+  {
+    "clues_imb": "DFIMB001530"
+  },
+  {
+    "clues_imb": "DFIMB001542"
+  },
+  {
+    "clues_imb": "DFIMB001554"
+  },
+  {
+    "clues_imb": "DFIMB001566"
+  },
+  {
+    "clues_imb": "DFIMB001571"
+  },
+  {
+    "clues_imb": "DFIMB001595"
+  },
+  {
+    "clues_imb": "DFIMB001600"
+  },
+  {
+    "clues_imb": "DFIMB001636"
+  },
+  {
+    "clues_imb": "DFIMB001641"
+  },
+  {
+    "clues_imb": "DFIMB001653"
+  },
+  {
+    "clues_imb": "DFIMB001665"
+  },
+  {
+    "clues_imb": "DFIMB001682"
+  },
+  {
+    "clues_imb": "DFIMB001723"
+  },
+  {
+    "clues_imb": "DFIMB001735"
+  },
+  {
+    "clues_imb": "DFIMB001740"
+  },
+  {
+    "clues_imb": "DFIMB001764"
+  },
+  {
+    "clues_imb": "DFIMB001776"
+  },
+  {
+    "clues_imb": "DFIMB001781"
+  },
+  {
+    "clues_imb": "DFIMB001805"
+  },
+  {
+    "clues_imb": "DFIMB001945"
+  },
+  {
+    "clues_imb": "DFIMB001950"
+  },
+  {
+    "clues_imb": "DFIMB001986"
+  },
+  {
+    "clues_imb": "DFIMB001991"
+  },
+  {
+    "clues_imb": "DFIMB002044"
+  },
+  {
+    "clues_imb": "DFIMB002056"
+  },
+  {
+    "clues_imb": "DFIMB002126"
+  },
+  {
+    "clues_imb": "DFIMB002143"
+  },
+  {
+    "clues_imb": "DFIMB002172"
+  },
+  {
+    "clues_imb": "DFIMB002184"
+  },
+  {
+    "clues_imb": "DFIMB002196"
+  },
+  {
+    "clues_imb": "DFIMB002213"
+  },
+  {
+    "clues_imb": "DFIMB002225"
+  },
+  {
+    "clues_imb": "DFIMB002242"
+  },
+  {
+    "clues_imb": "DFIMB002254"
+  },
+  {
+    "clues_imb": "DFIMB002312"
+  },
+  {
+    "clues_imb": "DFIMB002394"
+  },
+  {
+    "clues_imb": "DFIMB002406"
+  },
+  {
+    "clues_imb": "DFIMB002423"
+  },
+  {
+    "clues_imb": "DFIMB002452"
+  },
+  {
+    "clues_imb": "DFIMB002464"
+  },
+  {
+    "clues_imb": "DFIMB002476"
+  },
+  {
+    "clues_imb": "DFIMB002505"
+  },
+  {
+    "clues_imb": "DFIMB002510"
+  },
+  {
+    "clues_imb": "DFIMB002522"
+  },
+  {
+    "clues_imb": "DFIMB003176"
+  },
+  {
+    "clues_imb": "DFIMB003193"
+  },
+  {
+    "clues_imb": "DFIMB003205"
+  },
+  {
+    "clues_imb": "GRIMB000041"
+  },
+  {
+    "clues_imb": "GRIMB000053"
+  },
+  {
+    "clues_imb": "GRIMB000065"
+  },
+  {
+    "clues_imb": "GRIMB000070"
+  },
+  {
+    "clues_imb": "GRIMB000082"
+  },
+  {
+    "clues_imb": "GRIMB000106"
+  },
+  {
+    "clues_imb": "GRIMB000111"
+  },
+  {
+    "clues_imb": "GRIMB000123"
+  },
+  {
+    "clues_imb": "GRIMB000135"
+  },
+  {
+    "clues_imb": "GRIMB000140"
+  },
+  {
+    "clues_imb": "GRIMB000152"
+  },
+  {
+    "clues_imb": "GRIMB000164"
+  },
+  {
+    "clues_imb": "GRIMB000176"
+  },
+  {
+    "clues_imb": "GRIMB000181"
+  },
+  {
+    "clues_imb": "GRIMB000193"
+  },
+  {
+    "clues_imb": "GRIMB000210"
+  },
+  {
+    "clues_imb": "GRIMB000222"
+  },
+  {
+    "clues_imb": "GRIMB000234"
+  },
+  {
+    "clues_imb": "GRIMB000246"
+  },
+  {
+    "clues_imb": "GRIMB000251"
+  },
+  {
+    "clues_imb": "GRIMB000263"
+  },
+  {
+    "clues_imb": "GRIMB000275"
+  },
+  {
+    "clues_imb": "GRIMB000280"
+  },
+  {
+    "clues_imb": "GRIMB000292"
+  },
+  {
+    "clues_imb": "GRIMB000304"
+  },
+  {
+    "clues_imb": "GRIMB000316"
+  },
+  {
+    "clues_imb": "GRIMB000321"
+  },
+  {
+    "clues_imb": "GRIMB000642"
+  },
+  {
+    "clues_imb": "GRIMB000654"
+  },
+  {
+    "clues_imb": "GRIMB000666"
+  },
+  {
+    "clues_imb": "GRIMB003401"
+  },
+  {
+    "clues_imb": "GRIMB003425"
+  },
+  {
+    "clues_imb": "GRIMB003442"
+  },
+  {
+    "clues_imb": "GRIMB003454"
+  },
+  {
+    "clues_imb": "GRIMB003483"
+  },
+  {
+    "clues_imb": "GRIMB004101"
+  },
+  {
+    "clues_imb": "GRIMB004113"
+  },
+  {
+    "clues_imb": "GRIMB004125"
+  },
+  {
+    "clues_imb": "GRIMB004142"
+  },
+  {
+    "clues_imb": "GRIMB008605"
+  },
+  {
+    "clues_imb": "GRIMB008646"
+  },
+  {
+    "clues_imb": "GRIMB008651"
+  },
+  {
+    "clues_imb": "GRIMB008680"
+  },
+  {
+    "clues_imb": "GRIMB008704"
+  },
+  {
+    "clues_imb": "GRIMB008832"
+  },
+  {
+    "clues_imb": "GRIMB008861"
+  },
+  {
+    "clues_imb": "GRIMB008960"
+  },
+  {
+    "clues_imb": "GRIMB009211"
+  },
+  {
+    "clues_imb": "GRIMB009293"
+  },
+  {
+    "clues_imb": "GRIMB009305"
+  },
+  {
+    "clues_imb": "GRIMB009346"
+  },
+  {
+    "clues_imb": "GRIMB009416"
+  },
+  {
+    "clues_imb": "GRIMB009725"
+  },
+  {
+    "clues_imb": "HGIMB002292"
+  },
+  {
+    "clues_imb": "HGIMB002316"
+  },
+  {
+    "clues_imb": "HGIMB002345"
+  },
+  {
+    "clues_imb": "HGIMB002350"
+  },
+  {
+    "clues_imb": "HGIMB002362"
+  },
+  {
+    "clues_imb": "HGIMB002374"
+  },
+  {
+    "clues_imb": "HGIMB002386"
+  },
+  {
+    "clues_imb": "HGIMB002391"
+  },
+  {
+    "clues_imb": "HGIMB002403"
+  },
+  {
+    "clues_imb": "HGIMB003844"
+  },
+  {
+    "clues_imb": "HGIMB003890"
+  },
+  {
+    "clues_imb": "HGIMB004404"
+  },
+  {
+    "clues_imb": "HGIMB004783"
+  },
+  {
+    "clues_imb": "MCIMB000931"
+  },
+  {
+    "clues_imb": "MCIMB000960"
+  },
+  {
+    "clues_imb": "MCIMB001001"
+  },
+  {
+    "clues_imb": "MCIMB001503"
+  },
+  {
+    "clues_imb": "MCIMB001520"
+  },
+  {
+    "clues_imb": "MCIMB001771"
+  },
+  {
+    "clues_imb": "MCIMB001783"
+  },
+  {
+    "clues_imb": "MCIMB001795"
+  },
+  {
+    "clues_imb": "MCIMB001812"
+  },
+  {
+    "clues_imb": "MCIMB001853"
+  },
+  {
+    "clues_imb": "MCIMB001870"
+  },
+  {
+    "clues_imb": "MCIMB001882"
+  },
+  {
+    "clues_imb": "MCIMB001894"
+  },
+  {
+    "clues_imb": "MCIMB002075"
+  },
+  {
+    "clues_imb": "MCIMB002080"
+  },
+  {
+    "clues_imb": "MCIMB002092"
+  },
+  {
+    "clues_imb": "MCIMB002104"
+  },
+  {
+    "clues_imb": "MCIMB002116"
+  },
+  {
+    "clues_imb": "MCIMB002121"
+  },
+  {
+    "clues_imb": "MCIMB002133"
+  },
+  {
+    "clues_imb": "MCIMB002150"
+  },
+  {
+    "clues_imb": "MCIMB002162"
+  },
+  {
+    "clues_imb": "MCIMB002174"
+  },
+  {
+    "clues_imb": "MCIMB002186"
+  },
+  {
+    "clues_imb": "MCIMB002203"
+  },
+  {
+    "clues_imb": "MCIMB002430"
+  },
+  {
+    "clues_imb": "MCIMB002442"
+  },
+  {
+    "clues_imb": "MCIMB002466"
+  },
+  {
+    "clues_imb": "MCIMB002471"
+  },
+  {
+    "clues_imb": "MCIMB002483"
+  },
+  {
+    "clues_imb": "MCIMB002495"
+  },
+  {
+    "clues_imb": "MCIMB002500"
+  },
+  {
+    "clues_imb": "MCIMB003755"
+  },
+  {
+    "clues_imb": "MCIMB003772"
+  },
+  {
+    "clues_imb": "MCIMB003784"
+  },
+  {
+    "clues_imb": "MCIMB003801"
+  },
+  {
+    "clues_imb": "MCIMB003825"
+  },
+  {
+    "clues_imb": "MCIMB003830"
+  },
+  {
+    "clues_imb": "MCIMB003842"
+  },
+  {
+    "clues_imb": "MCIMB003854"
+  },
+  {
+    "clues_imb": "MCIMB003900"
+  },
+  {
+    "clues_imb": "MCIMB003912"
+  },
+  {
+    "clues_imb": "MCIMB003924"
+  },
+  {
+    "clues_imb": "MCIMB003936"
+  },
+  {
+    "clues_imb": "MCIMB003953"
+  },
+  {
+    "clues_imb": "MCIMB003965"
+  },
+  {
+    "clues_imb": "MCIMB003970"
+  },
+  {
+    "clues_imb": "MCIMB003982"
+  },
+  {
+    "clues_imb": "MCIMB003994"
+  },
+  {
+    "clues_imb": "MCIMB004006"
+  },
+  {
+    "clues_imb": "MCIMB004011"
+  },
+  {
+    "clues_imb": "MCIMB004023"
+  },
+  {
+    "clues_imb": "MCIMB004035"
+  },
+  {
+    "clues_imb": "MCIMB004040"
+  },
+  {
+    "clues_imb": "MCIMB004052"
+  },
+  {
+    "clues_imb": "MCIMB004064"
+  },
+  {
+    "clues_imb": "MCIMB004081"
+  },
+  {
+    "clues_imb": "MCIMB004093"
+  },
+  {
+    "clues_imb": "MCIMB004105"
+  },
+  {
+    "clues_imb": "MCIMB004122"
+  },
+  {
+    "clues_imb": "MCIMB005213"
+  },
+  {
+    "clues_imb": "MCIMB006630"
+  },
+  {
+    "clues_imb": "MCIMB006642"
+  },
+  {
+    "clues_imb": "MCIMB006683"
+  },
+  {
+    "clues_imb": "MCIMB006695"
+  },
+  {
+    "clues_imb": "MCIMB006700"
+  },
+  {
+    "clues_imb": "MCIMB006724"
+  },
+  {
+    "clues_imb": "MCIMB006741"
+  },
+  {
+    "clues_imb": "MCIMB006782"
+  },
+  {
+    "clues_imb": "MCIMB007202"
+  },
+  {
+    "clues_imb": "MCIMB007214"
+  },
+  {
+    "clues_imb": "MCIMB007226"
+  },
+  {
+    "clues_imb": "MCIMB008001"
+  },
+  {
+    "clues_imb": "MCIMB008025"
+  },
+  {
+    "clues_imb": "MCIMB008030"
+  },
+  {
+    "clues_imb": "MCIMB008054"
+  },
+  {
+    "clues_imb": "MCIMB008066"
+  },
+  {
+    "clues_imb": "MCIMB008071"
+  },
+  {
+    "clues_imb": "MCIMB008351"
+  },
+  {
+    "clues_imb": "MCIMB008655"
+  },
+  {
+    "clues_imb": "MCIMB008660"
+  },
+  {
+    "clues_imb": "MCIMB008672"
+  },
+  {
+    "clues_imb": "MCIMB008684"
+  },
+  {
+    "clues_imb": "MCIMB008696"
+  },
+  {
+    "clues_imb": "MCIMB008701"
+  },
+  {
+    "clues_imb": "MCIMB008713"
+  },
+  {
+    "clues_imb": "MCIMB008795"
+  },
+  {
+    "clues_imb": "MCIMB008865"
+  },
+  {
+    "clues_imb": "MCIMB008870"
+  },
+  {
+    "clues_imb": "MCIMB008882"
+  },
+  {
+    "clues_imb": "MCIMB008906"
+  },
+  {
+    "clues_imb": "MCIMB008935"
+  },
+  {
+    "clues_imb": "MCIMB008940"
+  },
+  {
+    "clues_imb": "MCIMB009010"
+  },
+  {
+    "clues_imb": "MCIMB009220"
+  },
+  {
+    "clues_imb": "MCIMB009232"
+  },
+  {
+    "clues_imb": "MCIMB009244"
+  },
+  {
+    "clues_imb": "MCIMB009524"
+  },
+  {
+    "clues_imb": "MCIMB009565"
+  },
+  {
+    "clues_imb": "MCIMB009570"
+  },
+  {
+    "clues_imb": "MCIMB009582"
+  },
+  {
+    "clues_imb": "MCIMB009874"
+  },
+  {
+    "clues_imb": "MCIMB010026"
+  },
+  {
+    "clues_imb": "MCIMB010060"
+  },
+  {
+    "clues_imb": "MCIMB011776"
+  },
+  {
+    "clues_imb": "MCIMB012312"
+  },
+  {
+    "clues_imb": "MNIMB000131"
+  },
+  {
+    "clues_imb": "MNIMB001432"
+  },
+  {
+    "clues_imb": "MNIMB001461"
+  },
+  {
+    "clues_imb": "MNIMB001485"
+  },
+  {
+    "clues_imb": "MNIMB001502"
+  },
+  {
+    "clues_imb": "MNIMB001514"
+  },
+  {
+    "clues_imb": "MNIMB003071"
+  },
+  {
+    "clues_imb": "MSIMB000304"
+  },
+  {
+    "clues_imb": "MSIMB000321"
+  },
+  {
+    "clues_imb": "MSIMB000333"
+  },
+  {
+    "clues_imb": "MSIMB000345"
+  },
+  {
+    "clues_imb": "MSIMB000374"
+  },
+  {
+    "clues_imb": "MSIMB000415"
+  },
+  {
+    "clues_imb": "MSIMB000420"
+  },
+  {
+    "clues_imb": "MSIMB000444"
+  },
+  {
+    "clues_imb": "MSIMB000456"
+  },
+  {
+    "clues_imb": "MSIMB000461"
+  },
+  {
+    "clues_imb": "MSIMB000485"
+  },
+  {
+    "clues_imb": "MSIMB000490"
+  },
+  {
+    "clues_imb": "MSIMB000502"
+  },
+  {
+    "clues_imb": "MSIMB000526"
+  },
+  {
+    "clues_imb": "MSIMB000531"
+  },
+  {
+    "clues_imb": "MSIMB000543"
+  },
+  {
+    "clues_imb": "MSIMB000555"
+  },
+  {
+    "clues_imb": "MSIMB000712"
+  },
+  {
+    "clues_imb": "MSIMB000736"
+  },
+  {
+    "clues_imb": "MSIMB000741"
+  },
+  {
+    "clues_imb": "MSIMB000765"
+  },
+  {
+    "clues_imb": "MSIMB001021"
+  },
+  {
+    "clues_imb": "MSIMB001033"
+  },
+  {
+    "clues_imb": "MSIMB001045"
+  },
+  {
+    "clues_imb": "MSIMB001050"
+  },
+  {
+    "clues_imb": "MSIMB001062"
+  },
+  {
+    "clues_imb": "MSIMB001074"
+  },
+  {
+    "clues_imb": "MSIMB001086"
+  },
+  {
+    "clues_imb": "MSIMB001091"
+  },
+  {
+    "clues_imb": "MSIMB002083"
+  },
+  {
+    "clues_imb": "MSIMB002095"
+  },
+  {
+    "clues_imb": "MSIMB002276"
+  },
+  {
+    "clues_imb": "MSIMB002281"
+  },
+  {
+    "clues_imb": "NTIMB001263"
+  },
+  {
+    "clues_imb": "NTIMB001304"
+  },
+  {
+    "clues_imb": "NTIMB001345"
+  },
+  {
+    "clues_imb": "OCIMB001955"
+  },
+  {
+    "clues_imb": "PLIMB001804"
+  },
+  {
+    "clues_imb": "PLIMB001821"
+  },
+  {
+    "clues_imb": "PLIMB001833"
+  },
+  {
+    "clues_imb": "PLIMB001845"
+  },
+  {
+    "clues_imb": "PLIMB001862"
+  },
+  {
+    "clues_imb": "PLIMB001886"
+  },
+  {
+    "clues_imb": "PLIMB001891"
+  },
+  {
+    "clues_imb": "PLIMB001903"
+  },
+  {
+    "clues_imb": "PLIMB003810"
+  },
+  {
+    "clues_imb": "PLIMB005280"
+  },
+  {
+    "clues_imb": "PLIMB005543"
+  },
+  {
+    "clues_imb": "PLIMB005560"
+  },
+  {
+    "clues_imb": "PLIMB005864"
+  },
+  {
+    "clues_imb": "PLIMB005975"
+  },
+  {
+    "clues_imb": "PLIMB006902"
+  },
+  {
+    "clues_imb": "QRIMB000380"
+  },
+  {
+    "clues_imb": "QRIMB000404"
+  },
+  {
+    "clues_imb": "QRIMB000940"
+  },
+  {
+    "clues_imb": "QRIMB000981"
+  },
+  {
+    "clues_imb": "QRIMB000993"
+  },
+  {
+    "clues_imb": "QRIMB001046"
+  },
+  {
+    "clues_imb": "QRIMB001051"
+  },
+  {
+    "clues_imb": "QRIMB001075"
+  },
+  {
+    "clues_imb": "QRIMB001536"
+  },
+  {
+    "clues_imb": "QRIMB001541"
+  },
+  {
+    "clues_imb": "QRIMB001553"
+  },
+  {
+    "clues_imb": "QRIMB001565"
+  },
+  {
+    "clues_imb": "QRIMB001594"
+  },
+  {
+    "clues_imb": "QRIMB001763"
+  },
+  {
+    "clues_imb": "SLIMB000685"
+  },
+  {
+    "clues_imb": "SLIMB000690"
+  },
+  {
+    "clues_imb": "SLIMB001402"
+  },
+  {
+    "clues_imb": "SLIMB001426"
+  },
+  {
+    "clues_imb": "SLIMB001443"
+  },
+  {
+    "clues_imb": "SLIMB002201"
+  },
+  {
+    "clues_imb": "SLIMB002353"
+  },
+  {
+    "clues_imb": "SLIMB003012"
+  },
+  {
+    "clues_imb": "SPIMB000252"
+  },
+  {
+    "clues_imb": "SPIMB000264"
+  },
+  {
+    "clues_imb": "SPIMB000696"
+  },
+  {
+    "clues_imb": "SPIMB000981"
+  },
+  {
+    "clues_imb": "SPIMB002195"
+  },
+  {
+    "clues_imb": "SPIMB002241"
+  },
+  {
+    "clues_imb": "SPIMB002253"
+  },
+  {
+    "clues_imb": "SPIMB002340"
+  },
+  {
+    "clues_imb": "SPIMB002533"
+  },
+  {
+    "clues_imb": "SPIMB002545"
+  },
+  {
+    "clues_imb": "SPIMB002562"
+  },
+  {
+    "clues_imb": "SPIMB002661"
+  },
+  {
+    "clues_imb": "SPIMB002731"
+  },
+  {
+    "clues_imb": "SPIMB002760"
+  },
+  {
+    "clues_imb": "SPIMB002830"
+  },
+  {
+    "clues_imb": "SPIMB002842"
+  },
+  {
+    "clues_imb": "SPIMB003146"
+  },
+  {
+    "clues_imb": "SRIMB000465"
+  },
+  {
+    "clues_imb": "SRIMB000943"
+  },
+  {
+    "clues_imb": "SRIMB000955"
+  },
+  {
+    "clues_imb": "SRIMB000960"
+  },
+  {
+    "clues_imb": "SRIMB000984"
+  },
+  {
+    "clues_imb": "SRIMB000996"
+  },
+  {
+    "clues_imb": "SRIMB001001"
+  },
+  {
+    "clues_imb": "SRIMB001013"
+  },
+  {
+    "clues_imb": "SRIMB001025"
+  },
+  {
+    "clues_imb": "SRIMB001030"
+  },
+  {
+    "clues_imb": "SRIMB001042"
+  },
+  {
+    "clues_imb": "SRIMB001416"
+  },
+  {
+    "clues_imb": "SRIMB002343"
+  },
+  {
+    "clues_imb": "SRIMB002384"
+  },
+  {
+    "clues_imb": "SRIMB002396"
+  },
+  {
+    "clues_imb": "SRIMB002401"
+  },
+  {
+    "clues_imb": "SRIMB002430"
+  },
+  {
+    "clues_imb": "SRIMB002565"
+  },
+  {
+    "clues_imb": "SRIMB002570"
+  },
+  {
+    "clues_imb": "TCIMB000820"
+  },
+  {
+    "clues_imb": "TCIMB000832"
+  },
+  {
+    "clues_imb": "TCIMB000844"
+  },
+  {
+    "clues_imb": "TCIMB000861"
+  },
+  {
+    "clues_imb": "TCIMB000885"
+  },
+  {
+    "clues_imb": "TCIMB004286"
+  },
+  {
+    "clues_imb": "TCIMB004991"
+  },
+  {
+    "clues_imb": "TCIMB005126"
+  },
+  {
+    "clues_imb": "TSIMB000181"
+  },
+  {
+    "clues_imb": "TSIMB000765"
+  },
+  {
+    "clues_imb": "TSIMB000782"
+  },
+  {
+    "clues_imb": "TSIMB000794"
+  },
+  {
+    "clues_imb": "TSIMB000806"
+  },
+  {
+    "clues_imb": "TSIMB000811"
+  },
+  {
+    "clues_imb": "TSIMB000823"
+  },
+  {
+    "clues_imb": "TSIMB000835"
+  },
+  {
+    "clues_imb": "TSIMB000840"
+  },
+  {
+    "clues_imb": "TSIMB000852"
+  },
+  {
+    "clues_imb": "TSIMB000864"
+  },
+  {
+    "clues_imb": "TSIMB000876"
+  },
+  {
+    "clues_imb": "TSIMB000881"
+  },
+  {
+    "clues_imb": "TSIMB000893"
+  },
+  {
+    "clues_imb": "TSIMB001120"
+  },
+  {
+    "clues_imb": "TSIMB001156"
+  },
+  {
+    "clues_imb": "TSIMB001173"
+  },
+  {
+    "clues_imb": "TSIMB001190"
+  },
+  {
+    "clues_imb": "TSIMB001272"
+  },
+  {
+    "clues_imb": "TSIMB001296"
+  },
+  {
+    "clues_imb": "TSIMB001301"
+  },
+  {
+    "clues_imb": "TSIMB001313"
+  },
+  {
+    "clues_imb": "TSIMB001325"
+  },
+  {
+    "clues_imb": "TSIMB001330"
+  },
+  {
+    "clues_imb": "TSIMB001342"
+  },
+  {
+    "clues_imb": "TSIMB001354"
+  },
+  {
+    "clues_imb": "TSIMB001366"
+  },
+  {
+    "clues_imb": "TSIMB001716"
+  },
+  {
+    "clues_imb": "TSIMB001721"
+  },
+  {
+    "clues_imb": "TSIMB001745"
+  },
+  {
+    "clues_imb": "TSIMB001750"
+  },
+  {
+    "clues_imb": "TSIMB001762"
+  },
+  {
+    "clues_imb": "TSIMB001774"
+  },
+  {
+    "clues_imb": "TSIMB001803"
+  },
+  {
+    "clues_imb": "TSIMB001815"
+  },
+  {
+    "clues_imb": "TSIMB001820"
+  },
+  {
+    "clues_imb": "TSIMB001960"
+  },
+  {
+    "clues_imb": "TSIMB001972"
+  },
+  {
+    "clues_imb": "TSIMB001984"
+  },
+  {
+    "clues_imb": "TSIMB001996"
+  },
+  {
+    "clues_imb": "TSIMB002001"
+  },
+  {
+    "clues_imb": "TSIMB002013"
+  },
+  {
+    "clues_imb": "TSIMB002025"
+  },
+  {
+    "clues_imb": "TSIMB002030"
+  },
+  {
+    "clues_imb": "TSIMB002112"
+  },
+  {
+    "clues_imb": "TSIMB002124"
+  },
+  {
+    "clues_imb": "TSIMB002223"
+  },
+  {
+    "clues_imb": "TSIMB002281"
+  },
+  {
+    "clues_imb": "TSIMB002346"
+  },
+  {
+    "clues_imb": "TSIMB002375"
+  },
+  {
+    "clues_imb": "TSIMB002380"
+  },
+  {
+    "clues_imb": "TSIMB002392"
+  },
+  {
+    "clues_imb": "TSIMB002503"
+  },
+  {
+    "clues_imb": "TSIMB002556"
+  },
+  {
+    "clues_imb": "TSIMB002585"
+  },
+  {
+    "clues_imb": "TSIMB002993"
+  },
+  {
+    "clues_imb": "TSIMB003022"
+  },
+  {
+    "clues_imb": "TSIMB003116"
+  },
+  {
+    "clues_imb": "TSIMB003121"
+  },
+  {
+    "clues_imb": "TSIMB003133"
+  },
+  {
+    "clues_imb": "TSIMB003162"
+  },
+  {
+    "clues_imb": "TSIMB003174"
+  },
+  {
+    "clues_imb": "TSIMB003186"
+  },
+  {
+    "clues_imb": "TSIMB003191"
+  },
+  {
+    "clues_imb": "TSIMB003203"
+  },
+  {
+    "clues_imb": "TSIMB003314"
+  },
+  {
+    "clues_imb": "TSIMB003326"
+  },
+  {
+    "clues_imb": "TSIMB003343"
+  },
+  {
+    "clues_imb": "TSIMB003355"
+  },
+  {
+    "clues_imb": "TSIMB003360"
+  },
+  {
+    "clues_imb": "TSIMB003372"
+  },
+  {
+    "clues_imb": "TSIMB003384"
+  },
+  {
+    "clues_imb": "TSIMB003396"
+  },
+  {
+    "clues_imb": "TSIMB003413"
+  },
+  {
+    "clues_imb": "TSIMB003425"
+  },
+  {
+    "clues_imb": "VZIMB000633"
+  },
+  {
+    "clues_imb": "VZIMB000843"
+  },
+  {
+    "clues_imb": "VZIMB000855"
+  },
+  {
+    "clues_imb": "VZIMB002383"
+  },
+  {
+    "clues_imb": "VZIMB003783"
+  },
+  {
+    "clues_imb": "VZIMB005550"
+  },
+  {
+    "clues_imb": "VZIMB005586"
+  },
+  {
+    "clues_imb": "VZIMB005591"
+  },
+  {
+    "clues_imb": "VZIMB006426"
+  },
+  {
+    "clues_imb": "VZIMB006431"
+  },
+  {
+    "clues_imb": "ZSIMB000125"
+  },
+  {
+    "clues_imb": "ZSIMB000434"
+  },
+  {
+    "clues_imb": "ZSIMB001624"
+  },
+  {
+    "clues_imb": "ZSIMB001822"
+  },
+  {
+    "clues_imb": "ZSIMB002435"
+  },
+  {
+    "clues_imb": "ZSIMB002522"
+  },
+  {
+    "clues_imb": "BCIMB000133"
+  },
+  {
+    "clues_imb": "BCIMB000693"
+  },
+  {
+    "clues_imb": "BSIMB000013"
+  },
+  {
+    "clues_imb": "BSIMB000054"
+  },
+  {
+    "clues_imb": "BSIMB000182"
+  },
+  {
+    "clues_imb": "BSIMB000264"
+  },
+  {
+    "clues_imb": "BSIMB000276"
+  },
+  {
+    "clues_imb": "BSIMB000281"
+  },
+  {
+    "clues_imb": "BSIMB000293"
+  },
+  {
+    "clues_imb": "BSIMB000322"
+  },
+  {
+    "clues_imb": "BSIMB000380"
+  },
+  {
+    "clues_imb": "BSIMB000684"
+  },
+  {
+    "clues_imb": "BSIMB000800"
+  },
+  {
+    "clues_imb": "CCIMB000184"
+  },
+  {
+    "clues_imb": "CCIMB000230"
+  },
+  {
+    "clues_imb": "CCIMB000394"
+  },
+  {
+    "clues_imb": "CCIMB000411"
+  },
+  {
+    "clues_imb": "CCIMB000464"
+  },
+  {
+    "clues_imb": "CCIMB000476"
+  },
+  {
+    "clues_imb": "CCIMB000481"
+  },
+  {
+    "clues_imb": "CCIMB000493"
+  },
+  {
+    "clues_imb": "CCIMB000505"
+  },
+  {
+    "clues_imb": "CCIMB000645"
+  },
+  {
+    "clues_imb": "CCIMB000650"
+  },
+  {
+    "clues_imb": "CCIMB000773"
+  },
+  {
+    "clues_imb": "CCIMB000954"
+  },
+  {
+    "clues_imb": "CCIMB000971"
+  },
+  {
+    "clues_imb": "CCIMB000983"
+  },
+  {
+    "clues_imb": "CSIMB000076"
+  },
+  {
+    "clues_imb": "CSIMB001522"
+  },
+  {
+    "clues_imb": "CSIMB001604"
+  },
+  {
+    "clues_imb": "CSIMB001621"
+  },
+  {
+    "clues_imb": "CSIMB002082"
+  },
+  {
+    "clues_imb": "CSIMB002876"
+  },
+  {
+    "clues_imb": "CSIMB004882"
+  },
+  {
+    "clues_imb": "CSIMB005606"
+  },
+  {
+    "clues_imb": "CMIMB000202"
+  },
+  {
+    "clues_imb": "CMIMB000214"
+  },
+  {
+    "clues_imb": "CMIMB000260"
+  },
+  {
+    "clues_imb": "CMIMB000296"
+  },
+  {
+    "clues_imb": "CMIMB000325"
+  },
+  {
+    "clues_imb": "CMIMB000366"
+  },
+  {
+    "clues_imb": "CMIMB000383"
+  },
+  {
+    "clues_imb": "CMIMB000482"
+  },
+  {
+    "clues_imb": "CMIMB000494"
+  },
+  {
+    "clues_imb": "CMIMB000506"
+  },
+  {
+    "clues_imb": "CMIMB000511"
+  },
+  {
+    "clues_imb": "CMIMB000791"
+  },
+  {
+    "clues_imb": "CMIMB000803"
+  },
+  {
+    "clues_imb": "CMIMB000815"
+  },
+  {
+    "clues_imb": "CMIMB000820"
+  },
+  {
+    "clues_imb": "CMIMB000955"
+  },
+  {
+    "clues_imb": "CMIMB000984"
+  },
+  {
+    "clues_imb": "GRIMB000374"
+  },
+  {
+    "clues_imb": "GRIMB000386"
+  },
+  {
+    "clues_imb": "GRIMB000415"
+  },
+  {
+    "clues_imb": "GRIMB000473"
+  },
+  {
+    "clues_imb": "GRIMB000502"
+  },
+  {
+    "clues_imb": "GRIMB000531"
+  },
+  {
+    "clues_imb": "GRIMB000671"
+  },
+  {
+    "clues_imb": "GRIMB000683"
+  },
+  {
+    "clues_imb": "GRIMB000695"
+  },
+  {
+    "clues_imb": "GRIMB000700"
+  },
+  {
+    "clues_imb": "GRIMB000712"
+  },
+  {
+    "clues_imb": "GRIMB000724"
+  },
+  {
+    "clues_imb": "GRIMB000736"
+  },
+  {
+    "clues_imb": "GRIMB000741"
+  },
+  {
+    "clues_imb": "GRIMB000753"
+  },
+  {
+    "clues_imb": "GRIMB000765"
+  },
+  {
+    "clues_imb": "GRIMB000770"
+  },
+  {
+    "clues_imb": "GRIMB000782"
+  },
+  {
+    "clues_imb": "GRIMB000794"
+  },
+  {
+    "clues_imb": "GRIMB000806"
+  },
+  {
+    "clues_imb": "GRIMB000811"
+  },
+  {
+    "clues_imb": "GRIMB000840"
+  },
+  {
+    "clues_imb": "GRIMB000852"
+  },
+  {
+    "clues_imb": "GRIMB000864"
+  },
+  {
+    "clues_imb": "GRIMB000876"
+  },
+  {
+    "clues_imb": "GRIMB000881"
+  },
+  {
+    "clues_imb": "GRIMB000893"
+  },
+  {
+    "clues_imb": "GRIMB000905"
+  },
+  {
+    "clues_imb": "GRIMB000922"
+  },
+  {
+    "clues_imb": "GRIMB000980"
+  },
+  {
+    "clues_imb": "GRIMB000992"
+  },
+  {
+    "clues_imb": "GRIMB001004"
+  },
+  {
+    "clues_imb": "GRIMB001021"
+  },
+  {
+    "clues_imb": "GRIMB001050"
+  },
+  {
+    "clues_imb": "GRIMB001062"
+  },
+  {
+    "clues_imb": "GRIMB001086"
+  },
+  {
+    "clues_imb": "GRIMB001091"
+  },
+  {
+    "clues_imb": "GRIMB001103"
+  },
+  {
+    "clues_imb": "GRIMB001115"
+  },
+  {
+    "clues_imb": "GRIMB001132"
+  },
+  {
+    "clues_imb": "GRIMB001144"
+  },
+  {
+    "clues_imb": "GRIMB001156"
+  },
+  {
+    "clues_imb": "GRIMB001161"
+  },
+  {
+    "clues_imb": "GRIMB001173"
+  },
+  {
+    "clues_imb": "GRIMB001185"
+  },
+  {
+    "clues_imb": "GRIMB001190"
+  },
+  {
+    "clues_imb": "GRIMB001202"
+  },
+  {
+    "clues_imb": "GRIMB001214"
+  },
+  {
+    "clues_imb": "GRIMB001231"
+  },
+  {
+    "clues_imb": "GRIMB001243"
+  },
+  {
+    "clues_imb": "GRIMB001255"
+  },
+  {
+    "clues_imb": "GRIMB001260"
+  },
+  {
+    "clues_imb": "GRIMB001296"
+  },
+  {
+    "clues_imb": "GRIMB001301"
+  },
+  {
+    "clues_imb": "GRIMB001313"
+  },
+  {
+    "clues_imb": "GRIMB001325"
+  },
+  {
+    "clues_imb": "GRIMB001330"
+  },
+  {
+    "clues_imb": "GRIMB001342"
+  },
+  {
+    "clues_imb": "GRIMB001366"
+  },
+  {
+    "clues_imb": "GRIMB001383"
+  },
+  {
+    "clues_imb": "GRIMB001400"
+  },
+  {
+    "clues_imb": "GRIMB001412"
+  },
+  {
+    "clues_imb": "GRIMB001424"
+  },
+  {
+    "clues_imb": "GRIMB001441"
+  },
+  {
+    "clues_imb": "GRIMB001453"
+  },
+  {
+    "clues_imb": "GRIMB001465"
+  },
+  {
+    "clues_imb": "GRIMB001470"
+  },
+  {
+    "clues_imb": "GRIMB001482"
+  },
+  {
+    "clues_imb": "GRIMB001494"
+  },
+  {
+    "clues_imb": "GRIMB001506"
+  },
+  {
+    "clues_imb": "GRIMB001511"
+  },
+  {
+    "clues_imb": "GRIMB001523"
+  },
+  {
+    "clues_imb": "GRIMB001535"
+  },
+  {
+    "clues_imb": "GRIMB001540"
+  },
+  {
+    "clues_imb": "GRIMB001552"
+  },
+  {
+    "clues_imb": "GRIMB001564"
+  },
+  {
+    "clues_imb": "GRIMB001576"
+  },
+  {
+    "clues_imb": "GRIMB001581"
+  },
+  {
+    "clues_imb": "GRIMB001593"
+  },
+  {
+    "clues_imb": "GRIMB001605"
+  },
+  {
+    "clues_imb": "GRIMB001610"
+  },
+  {
+    "clues_imb": "GRIMB001622"
+  },
+  {
+    "clues_imb": "GRIMB001634"
+  },
+  {
+    "clues_imb": "GRIMB001646"
+  },
+  {
+    "clues_imb": "GRIMB001651"
+  },
+  {
+    "clues_imb": "GRIMB001663"
+  },
+  {
+    "clues_imb": "GRIMB001675"
+  },
+  {
+    "clues_imb": "GRIMB001721"
+  },
+  {
+    "clues_imb": "GRIMB001745"
+  },
+  {
+    "clues_imb": "GRIMB001774"
+  },
+  {
+    "clues_imb": "GRIMB001786"
+  },
+  {
+    "clues_imb": "GRIMB001815"
+  },
+  {
+    "clues_imb": "GRIMB001844"
+  },
+  {
+    "clues_imb": "GRIMB001856"
+  },
+  {
+    "clues_imb": "GRIMB001861"
+  },
+  {
+    "clues_imb": "GRIMB001873"
+  },
+  {
+    "clues_imb": "GRIMB001926"
+  },
+  {
+    "clues_imb": "GRIMB001931"
+  },
+  {
+    "clues_imb": "GRIMB001943"
+  },
+  {
+    "clues_imb": "GRIMB001955"
+  },
+  {
+    "clues_imb": "GRIMB001960"
+  },
+  {
+    "clues_imb": "GRIMB001972"
+  },
+  {
+    "clues_imb": "GRIMB001984"
+  },
+  {
+    "clues_imb": "GRIMB001996"
+  },
+  {
+    "clues_imb": "GRIMB002042"
+  },
+  {
+    "clues_imb": "GRIMB002112"
+  },
+  {
+    "clues_imb": "GRIMB002124"
+  },
+  {
+    "clues_imb": "GRIMB002141"
+  },
+  {
+    "clues_imb": "GRIMB002153"
+  },
+  {
+    "clues_imb": "GRIMB002165"
+  },
+  {
+    "clues_imb": "GRIMB002182"
+  },
+  {
+    "clues_imb": "GRIMB002194"
+  },
+  {
+    "clues_imb": "GRIMB002206"
+  },
+  {
+    "clues_imb": "GRIMB002211"
+  },
+  {
+    "clues_imb": "GRIMB002223"
+  },
+  {
+    "clues_imb": "GRIMB002240"
+  },
+  {
+    "clues_imb": "GRIMB002252"
+  },
+  {
+    "clues_imb": "GRIMB002264"
+  },
+  {
+    "clues_imb": "GRIMB002276"
+  },
+  {
+    "clues_imb": "GRIMB002281"
+  },
+  {
+    "clues_imb": "GRIMB002293"
+  },
+  {
+    "clues_imb": "GRIMB002305"
+  },
+  {
+    "clues_imb": "GRIMB002310"
+  },
+  {
+    "clues_imb": "GRIMB002322"
+  },
+  {
+    "clues_imb": "GRIMB002334"
+  },
+  {
+    "clues_imb": "GRIMB002346"
+  },
+  {
+    "clues_imb": "GRIMB002351"
+  },
+  {
+    "clues_imb": "GRIMB002363"
+  },
+  {
+    "clues_imb": "GRIMB002375"
+  },
+  {
+    "clues_imb": "GRIMB002380"
+  },
+  {
+    "clues_imb": "GRIMB002392"
+  },
+  {
+    "clues_imb": "GRIMB002404"
+  },
+  {
+    "clues_imb": "GRIMB002416"
+  },
+  {
+    "clues_imb": "GRIMB002421"
+  },
+  {
+    "clues_imb": "GRIMB002445"
+  },
+  {
+    "clues_imb": "GRIMB002450"
+  },
+  {
+    "clues_imb": "GRIMB002462"
+  },
+  {
+    "clues_imb": "GRIMB002491"
+  },
+  {
+    "clues_imb": "GRIMB002503"
+  },
+  {
+    "clues_imb": "GRIMB002515"
+  },
+  {
+    "clues_imb": "GRIMB002520"
+  },
+  {
+    "clues_imb": "GRIMB002544"
+  },
+  {
+    "clues_imb": "GRIMB002556"
+  },
+  {
+    "clues_imb": "GRIMB002561"
+  },
+  {
+    "clues_imb": "GRIMB002573"
+  },
+  {
+    "clues_imb": "GRIMB002585"
+  },
+  {
+    "clues_imb": "GRIMB002590"
+  },
+  {
+    "clues_imb": "GRIMB002602"
+  },
+  {
+    "clues_imb": "GRIMB002614"
+  },
+  {
+    "clues_imb": "GRIMB002631"
+  },
+  {
+    "clues_imb": "GRIMB002643"
+  },
+  {
+    "clues_imb": "GRIMB002696"
+  },
+  {
+    "clues_imb": "GRIMB002713"
+  },
+  {
+    "clues_imb": "GRIMB002742"
+  },
+  {
+    "clues_imb": "GRIMB002800"
+  },
+  {
+    "clues_imb": "GRIMB002870"
+  },
+  {
+    "clues_imb": "GRIMB002882"
+  },
+  {
+    "clues_imb": "GRIMB002894"
+  },
+  {
+    "clues_imb": "GRIMB002906"
+  },
+  {
+    "clues_imb": "GRIMB002911"
+  },
+  {
+    "clues_imb": "GRIMB002923"
+  },
+  {
+    "clues_imb": "GRIMB002935"
+  },
+  {
+    "clues_imb": "GRIMB002940"
+  },
+  {
+    "clues_imb": "GRIMB002952"
+  },
+  {
+    "clues_imb": "GRIMB002976"
+  },
+  {
+    "clues_imb": "GRIMB002981"
+  },
+  {
+    "clues_imb": "GRIMB002993"
+  },
+  {
+    "clues_imb": "GRIMB003005"
+  },
+  {
+    "clues_imb": "GRIMB003010"
+  },
+  {
+    "clues_imb": "GRIMB003022"
+  },
+  {
+    "clues_imb": "GRIMB003034"
+  },
+  {
+    "clues_imb": "GRIMB003046"
+  },
+  {
+    "clues_imb": "GRIMB003051"
+  },
+  {
+    "clues_imb": "GRIMB003075"
+  },
+  {
+    "clues_imb": "GRIMB003080"
+  },
+  {
+    "clues_imb": "GRIMB003162"
+  },
+  {
+    "clues_imb": "GRIMB003220"
+  },
+  {
+    "clues_imb": "GRIMB003244"
+  },
+  {
+    "clues_imb": "GRIMB003256"
+  },
+  {
+    "clues_imb": "GRIMB003261"
+  },
+  {
+    "clues_imb": "GRIMB003326"
+  },
+  {
+    "clues_imb": "GRIMB003360"
+  },
+  {
+    "clues_imb": "GRIMB003384"
+  },
+  {
+    "clues_imb": "GRIMB003396"
+  },
+  {
+    "clues_imb": "GRIMB003413"
+  },
+  {
+    "clues_imb": "GRIMB003430"
+  },
+  {
+    "clues_imb": "GRIMB003466"
+  },
+  {
+    "clues_imb": "GRIMB003471"
+  },
+  {
+    "clues_imb": "GRIMB003495"
+  },
+  {
+    "clues_imb": "GRIMB003512"
+  },
+  {
+    "clues_imb": "GRIMB003524"
+  },
+  {
+    "clues_imb": "GRIMB003536"
+  },
+  {
+    "clues_imb": "GRIMB003541"
+  },
+  {
+    "clues_imb": "GRIMB003570"
+  },
+  {
+    "clues_imb": "GRIMB003582"
+  },
+  {
+    "clues_imb": "GRIMB003594"
+  },
+  {
+    "clues_imb": "GRIMB003623"
+  },
+  {
+    "clues_imb": "GRIMB003635"
+  },
+  {
+    "clues_imb": "GRIMB003640"
+  },
+  {
+    "clues_imb": "GRIMB003652"
+  },
+  {
+    "clues_imb": "GRIMB003664"
+  },
+  {
+    "clues_imb": "GRIMB003676"
+  },
+  {
+    "clues_imb": "GRIMB003681"
+  },
+  {
+    "clues_imb": "GRIMB003693"
+  },
+  {
+    "clues_imb": "GRIMB003710"
+  },
+  {
+    "clues_imb": "GRIMB003722"
+  },
+  {
+    "clues_imb": "GRIMB003734"
+  },
+  {
+    "clues_imb": "GRIMB003746"
+  },
+  {
+    "clues_imb": "GRIMB003751"
+  },
+  {
+    "clues_imb": "GRIMB003763"
+  },
+  {
+    "clues_imb": "GRIMB003775"
+  },
+  {
+    "clues_imb": "GRIMB003780"
+  },
+  {
+    "clues_imb": "GRIMB003792"
+  },
+  {
+    "clues_imb": "GRIMB003804"
+  },
+  {
+    "clues_imb": "GRIMB003816"
+  },
+  {
+    "clues_imb": "GRIMB003821"
+  },
+  {
+    "clues_imb": "GRIMB003833"
+  },
+  {
+    "clues_imb": "GRIMB003845"
+  },
+  {
+    "clues_imb": "GRIMB003850"
+  },
+  {
+    "clues_imb": "GRIMB003862"
+  },
+  {
+    "clues_imb": "GRIMB003874"
+  },
+  {
+    "clues_imb": "GRIMB003886"
+  },
+  {
+    "clues_imb": "GRIMB003903"
+  },
+  {
+    "clues_imb": "GRIMB003915"
+  },
+  {
+    "clues_imb": "GRIMB003932"
+  },
+  {
+    "clues_imb": "GRIMB003944"
+  },
+  {
+    "clues_imb": "GRIMB003956"
+  },
+  {
+    "clues_imb": "GRIMB003973"
+  },
+  {
+    "clues_imb": "GRIMB003985"
+  },
+  {
+    "clues_imb": "GRIMB003990"
+  },
+  {
+    "clues_imb": "GRIMB004002"
+  },
+  {
+    "clues_imb": "GRIMB004014"
+  },
+  {
+    "clues_imb": "GRIMB004031"
+  },
+  {
+    "clues_imb": "GRIMB004043"
+  },
+  {
+    "clues_imb": "GRIMB004055"
+  },
+  {
+    "clues_imb": "GRIMB004060"
+  },
+  {
+    "clues_imb": "GRIMB004072"
+  },
+  {
+    "clues_imb": "GRIMB004084"
+  },
+  {
+    "clues_imb": "GRIMB004130"
+  },
+  {
+    "clues_imb": "GRIMB004154"
+  },
+  {
+    "clues_imb": "GRIMB004166"
+  },
+  {
+    "clues_imb": "GRIMB004171"
+  },
+  {
+    "clues_imb": "GRIMB004183"
+  },
+  {
+    "clues_imb": "GRIMB004195"
+  },
+  {
+    "clues_imb": "GRIMB004200"
+  },
+  {
+    "clues_imb": "GRIMB004212"
+  },
+  {
+    "clues_imb": "GRIMB004270"
+  },
+  {
+    "clues_imb": "GRIMB004282"
+  },
+  {
+    "clues_imb": "GRIMB004294"
+  },
+  {
+    "clues_imb": "GRIMB004306"
+  },
+  {
+    "clues_imb": "GRIMB004422"
+  },
+  {
+    "clues_imb": "GRIMB004545"
+  },
+  {
+    "clues_imb": "GRIMB004550"
+  },
+  {
+    "clues_imb": "GRIMB004586"
+  },
+  {
+    "clues_imb": "GRIMB004591"
+  },
+  {
+    "clues_imb": "GRIMB004603"
+  },
+  {
+    "clues_imb": "GRIMB004615"
+  },
+  {
+    "clues_imb": "GRIMB004620"
+  },
+  {
+    "clues_imb": "GRIMB004632"
+  },
+  {
+    "clues_imb": "GRIMB004644"
+  },
+  {
+    "clues_imb": "GRIMB004656"
+  },
+  {
+    "clues_imb": "GRIMB004661"
+  },
+  {
+    "clues_imb": "GRIMB004673"
+  },
+  {
+    "clues_imb": "GRIMB004685"
+  },
+  {
+    "clues_imb": "GRIMB004690"
+  },
+  {
+    "clues_imb": "GRIMB004702"
+  },
+  {
+    "clues_imb": "GRIMB004714"
+  },
+  {
+    "clues_imb": "GRIMB004726"
+  },
+  {
+    "clues_imb": "GRIMB004731"
+  },
+  {
+    "clues_imb": "GRIMB004743"
+  },
+  {
+    "clues_imb": "GRIMB004755"
+  },
+  {
+    "clues_imb": "GRIMB004760"
+  },
+  {
+    "clues_imb": "GRIMB004772"
+  },
+  {
+    "clues_imb": "GRIMB004784"
+  },
+  {
+    "clues_imb": "GRIMB004796"
+  },
+  {
+    "clues_imb": "GRIMB004801"
+  },
+  {
+    "clues_imb": "GRIMB004813"
+  },
+  {
+    "clues_imb": "GRIMB004830"
+  },
+  {
+    "clues_imb": "GRIMB004842"
+  },
+  {
+    "clues_imb": "GRIMB004854"
+  },
+  {
+    "clues_imb": "GRIMB004871"
+  },
+  {
+    "clues_imb": "GRIMB004895"
+  },
+  {
+    "clues_imb": "GRIMB004924"
+  },
+  {
+    "clues_imb": "GRIMB004936"
+  },
+  {
+    "clues_imb": "GRIMB004941"
+  },
+  {
+    "clues_imb": "GRIMB004953"
+  },
+  {
+    "clues_imb": "GRIMB004965"
+  },
+  {
+    "clues_imb": "GRIMB004970"
+  },
+  {
+    "clues_imb": "GRIMB004982"
+  },
+  {
+    "clues_imb": "GRIMB004994"
+  },
+  {
+    "clues_imb": "GRIMB005011"
+  },
+  {
+    "clues_imb": "GRIMB005023"
+  },
+  {
+    "clues_imb": "GRIMB005035"
+  },
+  {
+    "clues_imb": "GRIMB005040"
+  },
+  {
+    "clues_imb": "GRIMB005064"
+  },
+  {
+    "clues_imb": "GRIMB005076"
+  },
+  {
+    "clues_imb": "GRIMB005093"
+  },
+  {
+    "clues_imb": "GRIMB005105"
+  },
+  {
+    "clues_imb": "GRIMB005110"
+  },
+  {
+    "clues_imb": "GRIMB005122"
+  },
+  {
+    "clues_imb": "GRIMB005134"
+  },
+  {
+    "clues_imb": "GRIMB005151"
+  },
+  {
+    "clues_imb": "GRIMB005286"
+  },
+  {
+    "clues_imb": "GRIMB005291"
+  },
+  {
+    "clues_imb": "GRIMB005303"
+  },
+  {
+    "clues_imb": "GRIMB005315"
+  },
+  {
+    "clues_imb": "GRIMB005571"
+  },
+  {
+    "clues_imb": "GRIMB005583"
+  },
+  {
+    "clues_imb": "GRIMB005595"
+  },
+  {
+    "clues_imb": "GRIMB005600"
+  },
+  {
+    "clues_imb": "GRIMB005612"
+  },
+  {
+    "clues_imb": "GRIMB005624"
+  },
+  {
+    "clues_imb": "GRIMB005636"
+  },
+  {
+    "clues_imb": "GRIMB005665"
+  },
+  {
+    "clues_imb": "GRIMB005670"
+  },
+  {
+    "clues_imb": "GRIMB005682"
+  },
+  {
+    "clues_imb": "GRIMB005694"
+  },
+  {
+    "clues_imb": "GRIMB005706"
+  },
+  {
+    "clues_imb": "GRIMB005711"
+  },
+  {
+    "clues_imb": "GRIMB005723"
+  },
+  {
+    "clues_imb": "GRIMB005735"
+  },
+  {
+    "clues_imb": "GRIMB005740"
+  },
+  {
+    "clues_imb": "GRIMB005764"
+  },
+  {
+    "clues_imb": "GRIMB005793"
+  },
+  {
+    "clues_imb": "GRIMB005805"
+  },
+  {
+    "clues_imb": "GRIMB005810"
+  },
+  {
+    "clues_imb": "GRIMB005846"
+  },
+  {
+    "clues_imb": "GRIMB005851"
+  },
+  {
+    "clues_imb": "GRIMB005863"
+  },
+  {
+    "clues_imb": "GRIMB005875"
+  },
+  {
+    "clues_imb": "GRIMB005880"
+  },
+  {
+    "clues_imb": "GRIMB005892"
+  },
+  {
+    "clues_imb": "GRIMB005904"
+  },
+  {
+    "clues_imb": "GRIMB005916"
+  },
+  {
+    "clues_imb": "GRIMB005921"
+  },
+  {
+    "clues_imb": "GRIMB005933"
+  },
+  {
+    "clues_imb": "GRIMB005945"
+  },
+  {
+    "clues_imb": "GRIMB005950"
+  },
+  {
+    "clues_imb": "GRIMB005962"
+  },
+  {
+    "clues_imb": "GRIMB005974"
+  },
+  {
+    "clues_imb": "GRIMB005986"
+  },
+  {
+    "clues_imb": "GRIMB005991"
+  },
+  {
+    "clues_imb": "GRIMB006056"
+  },
+  {
+    "clues_imb": "GRIMB006061"
+  },
+  {
+    "clues_imb": "GRIMB006073"
+  },
+  {
+    "clues_imb": "GRIMB006085"
+  },
+  {
+    "clues_imb": "GRIMB006090"
+  },
+  {
+    "clues_imb": "GRIMB006126"
+  },
+  {
+    "clues_imb": "GRIMB006160"
+  },
+  {
+    "clues_imb": "GRIMB006172"
+  },
+  {
+    "clues_imb": "GRIMB006196"
+  },
+  {
+    "clues_imb": "GRIMB006201"
+  },
+  {
+    "clues_imb": "GRIMB006225"
+  },
+  {
+    "clues_imb": "GRIMB006230"
+  },
+  {
+    "clues_imb": "GRIMB006242"
+  },
+  {
+    "clues_imb": "GRIMB006266"
+  },
+  {
+    "clues_imb": "GRIMB006271"
+  },
+  {
+    "clues_imb": "GRIMB006283"
+  },
+  {
+    "clues_imb": "GRIMB006295"
+  },
+  {
+    "clues_imb": "GRIMB006300"
+  },
+  {
+    "clues_imb": "GRIMB006312"
+  },
+  {
+    "clues_imb": "GRIMB006324"
+  },
+  {
+    "clues_imb": "GRIMB006336"
+  },
+  {
+    "clues_imb": "GRIMB006353"
+  },
+  {
+    "clues_imb": "GRIMB006365"
+  },
+  {
+    "clues_imb": "GRIMB006382"
+  },
+  {
+    "clues_imb": "GRIMB006394"
+  },
+  {
+    "clues_imb": "GRIMB006406"
+  },
+  {
+    "clues_imb": "GRIMB006411"
+  },
+  {
+    "clues_imb": "GRIMB006423"
+  },
+  {
+    "clues_imb": "GRIMB006435"
+  },
+  {
+    "clues_imb": "GRIMB006493"
+  },
+  {
+    "clues_imb": "GRIMB006505"
+  },
+  {
+    "clues_imb": "GRIMB006510"
+  },
+  {
+    "clues_imb": "GRIMB006522"
+  },
+  {
+    "clues_imb": "GRIMB006534"
+  },
+  {
+    "clues_imb": "GRIMB006546"
+  },
+  {
+    "clues_imb": "GRIMB006551"
+  },
+  {
+    "clues_imb": "GRIMB006563"
+  },
+  {
+    "clues_imb": "GRIMB006575"
+  },
+  {
+    "clues_imb": "GRIMB006580"
+  },
+  {
+    "clues_imb": "GRIMB006592"
+  },
+  {
+    "clues_imb": "GRIMB006604"
+  },
+  {
+    "clues_imb": "GRIMB006616"
+  },
+  {
+    "clues_imb": "GRIMB006621"
+  },
+  {
+    "clues_imb": "GRIMB006633"
+  },
+  {
+    "clues_imb": "GRIMB006645"
+  },
+  {
+    "clues_imb": "GRIMB006650"
+  },
+  {
+    "clues_imb": "GRIMB006662"
+  },
+  {
+    "clues_imb": "GRIMB006674"
+  },
+  {
+    "clues_imb": "GRIMB006686"
+  },
+  {
+    "clues_imb": "GRIMB006691"
+  },
+  {
+    "clues_imb": "GRIMB006703"
+  },
+  {
+    "clues_imb": "GRIMB006715"
+  },
+  {
+    "clues_imb": "GRIMB006720"
+  },
+  {
+    "clues_imb": "GRIMB006732"
+  },
+  {
+    "clues_imb": "GRIMB006744"
+  },
+  {
+    "clues_imb": "GRIMB006756"
+  },
+  {
+    "clues_imb": "GRIMB006761"
+  },
+  {
+    "clues_imb": "GRIMB006773"
+  },
+  {
+    "clues_imb": "GRIMB006785"
+  },
+  {
+    "clues_imb": "GRIMB006790"
+  },
+  {
+    "clues_imb": "GRIMB006802"
+  },
+  {
+    "clues_imb": "GRIMB006814"
+  },
+  {
+    "clues_imb": "GRIMB006843"
+  },
+  {
+    "clues_imb": "GRIMB006855"
+  },
+  {
+    "clues_imb": "GRIMB006860"
+  },
+  {
+    "clues_imb": "GRIMB006884"
+  },
+  {
+    "clues_imb": "GRIMB006896"
+  },
+  {
+    "clues_imb": "GRIMB006901"
+  },
+  {
+    "clues_imb": "GRIMB006913"
+  },
+  {
+    "clues_imb": "GRIMB006954"
+  },
+  {
+    "clues_imb": "GRIMB006995"
+  },
+  {
+    "clues_imb": "GRIMB007000"
+  },
+  {
+    "clues_imb": "GRIMB007036"
+  },
+  {
+    "clues_imb": "GRIMB007041"
+  },
+  {
+    "clues_imb": "GRIMB007053"
+  },
+  {
+    "clues_imb": "GRIMB007082"
+  },
+  {
+    "clues_imb": "GRIMB007106"
+  },
+  {
+    "clues_imb": "GRIMB007111"
+  },
+  {
+    "clues_imb": "GRIMB007123"
+  },
+  {
+    "clues_imb": "GRIMB007135"
+  },
+  {
+    "clues_imb": "GRIMB007152"
+  },
+  {
+    "clues_imb": "GRIMB007164"
+  },
+  {
+    "clues_imb": "GRIMB007176"
+  },
+  {
+    "clues_imb": "GRIMB007193"
+  },
+  {
+    "clues_imb": "GRIMB007251"
+  },
+  {
+    "clues_imb": "GRIMB007263"
+  },
+  {
+    "clues_imb": "GRIMB007304"
+  },
+  {
+    "clues_imb": "GRIMB007316"
+  },
+  {
+    "clues_imb": "GRIMB007321"
+  },
+  {
+    "clues_imb": "GRIMB007333"
+  },
+  {
+    "clues_imb": "GRIMB007345"
+  },
+  {
+    "clues_imb": "GRIMB007350"
+  },
+  {
+    "clues_imb": "GRIMB007362"
+  },
+  {
+    "clues_imb": "GRIMB007374"
+  },
+  {
+    "clues_imb": "GRIMB007386"
+  },
+  {
+    "clues_imb": "GRIMB007391"
+  },
+  {
+    "clues_imb": "GRIMB007403"
+  },
+  {
+    "clues_imb": "GRIMB007415"
+  },
+  {
+    "clues_imb": "GRIMB007420"
+  },
+  {
+    "clues_imb": "GRIMB007485"
+  },
+  {
+    "clues_imb": "GRIMB007490"
+  },
+  {
+    "clues_imb": "GRIMB007630"
+  },
+  {
+    "clues_imb": "GRIMB007642"
+  },
+  {
+    "clues_imb": "GRIMB007654"
+  },
+  {
+    "clues_imb": "GRIMB007666"
+  },
+  {
+    "clues_imb": "GRIMB007671"
+  },
+  {
+    "clues_imb": "GRIMB007683"
+  },
+  {
+    "clues_imb": "GRIMB007695"
+  },
+  {
+    "clues_imb": "GRIMB007700"
+  },
+  {
+    "clues_imb": "GRIMB007765"
+  },
+  {
+    "clues_imb": "GRIMB007770"
+  },
+  {
+    "clues_imb": "GRIMB007782"
+  },
+  {
+    "clues_imb": "GRIMB007794"
+  },
+  {
+    "clues_imb": "GRIMB007806"
+  },
+  {
+    "clues_imb": "GRIMB007811"
+  },
+  {
+    "clues_imb": "GRIMB007823"
+  },
+  {
+    "clues_imb": "GRIMB007835"
+  },
+  {
+    "clues_imb": "GRIMB007905"
+  },
+  {
+    "clues_imb": "GRIMB007922"
+  },
+  {
+    "clues_imb": "GRIMB007975"
+  },
+  {
+    "clues_imb": "GRIMB007992"
+  },
+  {
+    "clues_imb": "GRIMB008004"
+  },
+  {
+    "clues_imb": "GRIMB008021"
+  },
+  {
+    "clues_imb": "GRIMB008045"
+  },
+  {
+    "clues_imb": "GRIMB008062"
+  },
+  {
+    "clues_imb": "GRIMB008086"
+  },
+  {
+    "clues_imb": "GRIMB008091"
+  },
+  {
+    "clues_imb": "GRIMB008103"
+  },
+  {
+    "clues_imb": "GRIMB008115"
+  },
+  {
+    "clues_imb": "GRIMB008156"
+  },
+  {
+    "clues_imb": "GRIMB008173"
+  },
+  {
+    "clues_imb": "GRIMB008190"
+  },
+  {
+    "clues_imb": "GRIMB008214"
+  },
+  {
+    "clues_imb": "GRIMB008226"
+  },
+  {
+    "clues_imb": "GRIMB008231"
+  },
+  {
+    "clues_imb": "GRIMB008272"
+  },
+  {
+    "clues_imb": "GRIMB008296"
+  },
+  {
+    "clues_imb": "GRIMB008301"
+  },
+  {
+    "clues_imb": "GRIMB008313"
+  },
+  {
+    "clues_imb": "GRIMB008325"
+  },
+  {
+    "clues_imb": "GRIMB008330"
+  },
+  {
+    "clues_imb": "GRIMB008342"
+  },
+  {
+    "clues_imb": "GRIMB008354"
+  },
+  {
+    "clues_imb": "GRIMB008366"
+  },
+  {
+    "clues_imb": "GRIMB008371"
+  },
+  {
+    "clues_imb": "GRIMB008383"
+  },
+  {
+    "clues_imb": "GRIMB008400"
+  },
+  {
+    "clues_imb": "GRIMB008412"
+  },
+  {
+    "clues_imb": "GRIMB008424"
+  },
+  {
+    "clues_imb": "GRIMB008494"
+  },
+  {
+    "clues_imb": "GRIMB008511"
+  },
+  {
+    "clues_imb": "GRIMB008540"
+  },
+  {
+    "clues_imb": "GRIMB008552"
+  },
+  {
+    "clues_imb": "GRIMB008564"
+  },
+  {
+    "clues_imb": "GRIMB008576"
+  },
+  {
+    "clues_imb": "GRIMB008581"
+  },
+  {
+    "clues_imb": "GRIMB008774"
+  },
+  {
+    "clues_imb": "GRIMB008786"
+  },
+  {
+    "clues_imb": "GRIMB008815"
+  },
+  {
+    "clues_imb": "GRIMB008914"
+  },
+  {
+    "clues_imb": "GRIMB008955"
+  },
+  {
+    "clues_imb": "GRIMB008972"
+  },
+  {
+    "clues_imb": "GRIMB009025"
+  },
+  {
+    "clues_imb": "GRIMB009095"
+  },
+  {
+    "clues_imb": "GRIMB009136"
+  },
+  {
+    "clues_imb": "GRIMB009141"
+  },
+  {
+    "clues_imb": "GRIMB009165"
+  },
+  {
+    "clues_imb": "GRIMB009182"
+  },
+  {
+    "clues_imb": "GRIMB009194"
+  },
+  {
+    "clues_imb": "GRIMB009206"
+  },
+  {
+    "clues_imb": "GRIMB009235"
+  },
+  {
+    "clues_imb": "GRIMB009375"
+  },
+  {
+    "clues_imb": "GRIMB009404"
+  },
+  {
+    "clues_imb": "GRIMB009433"
+  },
+  {
+    "clues_imb": "GRIMB009474"
+  },
+  {
+    "clues_imb": "GRIMB009503"
+  },
+  {
+    "clues_imb": "GRIMB009515"
+  },
+  {
+    "clues_imb": "GRIMB009655"
+  },
+  {
+    "clues_imb": "GRIMB009660"
+  },
+  {
+    "clues_imb": "GRIMB009672"
+  },
+  {
+    "clues_imb": "GRIMB009696"
+  },
+  {
+    "clues_imb": "GRIMB009713"
+  },
+  {
+    "clues_imb": "GRIMB009771"
+  },
+  {
+    "clues_imb": "GRIMB009795"
+  },
+  {
+    "clues_imb": "GRIMB009935"
+  },
+  {
+    "clues_imb": "GRIMB010343"
+  },
+  {
+    "clues_imb": "GRIMB010413"
+  },
+  {
+    "clues_imb": "GRIMB010425"
+  },
+  {
+    "clues_imb": "GRIMB010454"
+  },
+  {
+    "clues_imb": "GRIMB010466"
+  },
+  {
+    "clues_imb": "GRIMB010483"
+  },
+  {
+    "clues_imb": "HGIMB002456"
+  },
+  {
+    "clues_imb": "MCIMB000692"
+  },
+  {
+    "clues_imb": "MCIMB000716"
+  },
+  {
+    "clues_imb": "MCIMB000733"
+  },
+  {
+    "clues_imb": "MCIMB000762"
+  },
+  {
+    "clues_imb": "MCIMB006806"
+  },
+  {
+    "clues_imb": "MCIMB006811"
+  },
+  {
+    "clues_imb": "MCIMB006823"
+  },
+  {
+    "clues_imb": "MCIMB006835"
+  },
+  {
+    "clues_imb": "MCIMB006840"
+  },
+  {
+    "clues_imb": "MCIMB006852"
+  },
+  {
+    "clues_imb": "MCIMB006876"
+  },
+  {
+    "clues_imb": "MCIMB006881"
+  },
+  {
+    "clues_imb": "MCIMB006905"
+  },
+  {
+    "clues_imb": "MCIMB006910"
+  },
+  {
+    "clues_imb": "MCIMB006922"
+  },
+  {
+    "clues_imb": "MCIMB006934"
+  },
+  {
+    "clues_imb": "MCIMB007243"
+  },
+  {
+    "clues_imb": "MCIMB007400"
+  },
+  {
+    "clues_imb": "MCIMB007750"
+  },
+  {
+    "clues_imb": "MCIMB007774"
+  },
+  {
+    "clues_imb": "MCIMB007786"
+  },
+  {
+    "clues_imb": "MCIMB008515"
+  },
+  {
+    "clues_imb": "MCIMB008520"
+  },
+  {
+    "clues_imb": "MCIMB008532"
+  },
+  {
+    "clues_imb": "MCIMB008544"
+  },
+  {
+    "clues_imb": "MCIMB008561"
+  },
+  {
+    "clues_imb": "MCIMB008573"
+  },
+  {
+    "clues_imb": "MCIMB008585"
+  },
+  {
+    "clues_imb": "MCIMB008602"
+  },
+  {
+    "clues_imb": "MCIMB009693"
+  },
+  {
+    "clues_imb": "MNIMB000580"
+  },
+  {
+    "clues_imb": "MNIMB001205"
+  },
+  {
+    "clues_imb": "MNIMB001345"
+  },
+  {
+    "clues_imb": "MNIMB002482"
+  },
+  {
+    "clues_imb": "MSIMB001226"
+  },
+  {
+    "clues_imb": "NTIMB000126"
+  },
+  {
+    "clues_imb": "NTIMB000131"
+  },
+  {
+    "clues_imb": "NTIMB000341"
+  },
+  {
+    "clues_imb": "NTIMB000411"
+  },
+  {
+    "clues_imb": "NTIMB000522"
+  },
+  {
+    "clues_imb": "NTIMB000546"
+  },
+  {
+    "clues_imb": "NTIMB001012"
+  },
+  {
+    "clues_imb": "NTIMB001094"
+  },
+  {
+    "clues_imb": "NTIMB001543"
+  },
+  {
+    "clues_imb": "NTIMB001782"
+  },
+  {
+    "clues_imb": "NTIMB001794"
+  },
+  {
+    "clues_imb": "NTIMB001806"
+  },
+  {
+    "clues_imb": "NTIMB002173"
+  },
+  {
+    "clues_imb": "NTIMB002704"
+  },
+  {
+    "clues_imb": "OCIMB000024"
+  },
+  {
+    "clues_imb": "OCIMB001395"
+  },
+  {
+    "clues_imb": "OCIMB001412"
+  },
+  {
+    "clues_imb": "OCIMB001540"
+  },
+  {
+    "clues_imb": "OCIMB001552"
+  },
+  {
+    "clues_imb": "OCIMB001576"
+  },
+  {
+    "clues_imb": "OCIMB001605"
+  },
+  {
+    "clues_imb": "OCIMB002392"
+  },
+  {
+    "clues_imb": "OCIMB002416"
+  },
+  {
+    "clues_imb": "OCIMB002742"
+  },
+  {
+    "clues_imb": "OCIMB003582"
+  },
+  {
+    "clues_imb": "OCIMB004241"
+  },
+  {
+    "clues_imb": "OCIMB005286"
+  },
+  {
+    "clues_imb": "OCIMB005356"
+  },
+  {
+    "clues_imb": "OCIMB005484"
+  },
+  {
+    "clues_imb": "OCIMB006621"
+  },
+  {
+    "clues_imb": "OCIMB008750"
+  },
+  {
+    "clues_imb": "OCIMB009590"
+  },
+  {
+    "clues_imb": "OCIMB009614"
+  },
+  {
+    "clues_imb": "PLIMB000281"
+  },
+  {
+    "clues_imb": "QRIMB000042"
+  },
+  {
+    "clues_imb": "QRIMB000054"
+  },
+  {
+    "clues_imb": "QRIMB000066"
+  },
+  {
+    "clues_imb": "QRIMB000071"
+  },
+  {
+    "clues_imb": "QRIMB000083"
+  },
+  {
+    "clues_imb": "QRIMB000095"
+  },
+  {
+    "clues_imb": "QRIMB000100"
+  },
+  {
+    "clues_imb": "QRIMB000112"
+  },
+  {
+    "clues_imb": "QRIMB000124"
+  },
+  {
+    "clues_imb": "QRIMB000136"
+  },
+  {
+    "clues_imb": "QRIMB000141"
+  },
+  {
+    "clues_imb": "QRIMB000153"
+  },
+  {
+    "clues_imb": "QRIMB000165"
+  },
+  {
+    "clues_imb": "QRIMB000182"
+  },
+  {
+    "clues_imb": "QRIMB000223"
+  },
+  {
+    "clues_imb": "QRIMB000240"
+  },
+  {
+    "clues_imb": "QRIMB000252"
+  },
+  {
+    "clues_imb": "QRIMB000264"
+  },
+  {
+    "clues_imb": "QRIMB000276"
+  },
+  {
+    "clues_imb": "QRIMB000281"
+  },
+  {
+    "clues_imb": "QRIMB000293"
+  },
+  {
+    "clues_imb": "QRIMB000310"
+  },
+  {
+    "clues_imb": "QRIMB000322"
+  },
+  {
+    "clues_imb": "QRIMB000334"
+  },
+  {
+    "clues_imb": "QRIMB000375"
+  },
+  {
+    "clues_imb": "QRIMB000433"
+  },
+  {
+    "clues_imb": "QRIMB000474"
+  },
+  {
+    "clues_imb": "QRIMB000486"
+  },
+  {
+    "clues_imb": "QRIMB000503"
+  },
+  {
+    "clues_imb": "QRIMB000520"
+  },
+  {
+    "clues_imb": "QRIMB000556"
+  },
+  {
+    "clues_imb": "QRIMB000573"
+  },
+  {
+    "clues_imb": "QRIMB000585"
+  },
+  {
+    "clues_imb": "QRIMB000590"
+  },
+  {
+    "clues_imb": "QRIMB000602"
+  },
+  {
+    "clues_imb": "QRIMB000626"
+  },
+  {
+    "clues_imb": "QRIMB000643"
+  },
+  {
+    "clues_imb": "QRIMB000655"
+  },
+  {
+    "clues_imb": "QRIMB000660"
+  },
+  {
+    "clues_imb": "QRIMB000672"
+  },
+  {
+    "clues_imb": "QRIMB000684"
+  },
+  {
+    "clues_imb": "QRIMB000696"
+  },
+  {
+    "clues_imb": "QRIMB000701"
+  },
+  {
+    "clues_imb": "QRIMB000713"
+  },
+  {
+    "clues_imb": "QRIMB000725"
+  },
+  {
+    "clues_imb": "QRIMB000742"
+  },
+  {
+    "clues_imb": "QRIMB000766"
+  },
+  {
+    "clues_imb": "QRIMB000771"
+  },
+  {
+    "clues_imb": "QRIMB000800"
+  },
+  {
+    "clues_imb": "QRIMB000824"
+  },
+  {
+    "clues_imb": "QRIMB000836"
+  },
+  {
+    "clues_imb": "QRIMB000882"
+  },
+  {
+    "clues_imb": "QRIMB000894"
+  },
+  {
+    "clues_imb": "QRIMB000906"
+  },
+  {
+    "clues_imb": "QRIMB000923"
+  },
+  {
+    "clues_imb": "QRIMB000935"
+  },
+  {
+    "clues_imb": "QRIMB001080"
+  },
+  {
+    "clues_imb": "QRIMB001121"
+  },
+  {
+    "clues_imb": "QRIMB001150"
+  },
+  {
+    "clues_imb": "QRIMB001162"
+  },
+  {
+    "clues_imb": "QRIMB001186"
+  },
+  {
+    "clues_imb": "QRIMB001244"
+  },
+  {
+    "clues_imb": "QRIMB001256"
+  },
+  {
+    "clues_imb": "QRIMB001261"
+  },
+  {
+    "clues_imb": "QRIMB001273"
+  },
+  {
+    "clues_imb": "QRIMB001302"
+  },
+  {
+    "clues_imb": "QRIMB001355"
+  },
+  {
+    "clues_imb": "QRIMB001360"
+  },
+  {
+    "clues_imb": "QRIMB001372"
+  },
+  {
+    "clues_imb": "QRIMB001384"
+  },
+  {
+    "clues_imb": "QRIMB001401"
+  },
+  {
+    "clues_imb": "QRIMB001413"
+  },
+  {
+    "clues_imb": "QRIMB001466"
+  },
+  {
+    "clues_imb": "QRIMB001483"
+  },
+  {
+    "clues_imb": "QRIMB001524"
+  },
+  {
+    "clues_imb": "QRIMB001635"
+  },
+  {
+    "clues_imb": "QRIMB001676"
+  },
+  {
+    "clues_imb": "QRIMB001681"
+  },
+  {
+    "clues_imb": "QRIMB001705"
+  },
+  {
+    "clues_imb": "QRIMB001710"
+  },
+  {
+    "clues_imb": "QRIMB001722"
+  },
+  {
+    "clues_imb": "QRIMB001751"
+  },
+  {
+    "clues_imb": "QRIMB001775"
+  },
+  {
+    "clues_imb": "QRIMB001932"
+  },
+  {
+    "clues_imb": "QRIMB001944"
+  },
+  {
+    "clues_imb": "QRIMB001985"
+  },
+  {
+    "clues_imb": "QRIMB001990"
+  },
+  {
+    "clues_imb": "SPIMB000445"
+  },
+  {
+    "clues_imb": "SPIMB001331"
+  },
+  {
+    "clues_imb": "SPIMB001442"
+  },
+  {
+    "clues_imb": "SPIMB001944"
+  },
+  {
+    "clues_imb": "SLIMB000376"
+  },
+  {
+    "clues_imb": "SLIMB000405"
+  },
+  {
+    "clues_imb": "SLIMB000586"
+  },
+  {
+    "clues_imb": "SLIMB001962"
+  },
+  {
+    "clues_imb": "SRIMB000045"
+  },
+  {
+    "clues_imb": "SRIMB000062"
+  },
+  {
+    "clues_imb": "SRIMB000086"
+  },
+  {
+    "clues_imb": "SRIMB000103"
+  },
+  {
+    "clues_imb": "SRIMB000115"
+  },
+  {
+    "clues_imb": "SRIMB000120"
+  },
+  {
+    "clues_imb": "SRIMB000132"
+  },
+  {
+    "clues_imb": "SRIMB000161"
+  },
+  {
+    "clues_imb": "SRIMB000173"
+  },
+  {
+    "clues_imb": "SRIMB000185"
+  },
+  {
+    "clues_imb": "SRIMB000190"
+  },
+  {
+    "clues_imb": "SRIMB000226"
+  },
+  {
+    "clues_imb": "SRIMB000231"
+  },
+  {
+    "clues_imb": "SRIMB000243"
+  },
+  {
+    "clues_imb": "SRIMB000255"
+  },
+  {
+    "clues_imb": "SRIMB000260"
+  },
+  {
+    "clues_imb": "SRIMB000284"
+  },
+  {
+    "clues_imb": "SRIMB000301"
+  },
+  {
+    "clues_imb": "SRIMB000313"
+  },
+  {
+    "clues_imb": "SRIMB000325"
+  },
+  {
+    "clues_imb": "SRIMB000400"
+  },
+  {
+    "clues_imb": "SRIMB000412"
+  },
+  {
+    "clues_imb": "SRIMB000441"
+  },
+  {
+    "clues_imb": "SRIMB000593"
+  },
+  {
+    "clues_imb": "SRIMB000605"
+  },
+  {
+    "clues_imb": "SRIMB000610"
+  },
+  {
+    "clues_imb": "SRIMB000622"
+  },
+  {
+    "clues_imb": "SRIMB000663"
+  },
+  {
+    "clues_imb": "SRIMB000832"
+  },
+  {
+    "clues_imb": "SRIMB001066"
+  },
+  {
+    "clues_imb": "SRIMB001100"
+  },
+  {
+    "clues_imb": "SRIMB001112"
+  },
+  {
+    "clues_imb": "SRIMB001124"
+  },
+  {
+    "clues_imb": "SRIMB001136"
+  },
+  {
+    "clues_imb": "SRIMB001141"
+  },
+  {
+    "clues_imb": "SRIMB001346"
+  },
+  {
+    "clues_imb": "SRIMB001375"
+  },
+  {
+    "clues_imb": "SRIMB001380"
+  },
+  {
+    "clues_imb": "SRIMB001445"
+  },
+  {
+    "clues_imb": "SRIMB001573"
+  },
+  {
+    "clues_imb": "SRIMB001585"
+  },
+  {
+    "clues_imb": "SRIMB001590"
+  },
+  {
+    "clues_imb": "SRIMB001672"
+  },
+  {
+    "clues_imb": "SRIMB001684"
+  },
+  {
+    "clues_imb": "SRIMB001696"
+  },
+  {
+    "clues_imb": "SRIMB001701"
+  },
+  {
+    "clues_imb": "SRIMB001725"
+  },
+  {
+    "clues_imb": "SRIMB001754"
+  },
+  {
+    "clues_imb": "SRIMB001771"
+  },
+  {
+    "clues_imb": "SRIMB001795"
+  },
+  {
+    "clues_imb": "SRIMB001800"
+  },
+  {
+    "clues_imb": "SRIMB001812"
+  },
+  {
+    "clues_imb": "SRIMB001841"
+  },
+  {
+    "clues_imb": "SRIMB001853"
+  },
+  {
+    "clues_imb": "SRIMB001865"
+  },
+  {
+    "clues_imb": "SRIMB001870"
+  },
+  {
+    "clues_imb": "SRIMB001882"
+  },
+  {
+    "clues_imb": "SRIMB001894"
+  },
+  {
+    "clues_imb": "SRIMB001906"
+  },
+  {
+    "clues_imb": "SRIMB001911"
+  },
+  {
+    "clues_imb": "SRIMB001923"
+  },
+  {
+    "clues_imb": "SRIMB001935"
+  },
+  {
+    "clues_imb": "SRIMB001952"
+  },
+  {
+    "clues_imb": "SRIMB001976"
+  },
+  {
+    "clues_imb": "SRIMB001981"
+  },
+  {
+    "clues_imb": "SRIMB001993"
+  },
+  {
+    "clues_imb": "SRIMB002005"
+  },
+  {
+    "clues_imb": "SRIMB002010"
+  },
+  {
+    "clues_imb": "SRIMB002022"
+  },
+  {
+    "clues_imb": "SRIMB002034"
+  },
+  {
+    "clues_imb": "SRIMB002046"
+  },
+  {
+    "clues_imb": "SRIMB002051"
+  },
+  {
+    "clues_imb": "SRIMB002162"
+  },
+  {
+    "clues_imb": "SRIMB002232"
+  },
+  {
+    "clues_imb": "SRIMB002331"
+  },
+  {
+    "clues_imb": "SRIMB002413"
+  },
+  {
+    "clues_imb": "SRIMB002804"
+  },
+  {
+    "clues_imb": "TCIMB000021"
+  },
+  {
+    "clues_imb": "TCIMB000033"
+  },
+  {
+    "clues_imb": "TCIMB000045"
+  },
+  {
+    "clues_imb": "TCIMB000050"
+  },
+  {
+    "clues_imb": "TCIMB000062"
+  },
+  {
+    "clues_imb": "TCIMB000074"
+  },
+  {
+    "clues_imb": "TCIMB000086"
+  },
+  {
+    "clues_imb": "TCIMB000091"
+  },
+  {
+    "clues_imb": "TCIMB000120"
+  },
+  {
+    "clues_imb": "TCIMB000144"
+  },
+  {
+    "clues_imb": "TCIMB000156"
+  },
+  {
+    "clues_imb": "TCIMB000161"
+  },
+  {
+    "clues_imb": "TCIMB000173"
+  },
+  {
+    "clues_imb": "TCIMB000185"
+  },
+  {
+    "clues_imb": "TCIMB000535"
+  },
+  {
+    "clues_imb": "TCIMB000540"
+  },
+  {
+    "clues_imb": "TCIMB000552"
+  },
+  {
+    "clues_imb": "TCIMB000564"
+  },
+  {
+    "clues_imb": "TCIMB000576"
+  },
+  {
+    "clues_imb": "TCIMB000593"
+  },
+  {
+    "clues_imb": "TCIMB000610"
+  },
+  {
+    "clues_imb": "TCIMB000622"
+  },
+  {
+    "clues_imb": "TCIMB000634"
+  },
+  {
+    "clues_imb": "TCIMB000646"
+  },
+  {
+    "clues_imb": "TCIMB000651"
+  },
+  {
+    "clues_imb": "TCIMB000663"
+  },
+  {
+    "clues_imb": "TCIMB000680"
+  },
+  {
+    "clues_imb": "TCIMB000692"
+  },
+  {
+    "clues_imb": "TCIMB000721"
+  },
+  {
+    "clues_imb": "TCIMB000733"
+  },
+  {
+    "clues_imb": "TCIMB000745"
+  },
+  {
+    "clues_imb": "TCIMB000750"
+  },
+  {
+    "clues_imb": "TCIMB000960"
+  },
+  {
+    "clues_imb": "TCIMB001853"
+  },
+  {
+    "clues_imb": "TCIMB001935"
+  },
+  {
+    "clues_imb": "TCIMB001940"
+  },
+  {
+    "clues_imb": "TCIMB001952"
+  },
+  {
+    "clues_imb": "TCIMB001993"
+  },
+  {
+    "clues_imb": "TCIMB002063"
+  },
+  {
+    "clues_imb": "TCIMB002232"
+  },
+  {
+    "clues_imb": "TCIMB002512"
+  },
+  {
+    "clues_imb": "TCIMB002524"
+  },
+  {
+    "clues_imb": "TCIMB002565"
+  },
+  {
+    "clues_imb": "TCIMB002570"
+  },
+  {
+    "clues_imb": "TCIMB002594"
+  },
+  {
+    "clues_imb": "TCIMB002606"
+  },
+  {
+    "clues_imb": "TCIMB002746"
+  },
+  {
+    "clues_imb": "TCIMB002780"
+  },
+  {
+    "clues_imb": "TCIMB002903"
+  },
+  {
+    "clues_imb": "TCIMB003154"
+  },
+  {
+    "clues_imb": "TCIMB003270"
+  },
+  {
+    "clues_imb": "TCIMB003381"
+  },
+  {
+    "clues_imb": "TCIMB003603"
+  },
+  {
+    "clues_imb": "TCIMB003620"
+  },
+  {
+    "clues_imb": "TCIMB003632"
+  },
+  {
+    "clues_imb": "TCIMB003644"
+  },
+  {
+    "clues_imb": "TCIMB003661"
+  },
+  {
+    "clues_imb": "TCIMB003690"
+  },
+  {
+    "clues_imb": "TCIMB003702"
+  },
+  {
+    "clues_imb": "TCIMB003714"
+  },
+  {
+    "clues_imb": "TCIMB003726"
+  },
+  {
+    "clues_imb": "TCIMB003731"
+  },
+  {
+    "clues_imb": "TCIMB003743"
+  },
+  {
+    "clues_imb": "TCIMB003755"
+  },
+  {
+    "clues_imb": "TCIMB003760"
+  },
+  {
+    "clues_imb": "TCIMB003784"
+  },
+  {
+    "clues_imb": "TCIMB003796"
+  },
+  {
+    "clues_imb": "TCIMB003813"
+  },
+  {
+    "clues_imb": "TCIMB003825"
+  },
+  {
+    "clues_imb": "TCIMB003912"
+  },
+  {
+    "clues_imb": "TCIMB003936"
+  },
+  {
+    "clues_imb": "TCIMB004035"
+  },
+  {
+    "clues_imb": "TCIMB004134"
+  },
+  {
+    "clues_imb": "TCIMB004233"
+  },
+  {
+    "clues_imb": "TCIMB004315"
+  },
+  {
+    "clues_imb": "TCIMB004320"
+  },
+  {
+    "clues_imb": "TCIMB004542"
+  },
+  {
+    "clues_imb": "TCIMB004600"
+  },
+  {
+    "clues_imb": "TCIMB004694"
+  },
+  {
+    "clues_imb": "TCIMB004706"
+  },
+  {
+    "clues_imb": "TCIMB004740"
+  },
+  {
+    "clues_imb": "TCIMB004752"
+  },
+  {
+    "clues_imb": "TCIMB004846"
+  },
+  {
+    "clues_imb": "TCIMB004904"
+  },
+  {
+    "clues_imb": "TCIMB005370"
+  },
+  {
+    "clues_imb": "TCIMB005411"
+  },
+  {
+    "clues_imb": "TSIMB000094"
+  },
+  {
+    "clues_imb": "TSIMB000111"
+  },
+  {
+    "clues_imb": "TSIMB000222"
+  },
+  {
+    "clues_imb": "TSIMB000292"
+  },
+  {
+    "clues_imb": "TSIMB000391"
+  },
+  {
+    "clues_imb": "TSIMB000485"
+  },
+  {
+    "clues_imb": "TSIMB000572"
+  },
+  {
+    "clues_imb": "TSIMB000613"
+  },
+  {
+    "clues_imb": "TSIMB001074"
+  },
+  {
+    "clues_imb": "TSIMB001646"
+  },
+  {
+    "clues_imb": "TSIMB001692"
+  },
+  {
+    "clues_imb": "TSIMB002100"
+  },
+  {
+    "clues_imb": "TSIMB002153"
+  },
+  {
+    "clues_imb": "TSIMB002573"
+  },
+  {
+    "clues_imb": "TSIMB003104"
+  },
+  {
+    "clues_imb": "VZIMB003375"
+  },
+  {
+    "clues_imb": "VZIMB003392"
+  },
+  {
+    "clues_imb": "VZIMB003404"
+  },
+  {
+    "clues_imb": "VZIMB003445"
+  },
+  {
+    "clues_imb": "VZIMB003450"
+  },
+  {
+    "clues_imb": "VZIMB004273"
+  },
+  {
+    "clues_imb": "VZIMB007020"
+  },
+  {
+    "clues_imb": "VZIMB007032"
+  },
+  {
+    "clues_imb": "VZIMB007633"
+  },
+  {
+    "clues_imb": "VZIMB008543"
+  },
+  {
+    "clues_imb": "ZSIMB000323"
+  },
+  {
+    "clues_imb": "ZSIMB000352"
+  },
+  {
+    "clues_imb": "ZSIMB000702"
+  },
+  {
+    "clues_imb": "ZSIMB001291"
+  },
+  {
+    "clues_imb": "ZSIMB001332"
+  },
+  {
+    "clues_imb": "ZSIMB001344"
+  },
+  {
+    "clues_imb": "ZSIMB001356"
+  },
+  {
+    "clues_imb": "ZSIMB001385"
+  },
+  {
+    "clues_imb": "ZSIMB001402"
+  },
+  {
+    "clues_imb": "CSIMB000501"
+  },
+  {
+    "clues_imb": "SPIMB000433"
+  },
+  {
+    "clues_imb": "SPIMB000450"
+  },
+  {
+    "clues_imb": "BSIMB000771"
+  },
+  {
+    "clues_imb": "GRIMB009066"
+  },
+  {
+    "clues_imb": "GRIMB009100"
+  },
+  {
+    "clues_imb": "GRIMB009170"
+  },
+  {
+    "clues_imb": "GRIMB010244"
+  },
+  {
+    "clues_imb": "GRIMB010256"
+  },
+  {
+    "clues_imb": "GRIMB010565"
+  },
+  {
+    "clues_imb": "SRIMB001071"
+  },
+  {
+    "clues_imb": "TCIMB000704"
+  }
+]
