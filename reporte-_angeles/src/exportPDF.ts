@@ -183,8 +183,10 @@ export async function descargarResumenPDF(sections: SummarySection[]): Promise<v
         ];
 
         fields.forEach((field, index) => {
-          const cellWidth = tableWidth * (index === 0 ? 0.32 : index === 1 ? 0.19 : index === 2 ? 0.28 : index === 3 ? 0.19 : 0.12);
-          const textColor = index === 3 ? (row.cambio === 'sumó' ? [4, 120, 87] : [185, 28, 28]) : [75, 85, 99];
+          const isSinba = row.tipo?.toUpperCase() === 'SINBA';
+          const isSumo = row.cambio === 'sumó';
+          const isRed = isSinba ? isSumo : !isSumo;
+          const textColor = index === 3 ? (isRed ? [185, 28, 28] : [4, 120, 87]) : [75, 85, 99];
           doc.setTextColor(textColor[0], textColor[1], textColor[2]);
           doc.text(field, currentX + 2, yPosition, { maxWidth: cellWidth - 4 });
           currentX += cellWidth;

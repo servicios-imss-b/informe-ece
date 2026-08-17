@@ -1573,14 +1573,25 @@ export default function App() {
                               <div className="ece-section-grid">
                                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-3">
                                   {bloque.clues.map((item) => {
+                                    const isSinba = item.tipo.includes('SINBA');
+                                    const isPositive = isSinba ? item.delta < 0 : item.delta > 0;
+                                    const isNegative = isSinba ? item.delta > 0 : item.delta < 0;
+
                                     const color = !bloque.conectado
                                       ? { bg: '#6B7280' }
-                                      : item.delta > 0
+                                      : isPositive
                                         ? { bg: '#047857' }
-                                        : item.delta < 0
+                                        : isNegative
                                           ? { bg: '#B91C1C' }
                                           : { bg: '#A57F2C' };
                                     const badge = item.tipo.includes('ECE') ? 'ECE' : item.tipo.includes('Ambos') ? 'AMBOS' : 'SINBA';
+                                    const deltaColorClass = !bloque.conectado
+                                      ? 'text-gray-500'
+                                      : isPositive
+                                        ? 'text-emerald-700'
+                                        : isNegative
+                                          ? 'text-red-700 font-semibold'
+                                          : 'text-gray-600';
 
                                     return (
                                       <div key={item.tipo}>
@@ -1603,7 +1614,7 @@ export default function App() {
                                             {bloque.conectado ? formatThousands(item.valor) : '--'}
                                           </div>
                                           <div className="ece-status-label">CLUES</div>
-                                          <div className="ece-change">
+                                          <div className={`ece-change ${deltaColorClass}`}>
                                             {bloque.conectado ? item.variacion : 'Pendiente de conexion'}
                                           </div>
                                         </div>
@@ -1685,19 +1696,30 @@ export default function App() {
                                         </tr>
                                       </thead>
                                       <tbody>
-                                        {bloque.tablaCambios.map((item, rowIndex) => (
-                                          <tr key={`${item.clues_imb}-${item.tipo}-${rowIndex}`} className="border-t border-gray-100 hover:bg-gray-50/80">
-                                            <td className="px-4 py-3 font-medium text-gray-800">{item.clues_imb}</td>
-                                            <td className="px-4 py-3 text-gray-700">{item.entidad}</td>
-                                            <td className="px-4 py-3 text-gray-700">{item.nombre_de_la_unidad}</td>
-                                            <td className="px-4 py-3">
-                                              <span className={`inline-flex rounded-full px-2 py-1 text-xs font-semibold ${item.cambio === 'sumó' ? 'bg-emerald-100 text-emerald-700' : 'bg-red-100 text-red-700'}`}>
-                                                {item.cambio} en {item.tipo}
-                                              </span>
-                                            </td>
-                                            <td className="px-4 py-3 text-right font-semibold text-gray-800">{item.delta}</td>
-                                          </tr>
-                                        ))}
+                                        {bloque.tablaCambios.map((item, rowIndex) => {
+                                          const isSinba = item.tipo.toUpperCase() === 'SINBA';
+                                          const isSumo = item.cambio === 'sumó';
+                                          // En SINBA: sumó es desfavorable (rojo), se eliminó es favorable (verde)
+                                          // En ECE/otros: sumó es favorable (verde), se eliminó es desfavorable (rojo)
+                                          const isRed = isSinba ? isSumo : !isSumo;
+                                          const badgeClass = isRed
+                                            ? 'bg-red-100 text-red-700 border border-red-200'
+                                            : 'bg-emerald-100 text-emerald-700 border border-emerald-200';
+
+                                          return (
+                                            <tr key={`${item.clues_imb}-${item.tipo}-${rowIndex}`} className="border-t border-gray-100 hover:bg-gray-50/80">
+                                              <td className="px-4 py-3 font-medium text-gray-800">{item.clues_imb}</td>
+                                              <td className="px-4 py-3 text-gray-700">{item.entidad}</td>
+                                              <td className="px-4 py-3 text-gray-700">{item.nombre_de_la_unidad}</td>
+                                              <td className="px-4 py-3">
+                                                <span className={`inline-flex rounded-full px-2.5 py-1 text-xs font-semibold ${badgeClass}`}>
+                                                  {item.cambio} en {item.tipo}
+                                                </span>
+                                              </td>
+                                              <td className="px-4 py-3 text-right font-semibold text-gray-800">{item.delta}</td>
+                                            </tr>
+                                          );
+                                        })}
                                       </tbody>
                                     </table>
                                   </div>
