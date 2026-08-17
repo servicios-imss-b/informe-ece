@@ -225,9 +225,9 @@ function formatThousands(value: number): string {
 }
 
 function formatDeltaLabel(delta: number): string {
-  if (delta > 0) return `▲ +${formatThousands(delta)} vs corte anterior (historico)`;
-  if (delta < 0) return `▼ ${formatThousands(delta)} vs corte anterior (historico)`;
-  return '● 0 vs corte anterior (historico)';
+  if (delta > 0) return '▲ Aumentó vs corte anterior (historico)';
+  if (delta < 0) return '▼ Disminuyó vs corte anterior (historico)';
+  return '● Sin cambio vs corte anterior (historico)';
 }
 
 export default function App() {
@@ -1605,6 +1605,9 @@ export default function App() {
                                             {bloque.conectado ? formatThousands(item.valor) : '--'}
                                           </div>
                                           <div className="ece-status-label">CLUES</div>
+                                          <div className="ece-change">
+                                            {bloque.conectado ? item.variacion : 'Pendiente de conexion'}
+                                          </div>
                                         </div>
                                       </div>
                                     );
