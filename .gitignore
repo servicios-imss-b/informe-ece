@@ -1,0 +1,13 @@
+# Python / editor noise
+.venv/
+.vscode/
+__pycache__/
+*.pyc
+
+# Node app
+reporte-_angeles/node_modules/
+reporte-_angeles/dist/
+reporte-_angeles/.vite/
+
+# local generated files
+auto-generated/
