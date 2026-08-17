@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Database, Building2, Layers3, AlertTriangle, LayoutGrid, Gauge, FileSearch, ClipboardList, Stethoscope, Scissors, LogOut, X, Download } from 'lucide-react';
+import { jsPDF } from 'jspdf';
+import { Database, Building2, Layers3, AlertTriangle, LayoutGrid, Gauge, FileSearch, ClipboardList, Stethoscope, Scissors, LogOut, X, Download, FileText } from 'lucide-react';
 import { Header } from './components/Header';
 import { AvanceCharts, AvanceSummaryCards } from './components/Charts';
 import { DataTable } from './components/DataTable';
@@ -237,6 +238,7 @@ export default function App() {
   const [showCluesSuggestions, setShowCluesSuggestions] = useState(false);
   const [showEntidadSuggestions, setShowEntidadSuggestions] = useState(false);
   const [showEceVideo, setShowEceVideo] = useState(false);
+  const [showResumenPdf, setShowResumenPdf] = useState(false);
   const [crudaUnlocked, setCrudaUnlocked] = useState(false);
   const [logoClickCount, setLogoClickCount] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -1065,7 +1067,7 @@ export default function App() {
   }, [cluesFilterOptionsByEntidad, selectedCluesFilter]);
 
   const mainTabs: { key: MainTabKey; label: string; icon: typeof LayoutGrid }[] = [
-    { key: 'infraestructura', label: 'Infraestructura y Materiales', icon: LayoutGrid },
+    { key: 'infraestructura', label: 'Reporte ECE', icon: LayoutGrid },
     { key: 'avance', label: 'Tablero de avance', icon: Gauge },
     { key: 'pendientes', label: 'Informe de clues pendientes', icon: FileSearch },
   ];
@@ -1100,7 +1102,7 @@ export default function App() {
 
     return {
       eyebrow: 'Panel Principal',
-      title: 'Informe hospitales - Transicion al Sistema ECE',
+      title: 'Reporte ECE',
       subtitle: 'Fecha de corte: 07 de agosto, 2026. Estado',
     };
   }, [mainTab]);
@@ -1300,6 +1302,106 @@ export default function App() {
     ];
   }, [infraCards, selectedCluesFilter, selectedEntidadFilter]);
 
+  const resumenCambios = useMemo(() => {
+    const indicadores = [
+      { key: 'consultas', label: 'Consultas', payload: infraCards?.consultas },
+      { key: 'procedimientos_quirurgicos', label: 'Procedimientos quirúrgicos', payload: infraCards?.procedimientos_quirurgicos },
+      { key: 'egresos_hospitalarios', label: 'Egresos hospitalarios', payload: infraCards?.egresos_hospitalarios },
+    ] as const;
+
+    return indicadores.map(({ label, payload }) => {
+      const rows = payload?.detalle_clues ?? [];
+
+      const totalDelta = rows.reduce((acc, row) => {
+        return acc + toNumber(row.delta_clues_ece) + toNumber(row.delta_clues_sinba) + toNumber(row.delta_clues_ambas);
+      }, 0);
+
+      const nuevasClues = rows
+        .filter((row) => {
+          return toNumber(row.delta_clues_ece) > 0 || toNumber(row.delta_clues_sinba) > 0 || toNumber(row.delta_clues_ambas) > 0;
+        })
+        .map((row) => ({
+          clues: toText(row.clues_imb),
+          unidad: toText(row.nombre_de_la_unidad),
+          delta: toNumber(row.delta_clues_ece) + toNumber(row.delta_clues_sinba) + toNumber(row.delta_clues_ambas),
+        }))
+        .filter((row) => row.clues);
+
+      const quitadasClues = rows
+        .filter((row) => {
+          return toNumber(row.delta_clues_ece) < 0 || toNumber(row.delta_clues_sinba) < 0 || toNumber(row.delta_clues_ambas) < 0;
+        })
+        .map((row) => ({
+          clues: toText(row.clues_imb),
+          unidad: toText(row.nombre_de_la_unidad),
+          delta: toNumber(row.delta_clues_ece) + toNumber(row.delta_clues_sinba) + toNumber(row.delta_clues_ambas),
+        }))
+        .filter((row) => row.clues);
+
+      const cluesTexto = nuevasClues.length > 0 || quitadasClues.length > 0
+        ? `Nuevas: ${nuevasClues.map((item) => item.clues).join('; ')}; Quitadas: ${quitadasClues.map((item) => item.clues).join('; ')}`
+        : 'Sin cambios en CLUES';
+
+      const latex = [
+        '\\begin{tabular}{|l|c|p{8cm}|}',
+        '\\hline',
+        'Indicador & Cambio & CLUES \\\\',
+        '\\hline',
+        `${label} & ${totalDelta >= 0 ? '+' : ''}${totalDelta} & ${cluesTexto} \\\\`,
+        '\\hline',
+        '\\end{tabular}',
+      ].join('\n');
+
+      return {
+        key,
+        label,
+        delta: totalDelta,
+        nuevasClues,
+        quitadasClues,
+        latex,
+      };
+    });
+  }, [infraCards]);
+
+  const buildResumenLatexCompleto = () => {
+    const encabezado = [
+      '\\documentclass{article}',
+      '\\usepackage[utf8]{inputenc}',
+      '\\usepackage[spanish]{babel}',
+      '\\usepackage{booktabs}',
+      '\\usepackage{array}',
+      '\\usepackage{geometry}',
+      '\\geometry{margin=1in}',
+      '\\begin{document}',
+      '\\section*{Resumen de cambios del Reporte ECE}',
+      '\\begin{tabular}{|l|c|p{8.5cm}|}',
+      '\\hline',
+      'Indicador & Cambio vs corte anterior & CLUES añadidas / quitadas \\\\',
+      '\\hline',
+    ];
+
+    const filas = resumenCambios.map((item) => {
+      const nuevas = item.nuevasClues.length
+        ? item.nuevasClues.map((i) => `${i.clues} (+${i.delta})`).join('; ')
+        : 'Sin añadidas';
+      const quitadas = item.quitadasClues.length
+        ? item.quitadasClues.map((i) => `${i.clues} (${i.delta})`).join('; ')
+        : 'Sin quitadas';
+      const cambio = `${item.delta >= 0 ? '+' : ''}${item.delta} vs corte anterior (historico)`;
+      return `${item.label} & ${cambio} & Añadidas: ${nuevas}; Quitadas: ${quitadas} \\\\`;
+    });
+
+    const final = [
+      ...encabezado,
+      ...filas,
+      '\\hline',
+      '\\end{tabular}',
+      '\\end{document}',
+    ];
+
+    return final.join('\n');
+  };
+
   const handleDownloadPpt = async () => {
     try {
       await descargarInformeTransicionDesdePlantilla({
@@ -1323,6 +1425,51 @@ export default function App() {
       const message = err instanceof Error ? err.message : 'No se pudo generar el PowerPoint.';
       window.alert(message);
     }
+  };
+
+  const handleDownloadResumenPdf = () => {
+    const summaryText = resumenCambios.map((item) => {
+      const nuevas = item.nuevasClues.length ? item.nuevasClues.map((row) => `${row.clues} (+${row.delta})`).join(', ') : 'Sin añadidas';
+      const quitadas = item.quitadasClues.length ? item.quitadasClues.map((row) => `${row.clues} (${row.delta})`).join(', ') : 'Sin quitadas';
+      return `${item.label}: ${item.delta >= 0 ? '+' : ''}${item.delta} vs corte anterior (historico)\nAñadidas: ${nuevas}\nQuitadas: ${quitadas}`;
+    }).join('\n\n');
+
+    const doc = new jsPDF({ unit: 'pt', format: 'a4' });
+    doc.setFontSize(16);
+    doc.text('Resumen de cambios del Reporte ECE', 40, 48);
+    doc.setFontSize(10);
+
+    const lines = summaryText.split('\n');
+    let y = 80;
+    lines.forEach((line) => {
+      const wrapped = doc.splitTextToSize(line, 500);
+      wrapped.forEach((fragment: string) => {
+        if (y > 760) {
+          doc.addPage();
+          y = 40;
+        }
+        doc.text(fragment, 40, y);
+        y += 14;
+      });
+    });
+
+    if (resumenCambios.length > 0) {
+      const latex = buildResumenLatexCompleto();
+      const latexLines = doc.splitTextToSize(latex, 500);
+      doc.addPage();
+      let latexY = 40;
+      latexLines.forEach((fragment: string) => {
+        if (latexY > 760) {
+          doc.addPage();
+          latexY = 40;
+        }
+        doc.text(fragment, 40, latexY);
+        latexY += 12;
+      });
+    }
+
+    doc.save('resumen-cambios-reporte-ece.pdf');
+    setShowResumenPdf(true);
   };
 
   return (
@@ -1359,7 +1506,15 @@ export default function App() {
 
               {mainTab === 'infraestructura' && (
                 <section className="space-y-6">
-                  <div className="flex justify-end">
+                  <div className="flex justify-end gap-2">
+                    <button
+                      type="button"
+                      onClick={() => setShowResumenPdf(true)}
+                      className="inline-flex items-center gap-2 rounded-xl border border-indigo-300 bg-indigo-50 px-4 py-2 text-sm font-semibold text-indigo-800 transition-colors hover:bg-indigo-100"
+                    >
+                      <FileText className="h-4 w-4" />
+                      Resumen PDF
+                    </button>
                     <button
                       type="button"
                       onClick={handleDownloadPpt}
@@ -1693,6 +1848,47 @@ export default function App() {
                       exportColumns={pendientesConsultasCluesColumns}
                     />
                   )}
+                </div>
+              )}
+
+              {showResumenPdf && (
+                <div
+                  className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4"
+                  onClick={() => setShowResumenPdf(false)}
+                >
+                  <div
+                    className="relative w-full max-w-4xl overflow-hidden rounded-2xl bg-white p-5 shadow-2xl"
+                    onClick={(event) => event.stopPropagation()}
+                  >
+                    <div className="mb-4 flex items-center justify-between gap-3">
+                      <div>
+                        <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-indigo-600">Resumen del Reporte ECE</p>
+                        <h3 className="text-xl font-black text-gray-900">Cambios por consultas, procedimientos y egresos</h3>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => setShowResumenPdf(false)}
+                        className="rounded-lg border border-gray-200 p-2 text-gray-500 transition hover:bg-gray-100 hover:text-gray-700"
+                      >
+                        <X className="h-4 w-4" />
+                      </button>
+                    </div>
+
+                    <div className="mb-4 flex flex-wrap gap-2">
+                      <button
+                        type="button"
+                        onClick={handleDownloadResumenPdf}
+                        className="inline-flex items-center gap-2 rounded-xl border border-indigo-200 bg-indigo-50 px-3 py-2 text-sm font-semibold text-indigo-800 transition hover:bg-indigo-100"
+                      >
+                        <Download className="h-4 w-4" />
+                        Descargar PDF
+                      </button>
+                    </div>
+
+                    <div className="max-h-[65vh] overflow-auto rounded-xl border border-gray-200 bg-gray-50 p-4">
+                      <pre className="whitespace-pre-wrap font-mono text-xs text-gray-700">{buildResumenLatexCompleto()}</pre>
+                    </div>
+                  </div>
                 </div>
               )}
 
