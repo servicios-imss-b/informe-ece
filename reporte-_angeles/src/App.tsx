@@ -1,11 +1,12 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Database, Building2, Layers3, AlertTriangle, LayoutGrid, Gauge, FileSearch, ClipboardList, Stethoscope, Scissors, LogOut, X, Download, FileText } from 'lucide-react';
+import { Database, Building2, Layers3, AlertTriangle, LayoutGrid, Gauge, FileSearch, ClipboardList, Stethoscope, Scissors, LogOut, X, Download } from 'lucide-react';
 import { Header } from './components/Header';
 import { AvanceCharts, AvanceSummaryCards } from './components/Charts';
 import { DataTable } from './components/DataTable';
 import { cargarTablasFormulario } from './data';
 import { descargarInformeTransicionDesdePlantilla } from './exportPowerPoint';
 import { descargarResumenPDF } from './exportPDF';
+import { exportarExcel } from './exportExcel';
 import type { DashboardStats, DataRow, EntidadChart, InternetPieItem, TopFaltanteChart, CluesGeoItem } from './types';
 
 type DataTabKey =
@@ -53,6 +54,9 @@ type IndicadorCardsPayload = {
     resumen_ece?: number | string;
     resumen_sinba?: number | string;
     resumen_total?: number | string;
+    delta_clues_ece?: number | string;
+    delta_clues_ambas?: number | string;
+    delta_clues_sinba?: number | string;
   }>;
 };
 
@@ -238,6 +242,7 @@ export default function App() {
   const [showCluesSuggestions, setShowCluesSuggestions] = useState(false);
   const [showEntidadSuggestions, setShowEntidadSuggestions] = useState(false);
   const [showEceVideo, setShowEceVideo] = useState(false);
+  const [infraSubTabs, setInfraSubTabs] = useState<Record<string, 'resumen' | 'cambios'>>({});
   const [crudaUnlocked, setCrudaUnlocked] = useState(false);
   const [logoClickCount, setLogoClickCount] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -1204,6 +1209,32 @@ export default function App() {
         }
       }
 
+      const tablaCambios = detallesFiltrados.flatMap((row) => {
+        const clues = toText(row.clues_imb) || 'SIN CLUES';
+        const entidad = toText(row.entidad) || 'SIN ENTIDAD';
+        const unidadNombre = toText(row.nombre_de_la_unidad) || 'SIN NOMBRE';
+        const cambios: Array<{ clues_imb: string; entidad: string; nombre_de_la_unidad: string; tipo: string; delta: number; cambio: 'sumó' | 'se eliminó'; }> = [];
+
+        const pushCambio = (tipo: string, delta: number) => {
+          if (delta === 0) return;
+          cambios.push({
+            clues_imb: clues,
+            entidad,
+            nombre_de_la_unidad: unidadNombre,
+            tipo,
+            delta: Math.abs(delta),
+            cambio: delta > 0 ? 'sumó' : 'se eliminó',
+          });
+        };
+
+        pushCambio('ECE', toNumber(row.delta_clues_ece));
+        pushCambio('AMBOS', toNumber(row.delta_clues_ambas));
+        pushCambio('SINBA', toNumber(row.delta_clues_sinba));
+
+        return cambios;
+      }).filter((item) => item.delta > 0)
+        .sort((a, b) => b.delta - a.delta || a.clues_imb.localeCompare(b.clues_imb, 'es'));
+
       return {
         titulo,
         subtitulo: conectado
@@ -1218,6 +1249,7 @@ export default function App() {
           { tipo: 'Ambos sistemas', valor: both, variacion: conectado ? formatDeltaLabel(deltaBoth) : 'Pendiente de conexion', delta: deltaBoth, estado: 'warn' },
           { tipo: 'Unicamente en SINBA', valor: onlySinba, variacion: conectado ? formatDeltaLabel(deltaOnlySinba) : 'Pendiente de conexion', delta: deltaOnlySinba, estado: 'bad' },
         ],
+        tablaCambios,
         resumen: {
           ece: resumenEce,
           sinba: resumenSinba,
@@ -1326,24 +1358,22 @@ export default function App() {
     }
   };
 
-  const handleDownloadPdf = async () => {
-    try {
-      await descargarResumenPDF(
-        portadaReporte.map((section) => ({
-          titulo: section.titulo,
-          unidad: section.unidad,
-          clues: section.clues.map((c) => ({
-            tipo: c.tipo,
-            valor: c.valor,
-            delta: Number((c as { delta?: number }).delta ?? 0),
-            variacion: c.variacion,
-          })),
-        }))
-      );
-    } catch (err) {
-      const message = err instanceof Error ? err.message : 'No se pudo generar el PDF.';
-      window.alert(message);
+  const handleDownloadTablaResumen = () => {
+    const rows = portadaReporte.flatMap((section) => section.tablaCambios.map((item) => ({
+      Indicador: section.titulo,
+      CLUES: item.clues_imb,
+      Entidad: item.entidad,
+      Unidad: item.nombre_de_la_unidad,
+      Cambio: `${item.cambio} en ${item.tipo}`,
+      Delta: item.delta,
+    })));
+
+    if (rows.length === 0) {
+      window.alert('No hay CLUES con cambios reales para descargar.');
+      return;
     }
+
+    exportarExcel(rows, 'resumen_cambios_clues', 'Cambios por CLUES');
   };
 
   return (
@@ -1383,11 +1413,11 @@ export default function App() {
                   <div className="flex justify-end gap-3">
                     <button
                       type="button"
-                      onClick={handleDownloadPdf}
-                      className="inline-flex items-center gap-2 rounded-xl border border-blue-300 bg-blue-50 px-4 py-2 text-sm font-semibold text-blue-800 transition-colors hover:bg-blue-100"
+                      onClick={handleDownloadTablaResumen}
+                      className="inline-flex items-center gap-2 rounded-xl border border-violet-300 bg-violet-50 px-4 py-2 text-sm font-semibold text-violet-800 transition-colors hover:bg-violet-100"
                     >
-                      <FileText className="h-4 w-4" />
-                      Descargar Resumen PDF
+                      <Download className="h-4 w-4" />
+                      Descargar Tabla
                     </button>
                     <button
                       type="button"
@@ -1402,197 +1432,281 @@ export default function App() {
                     <div className="ece-dashboard">
                       <header className="ece-header" />
 
-                      {portadaReporte.map((bloque, index) => (
-                        <section key={bloque.titulo} className={`ece-section ${index === 0 ? 'first' : index === 1 ? 'second' : 'third'}`}>
-                          {(() => {
-                            const totalCardStyles = [
-                              {
-                                card: 'border-emerald-300 bg-emerald-50',
-                                iconWrap: 'bg-emerald-100 text-emerald-700',
-                                divider: 'border-emerald-300',
-                                icon: Stethoscope,
-                              },
-                              {
-                                card: 'border-emerald-300 bg-emerald-50',
-                                iconWrap: 'bg-emerald-100 text-emerald-700',
-                                divider: 'border-emerald-300',
-                                icon: Scissors,
-                              },
-                              {
-                                card: 'border-emerald-300 bg-emerald-50',
-                                iconWrap: 'bg-emerald-100 text-emerald-700',
-                                divider: 'border-emerald-300',
-                                icon: LogOut,
-                              },
-                            ] as const;
+                      {portadaReporte.map((bloque, index) => {
+                        const totalCardStyles = [
+                          {
+                            card: 'border-emerald-300 bg-emerald-50',
+                            iconWrap: 'bg-emerald-100 text-emerald-700',
+                            divider: 'border-emerald-300',
+                            icon: Stethoscope,
+                          },
+                          {
+                            card: 'border-emerald-300 bg-emerald-50',
+                            iconWrap: 'bg-emerald-100 text-emerald-700',
+                            divider: 'border-emerald-300',
+                            icon: Scissors,
+                          },
+                          {
+                            card: 'border-emerald-300 bg-emerald-50',
+                            iconWrap: 'bg-emerald-100 text-emerald-700',
+                            divider: 'border-emerald-300',
+                            icon: LogOut,
+                          },
+                        ] as const;
 
-                            const totalStyle = totalCardStyles[index % totalCardStyles.length];
+                        const totalStyle = totalCardStyles[index % totalCardStyles.length];
+                        const activeSubTab = infraSubTabs[bloque.titulo] ?? 'resumen';
 
-                            return (
-                              <>
-                          {index === 0 ? (
-                            <div className="ece-section-title-row">
-                              <div className="ece-section-title">{bloque.titulo} {bloque.subtitulo}</div>
-                              <div className="ece-inline-filters">
-                                <div className="ece-filter-group">
-                                  <label className="ece-filter-label" htmlFor="filtro-entidad">Entidad</label>
-                                  <div className="relative">
-                                    <input
-                                      id="filtro-entidad"
-                                      value={selectedEntidadFilter}
-                                      onChange={(e) => {
-                                        const value = e.target.value.trim().toUpperCase() === 'TODAS' ? '' : e.target.value;
-                                        setSelectedEntidadFilter(value);
-                                      }}
-                                      onFocus={() => setShowEntidadSuggestions(true)}
-                                      onBlur={() => setTimeout(() => setShowEntidadSuggestions(false), 120)}
-                                      className="ece-filter-select"
-                                      placeholder="Buscar entidad..."
-                                      autoComplete="off"
-                                    >
-                                    </input>
+                        return (
+                          <section key={bloque.titulo} className={`ece-section ${index === 0 ? 'first' : index === 1 ? 'second' : 'third'}`}>
+                            {index === 0 ? (
+                              <div className="ece-section-title-row">
+                                <div className="ece-section-title">{bloque.titulo} {bloque.subtitulo}</div>
+                                <div className="ece-inline-filters">
+                                  <div className="ece-filter-group">
+                                    <label className="ece-filter-label" htmlFor="filtro-entidad">Entidad</label>
+                                    <div className="relative">
+                                      <input
+                                        id="filtro-entidad"
+                                        value={selectedEntidadFilter}
+                                        onChange={(e) => {
+                                          const value = e.target.value.trim().toUpperCase() === 'TODAS' ? '' : e.target.value;
+                                          setSelectedEntidadFilter(value);
+                                        }}
+                                        onFocus={() => setShowEntidadSuggestions(true)}
+                                        onBlur={() => setTimeout(() => setShowEntidadSuggestions(false), 120)}
+                                        className="ece-filter-select"
+                                        placeholder="Buscar entidad..."
+                                        autoComplete="off"
+                                      />
 
-                                    {showEntidadSuggestions && entidadSuggestions.length > 0 && toText(selectedEntidadFilter) && (
-                                      <div className="absolute z-20 mt-1 max-h-56 w-full overflow-auto rounded-xl border border-gray-200 bg-white p-1 shadow-lg">
-                                        {entidadSuggestions.map((entidad) => (
-                                          <button
-                                            key={entidad}
-                                            type="button"
-                                            onMouseDown={(e) => {
-                                              e.preventDefault();
-                                              setSelectedEntidadFilter(entidad);
-                                              setShowEntidadSuggestions(false);
-                                            }}
-                                            className="block w-full rounded-lg px-2 py-1.5 text-left text-xs text-gray-700 hover:bg-gray-100"
+                                      {showEntidadSuggestions && entidadSuggestions.length > 0 && toText(selectedEntidadFilter) && (
+                                        <div className="absolute z-20 mt-1 max-h-56 w-full overflow-auto rounded-xl border border-gray-200 bg-white p-1 shadow-lg">
+                                          {entidadSuggestions.map((entidad) => (
+                                            <button
+                                              key={entidad}
+                                              type="button"
+                                              onMouseDown={(e) => {
+                                                e.preventDefault();
+                                                setSelectedEntidadFilter(entidad);
+                                                setShowEntidadSuggestions(false);
+                                              }}
+                                              className="block w-full rounded-lg px-2 py-1.5 text-left text-xs text-gray-700 hover:bg-gray-100"
+                                            >
+                                              {entidad}
+                                            </button>
+                                          ))}
+                                        </div>
+                                      )}
+                                    </div>
+                                  </div>
+
+                                  <div className="ece-filter-group">
+                                    <label className="ece-filter-label" htmlFor="filtro-clues">CLUES</label>
+                                    <div className="relative">
+                                      <input
+                                        id="filtro-clues"
+                                        value={selectedCluesFilter}
+                                        onChange={(e) => setSelectedCluesFilter(e.target.value)}
+                                        onFocus={() => setShowCluesSuggestions(true)}
+                                        onBlur={() => setTimeout(() => setShowCluesSuggestions(false), 120)}
+                                        className="ece-filter-select"
+                                        placeholder="Buscar CLUES o unidad..."
+                                        autoComplete="off"
+                                      />
+
+                                      {showCluesSuggestions && cluesSuggestions.length > 0 && toText(selectedCluesFilter) && (
+                                        <div className="absolute z-20 mt-1 max-h-56 w-full overflow-auto rounded-xl border border-gray-200 bg-white p-1 shadow-lg">
+                                          {cluesSuggestions.map((option) => (
+                                            <button
+                                              key={`${option.clues}::${option.unidad}`}
+                                              type="button"
+                                              onMouseDown={(e) => {
+                                                e.preventDefault();
+                                                setSelectedCluesFilter(`${option.clues} ${option.unidad}`.trim());
+                                                setShowCluesSuggestions(false);
+                                              }}
+                                              className="block w-full rounded-lg px-2 py-1.5 text-left text-xs text-gray-700 hover:bg-gray-100"
+                                            >
+                                              <span className="font-semibold">{option.clues}</span> - {option.unidad || 'Sin nombre'}
+                                            </button>
+                                          ))}
+                                        </div>
+                                      )}
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            ) : (
+                              <div className="ece-section-title">
+                                {bloque.titulo} {bloque.subtitulo}
+                              </div>
+                            )}
+
+                            <div className="mb-4 flex flex-wrap items-center gap-2">
+                              <button
+                                type="button"
+                                onClick={() => setInfraSubTabs((prev) => ({ ...prev, [bloque.titulo]: 'resumen' }))}
+                                className={`rounded-lg px-3 py-1.5 text-xs font-semibold transition-colors ${
+                                  activeSubTab === 'resumen'
+                                    ? 'bg-imss-green text-white shadow-sm'
+                                    : 'border border-gray-200 bg-white text-gray-600 hover:bg-gray-50'
+                                }`}
+                              >
+                                Resumen
+                              </button>
+                              <button
+                                type="button"
+                                disabled={bloque.tablaCambios.length === 0}
+                                onClick={() => setInfraSubTabs((prev) => ({ ...prev, [bloque.titulo]: 'cambios' }))}
+                                className={`rounded-lg px-3 py-1.5 text-xs font-semibold transition-colors ${
+                                  activeSubTab === 'cambios'
+                                    ? 'bg-violet-600 text-white shadow-sm'
+                                    : 'border border-gray-200 bg-white text-gray-600 hover:bg-gray-50'
+                                } ${bloque.tablaCambios.length === 0 ? 'cursor-not-allowed opacity-40' : ''}`}
+                              >
+                                Cambios por CLUES
+                              </button>
+                            </div>
+
+                            {activeSubTab === 'resumen' ? (
+                              <div className="ece-section-grid">
+                                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-3">
+                                  {bloque.clues.map((item) => {
+                                    const color = !bloque.conectado
+                                      ? { bg: '#6B7280' }
+                                      : item.delta > 0
+                                        ? { bg: '#047857' }
+                                        : item.delta < 0
+                                          ? { bg: '#B91C1C' }
+                                          : { bg: '#A57F2C' };
+                                    const badge = item.tipo.includes('ECE') ? 'ECE' : item.tipo.includes('Ambos') ? 'AMBOS' : 'SINBA';
+
+                                    return (
+                                      <div key={item.tipo}>
+                                        {bloque.mostrarEtiquetas && <div className="ece-label-above">{item.tipo}</div>}
+                                        <div className="group relative overflow-hidden rounded-xl border border-gray-200 bg-white p-4 text-left transition-all duration-200 hover:-translate-y-0.5 hover:border-transparent hover:shadow-md">
+                                          <div
+                                            className="absolute left-0 right-0 top-0 h-1 rounded-t-xl opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+                                            style={{ background: color.bg }}
+                                          />
+
+                                          <div
+                                            className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-lg text-xs font-bold transition-colors duration-200"
+                                            style={{ background: '#F3F4F6', color: '#4B5563' }}
                                           >
-                                            {entidad}
-                                          </button>
-                                        ))}
+                                            {badge}
+                                          </div>
+
+                                          {!bloque.mostrarEtiquetas && <div className="ece-inline-label">{item.tipo}</div>}
+                                          <div className="ece-status-number">
+                                            {bloque.conectado ? formatThousands(item.valor) : '--'}
+                                          </div>
+                                          <div className="ece-status-label">CLUES</div>
+                                          <div className="ece-change">
+                                            {bloque.conectado ? item.variacion : 'Pendiente de conexion'}
+                                          </div>
+                                        </div>
                                       </div>
+                                    );
+                                  })}
+                                </div>
+
+                                <div className={`ece-total group relative overflow-hidden rounded-2xl border p-5 transition-all duration-300 hover:scale-[1.03] hover:shadow-lg ${totalStyle.card}`}>
+                                  <div className="absolute -right-4 -top-4 opacity-10 transition-transform duration-500 group-hover:scale-125 group-hover:opacity-20">
+                                    <totalStyle.icon className="h-20 w-20" />
+                                  </div>
+                                  <div className="relative mb-3 flex items-start justify-between">
+                                    <div className={`flex h-10 w-10 items-center justify-center rounded-xl transition-transform duration-300 group-hover:rotate-3 group-hover:scale-110 ${totalStyle.iconWrap}`}>
+                                      <totalStyle.icon className="h-5 w-5" strokeWidth={2.2} />
+                                    </div>
+                                  </div>
+                                  <p className="relative mb-2 text-[10px] font-bold uppercase tracking-widest opacity-70">
+                                    <span className="text-black">Resumen del sistema</span>
+                                  </p>
+
+                                  <div className="ece-total-row grid grid-cols-[92px_1fr] items-center gap-1 text-sm font-semibold text-gray-700">
+                                    <span className="system text-black">ECE:</span>
+                                    <span className="value text-black">{bloque.resumenConectado ? formatThousands(bloque.resumen.ece) : '--'} {bloque.unidad}</span>
+                                  </div>
+                                  <div className="ece-total-row grid grid-cols-[92px_1fr] items-center gap-1 text-sm font-semibold text-gray-700">
+                                    <span className="system text-black">SINBA:</span>
+                                    <span className="value text-black">{bloque.resumenConectado ? formatThousands(bloque.resumen.sinba) : '--'} {bloque.unidad}</span>
+                                  </div>
+                                  <div className={`ece-total-row final mt-1 border-t pt-1 grid grid-cols-[92px_1fr] items-center gap-1 text-sm font-semibold text-black ${totalStyle.divider}`}>
+                                    <span className="system text-black">Total:</span>
+                                    <span className="value text-black">{bloque.resumenConectado ? formatThousands(bloque.resumen.total) : '--'} (sin duplicados)</span>
+                                  </div>
+                                </div>
+                              </div>
+                            ) : (
+                              <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
+                                <div className="flex items-center justify-between border-b border-gray-200 bg-gray-50 px-4 py-3">
+                                  <div>
+                                    <p className="text-xs font-bold uppercase tracking-[0.12em] text-gray-500">CLUES con cambio real</p>
+                                    <p className="text-sm text-gray-700">Solo se muestran registros con delta distinto de cero.</p>
+                                  </div>
+                                  <button
+                                    type="button"
+                                    onClick={() => exportarExcel(
+                                      bloque.tablaCambios.map((item) => ({
+                                        Indicador: bloque.titulo,
+                                        CLUES: item.clues_imb,
+                                        Entidad: item.entidad,
+                                        Unidad: item.nombre_de_la_unidad,
+                                        Cambio: `${item.cambio} en ${item.tipo}`,
+                                        Delta: item.delta,
+                                      })),
+                                      `tabla_cambios_${bloque.titulo.toLowerCase().replace(/[^a-z0-9]+/g, '_')}`,
+                                      'Cambios por CLUES'
                                     )}
-                                  </div>
-                                </div>
-
-                                <div className="ece-filter-group">
-                                  <label className="ece-filter-label" htmlFor="filtro-clues">CLUES</label>
-                                  <div className="relative">
-                                  <input
-                                    id="filtro-clues"
-                                    value={selectedCluesFilter}
-                                    onChange={(e) => setSelectedCluesFilter(e.target.value)}
-                                    onFocus={() => setShowCluesSuggestions(true)}
-                                    onBlur={() => setTimeout(() => setShowCluesSuggestions(false), 120)}
-                                    className="ece-filter-select"
-                                    placeholder="Buscar CLUES o unidad..."
-                                    autoComplete="off"
+                                    disabled={bloque.tablaCambios.length === 0}
+                                    className="inline-flex items-center gap-2 rounded-lg border border-violet-300 bg-violet-50 px-3 py-2 text-xs font-semibold text-violet-800 transition-colors hover:bg-violet-100 disabled:cursor-not-allowed disabled:opacity-40"
                                   >
-                                  </input>
-
-                                  {showCluesSuggestions && cluesSuggestions.length > 0 && toText(selectedCluesFilter) && (
-                                    <div className="absolute z-20 mt-1 max-h-56 w-full overflow-auto rounded-xl border border-gray-200 bg-white p-1 shadow-lg">
-                                      {cluesSuggestions.map((option) => (
-                                        <button
-                                          key={`${option.clues}::${option.unidad}`}
-                                          type="button"
-                                          onMouseDown={(e) => {
-                                            e.preventDefault();
-                                            setSelectedCluesFilter(`${option.clues} ${option.unidad}`.trim());
-                                            setShowCluesSuggestions(false);
-                                          }}
-                                          className="block w-full rounded-lg px-2 py-1.5 text-left text-xs text-gray-700 hover:bg-gray-100"
-                                        >
-                                          <span className="font-semibold">{option.clues}</span> - {option.unidad || 'Sin nombre'}
-                                        </button>
-                                      ))}
-                                    </div>
-                                  )}
+                                    <Download className="h-3.5 w-3.5" />
+                                    Descargar tabla
+                                  </button>
                                 </div>
-                                </div>
-                              </div>
-                            </div>
-                          ) : (
-                            <div className="ece-section-title">
-                              {bloque.titulo} {bloque.subtitulo}
-                            </div>
-                          )}
 
-                          <div className="ece-section-grid">
-                            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-3">
-                            {bloque.clues.map((item) => {
-                              const color = !bloque.conectado
-                                ? { bg: '#6B7280' }
-                                : item.delta > 0
-                                  ? { bg: '#047857' }
-                                  : item.delta < 0
-                                    ? { bg: '#B91C1C' }
-                                    : { bg: '#A57F2C' };
-                              const badge = item.tipo.includes('ECE') ? 'ECE' : item.tipo.includes('Ambos') ? 'AMBOS' : 'SINBA';
-
-                              return (
-                                <div key={item.tipo}>
-                                  {bloque.mostrarEtiquetas && <div className="ece-label-above">{item.tipo}</div>}
-                                  <div
-                                    className="group relative overflow-hidden rounded-xl border border-gray-200 bg-white p-4 text-left transition-all duration-200 hover:-translate-y-0.5 hover:border-transparent hover:shadow-md"
-                                  >
-                                    <div
-                                      className="absolute left-0 right-0 top-0 h-1 rounded-t-xl opacity-0 transition-opacity duration-200 group-hover:opacity-100"
-                                      style={{ background: color.bg }}
-                                    />
-
-                                    <div
-                                      className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-lg text-xs font-bold transition-colors duration-200"
-                                      style={{ background: '#F3F4F6', color: '#4B5563' }}
-                                    >
-                                      {badge}
-                                    </div>
-
-                                    {!bloque.mostrarEtiquetas && <div className="ece-inline-label">{item.tipo}</div>}
-                                    <div className="ece-status-number">
-                                      {bloque.conectado ? formatThousands(item.valor) : '--'}
-                                    </div>
-                                    <div className="ece-status-label">CLUES</div>
-                                    <div className="ece-change">
-                                      {bloque.conectado ? item.variacion : 'Pendiente de conexion'}
-                                    </div>
-
+                                {bloque.tablaCambios.length === 0 ? (
+                                  <div className="px-4 py-12 text-center text-sm text-gray-500">
+                                    No hay CLUES con cambio real para este indicador.
                                   </div>
-                                </div>
-                              );
-                            })}
-                            </div>
-
-                            <div className={`ece-total group relative overflow-hidden rounded-2xl border p-5 transition-all duration-300 hover:scale-[1.03] hover:shadow-lg ${totalStyle.card}`}>
-                              <div className="absolute -right-4 -top-4 opacity-10 transition-transform duration-500 group-hover:scale-125 group-hover:opacity-20">
-                                <totalStyle.icon className="h-20 w-20" />
+                                ) : (
+                                  <div className="overflow-x-auto">
+                                    <table className="w-full text-left text-sm">
+                                      <thead className="bg-gray-50 text-gray-600">
+                                        <tr>
+                                          <th className="px-4 py-3 font-semibold">CLUES</th>
+                                          <th className="px-4 py-3 font-semibold">Entidad</th>
+                                          <th className="px-4 py-3 font-semibold">Unidad</th>
+                                          <th className="px-4 py-3 font-semibold">Cambio</th>
+                                          <th className="px-4 py-3 font-semibold text-right">Delta</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        {bloque.tablaCambios.map((item, rowIndex) => (
+                                          <tr key={`${item.clues_imb}-${item.tipo}-${rowIndex}`} className="border-t border-gray-100 hover:bg-gray-50/80">
+                                            <td className="px-4 py-3 font-medium text-gray-800">{item.clues_imb}</td>
+                                            <td className="px-4 py-3 text-gray-700">{item.entidad}</td>
+                                            <td className="px-4 py-3 text-gray-700">{item.nombre_de_la_unidad}</td>
+                                            <td className="px-4 py-3">
+                                              <span className={`inline-flex rounded-full px-2 py-1 text-xs font-semibold ${item.cambio === 'sumó' ? 'bg-emerald-100 text-emerald-700' : 'bg-red-100 text-red-700'}`}>
+                                                {item.cambio} en {item.tipo}
+                                              </span>
+                                            </td>
+                                            <td className="px-4 py-3 text-right font-semibold text-gray-800">{item.delta}</td>
+                                          </tr>
+                                        ))}
+                                      </tbody>
+                                    </table>
+                                  </div>
+                                )}
                               </div>
-                              <div className="relative mb-3 flex items-start justify-between">
-                                <div className={`flex h-10 w-10 items-center justify-center rounded-xl transition-transform duration-300 group-hover:rotate-3 group-hover:scale-110 ${totalStyle.iconWrap}`}>
-                                  <totalStyle.icon className="h-5 w-5" strokeWidth={2.2} />
-                                </div>
-                              </div>
-                              <p className="relative mb-2 text-[10px] font-bold uppercase tracking-widest opacity-70">
-                                <span className="text-black">Resumen del sistema</span>
-                              </p>
-
-                              <div className="ece-total-row grid grid-cols-[92px_1fr] items-center gap-1 text-sm font-semibold text-gray-700">
-                                <span className="system text-black">ECE:</span>
-                                <span className="value text-black">{bloque.resumenConectado ? formatThousands(bloque.resumen.ece) : '--'} {bloque.unidad}</span>
-                              </div>
-                              <div className="ece-total-row grid grid-cols-[92px_1fr] items-center gap-1 text-sm font-semibold text-gray-700">
-                                <span className="system text-black">SINBA:</span>
-                                <span className="value text-black">{bloque.resumenConectado ? formatThousands(bloque.resumen.sinba) : '--'} {bloque.unidad}</span>
-                              </div>
-                              <div className={`ece-total-row final mt-1 border-t pt-1 grid grid-cols-[92px_1fr] items-center gap-1 text-sm font-semibold text-black ${totalStyle.divider}`}>
-                                <span className="system text-black">Total:</span>
-                                <span className="value text-black">{bloque.resumenConectado ? formatThousands(bloque.resumen.total) : '--'} (sin duplicados)</span>
-                              </div>
-                            </div>
-                          </div>
-                              </>
-                            );
-                          })()}
-                        </section>
-                      ))}
+                            )}
+                          </section>
+                        );
+                      })}
                     </div>
                   </div>
                 </section>

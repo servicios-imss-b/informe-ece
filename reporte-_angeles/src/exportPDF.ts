@@ -9,6 +9,14 @@ type SummarySection = {
     delta: number;
     variacion: string;
   }>;
+  tablaCambios?: Array<{
+    clues_imb: string;
+    entidad: string;
+    nombre_de_la_unidad: string;
+    tipo: string;
+    delta: number;
+    cambio: 'sumó' | 'se eliminó';
+  }>;
 };
 
 export async function descargarResumenPDF(sections: SummarySection[]): Promise<void> {
@@ -115,6 +123,80 @@ export async function descargarResumenPDF(sections: SummarySection[]): Promise<v
       doc.line(15, yPosition, pageWidth - 15, yPosition);
       yPosition += 1;
     });
+
+    if (section.tablaCambios && section.tablaCambios.length > 0) {
+      yPosition += 8;
+      doc.setFontSize(11);
+      doc.setTextColor(27, 92, 78);
+      doc.text('CLUES con cambio real', 15, yPosition);
+      yPosition += 6;
+
+      const tableWidth = pageWidth - 30;
+      const colWidths = [46, 26, 38, 40, 18];
+      const headers = ['CLUES', 'Entidad', 'Unidad', 'Cambio', 'Delta'];
+      doc.setFontSize(8);
+      doc.setFillColor(27, 92, 78);
+      doc.setTextColor(255, 255, 255);
+      doc.setFont(undefined, 'bold');
+
+      let startX = 15;
+      headers.forEach((header, index) => {
+        const cellWidth = tableWidth * (index === 0 ? 0.32 : index === 1 ? 0.19 : index === 2 ? 0.28 : index === 3 ? 0.19 : 0.12);
+        doc.rect(startX, yPosition - 4, cellWidth, 7, 'F');
+        doc.text(header, startX + 2, yPosition, { maxWidth: cellWidth - 4 });
+        startX += cellWidth;
+      });
+
+      yPosition += 8;
+      doc.setFont(undefined, 'normal');
+      doc.setTextColor(75, 85, 99);
+      doc.setFontSize(7.5);
+
+      for (const row of section.tablaCambios) {
+        if (yPosition > pageHeight - 22) {
+          doc.addPage();
+          yPosition = 15;
+          doc.setFontSize(8);
+          doc.setFillColor(27, 92, 78);
+          doc.setTextColor(255, 255, 255);
+          doc.setFont(undefined, 'bold');
+          let newX = 15;
+          headers.forEach((header, index) => {
+            const cellWidth = tableWidth * (index === 0 ? 0.32 : index === 1 ? 0.19 : index === 2 ? 0.28 : index === 3 ? 0.19 : 0.12);
+            doc.rect(newX, yPosition - 4, cellWidth, 7, 'F');
+            doc.text(header, newX + 2, yPosition, { maxWidth: cellWidth - 4 });
+            newX += cellWidth;
+          });
+          yPosition += 8;
+          doc.setFont(undefined, 'normal');
+          doc.setTextColor(75, 85, 99);
+          doc.setFontSize(7.5);
+        }
+
+        let currentX = 15;
+        const fields = [
+          row.clues_imb,
+          row.entidad,
+          row.nombre_de_la_unidad,
+          `${row.cambio} en ${row.tipo}`,
+          String(row.delta),
+        ];
+
+        fields.forEach((field, index) => {
+          const cellWidth = tableWidth * (index === 0 ? 0.32 : index === 1 ? 0.19 : index === 2 ? 0.28 : index === 3 ? 0.19 : 0.12);
+          const textColor = index === 3 ? (row.cambio === 'sumó' ? [4, 120, 87] : [185, 28, 28]) : [75, 85, 99];
+          doc.setTextColor(textColor[0], textColor[1], textColor[2]);
+          doc.text(field, currentX + 2, yPosition, { maxWidth: cellWidth - 4 });
+          currentX += cellWidth;
+        });
+
+        doc.setTextColor(75, 85, 99);
+        yPosition += 6;
+        doc.setDrawColor(230, 231, 235);
+        doc.line(15, yPosition, pageWidth - 15, yPosition);
+        yPosition += 2;
+      }
+    }
 
     yPosition += 8;
   }
