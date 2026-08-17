@@ -1573,25 +1573,14 @@ export default function App() {
                               <div className="ece-section-grid">
                                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-3">
                                   {bloque.clues.map((item) => {
-                                    const isSinba = item.tipo.includes('SINBA');
-                                    const isPositive = isSinba ? item.delta < 0 : item.delta > 0;
-                                    const isNegative = isSinba ? item.delta > 0 : item.delta < 0;
-
                                     const color = !bloque.conectado
                                       ? { bg: '#6B7280' }
-                                      : isPositive
+                                      : item.delta > 0
                                         ? { bg: '#047857' }
-                                        : isNegative
+                                        : item.delta < 0
                                           ? { bg: '#B91C1C' }
                                           : { bg: '#A57F2C' };
                                     const badge = item.tipo.includes('ECE') ? 'ECE' : item.tipo.includes('Ambos') ? 'AMBOS' : 'SINBA';
-                                    const deltaColorClass = !bloque.conectado
-                                      ? 'text-gray-500'
-                                      : isPositive
-                                        ? 'text-emerald-700'
-                                        : isNegative
-                                          ? 'text-red-700 font-semibold'
-                                          : 'text-gray-600';
 
                                     return (
                                       <div key={item.tipo}>
@@ -1614,7 +1603,7 @@ export default function App() {
                                             {bloque.conectado ? formatThousands(item.valor) : '--'}
                                           </div>
                                           <div className="ece-status-label">CLUES</div>
-                                          <div className={`ece-change ${deltaColorClass}`}>
+                                          <div className="ece-change">
                                             {bloque.conectado ? item.variacion : 'Pendiente de conexion'}
                                           </div>
                                         </div>
