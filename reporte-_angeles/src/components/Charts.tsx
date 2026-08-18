@@ -1612,12 +1612,34 @@ export function AvanceCharts({
   const deltaSinba = data.reduce((sum, row) => sum + row.deltaSinba, 0);
   const deltaAmbas = data.reduce((sum, row) => sum + row.deltaAmbas, 0);
 
-  const totalStatus = sourceRows.reduce((sum, row) => sum + row.ece + row.sinba + row.ambas, 0);
-  const percentSummary = [
-    { name: 'ECE', value: totalStatus > 0 ? (sourceRows.reduce((sum, row) => sum + row.ece, 0) / totalStatus) * 100 : 0, fill: '#047857' },
-    { name: 'SINBA', value: totalStatus > 0 ? (sourceRows.reduce((sum, row) => sum + row.sinba, 0) / totalStatus) * 100 : 0, fill: '#B45309' },
-    { name: 'AMBAS', value: totalStatus > 0 ? (sourceRows.reduce((sum, row) => sum + row.ambas, 0) / totalStatus) * 100 : 0, fill: '#334155' },
-  ];
+  const percentPerEntidad = [...sourceRows]
+    .map((row) => {
+      const ece = Number(row.ece ?? 0);
+      const sinba = Number(row.sinba ?? 0);
+      const ambas = Number(row.ambas ?? 0);
+      const totalClues = ece + sinba + ambas;
+
+      const pctEce = totalClues > 0 ? (ece / totalClues) * 100 : 0;
+      const pctAmbas = totalClues > 0 ? (ambas / totalClues) * 100 : 0;
+      const pctSinba = totalClues > 0 ? (sinba / totalClues) * 100 : 0;
+
+      return {
+        eje: row.entidad.length > 18 ? `${row.entidad.slice(0, 18)}.` : row.entidad,
+        ejeFull: row.entidad,
+        totalClues,
+        eceCount: ece,
+        sinbaCount: sinba,
+        ambasCount: ambas,
+        pctEce,
+        pctAmbas,
+        pctSinba,
+      };
+    })
+    .filter((row) => row.totalClues > 0)
+    .sort((a, b) => b.pctEce - a.pctEce || b.totalClues - a.totalClues);
+
+  const percentChartNeedsScroll = cluesMode && percentPerEntidad.length > 25;
+  const percentChartWidth = percentChartNeedsScroll ? Math.max(1400, percentPerEntidad.length * 72) : undefined;
 
   const subtitle = cluesMode
     ? `Tendencia por CLUES | ECE ${formatDeltaLabel(deltaEce)} | SINBA ${formatDeltaLabel(deltaSinba)} | AMBAS ${formatDeltaLabel(deltaAmbas)}`
@@ -1638,28 +1660,56 @@ export function AvanceCharts({
   return (
     <div className="space-y-6">
       <ChartCard
-        title={cluesMode ? 'Participación por tipo de registro (%)' : 'Participación por tipo de registro (%)'}
-        subtitle={cluesMode ? 'Distribución del total de registros en el filtro actual.' : 'Distribución del total de registros en el consolidado actual.'}
+        title={cluesMode ? 'Distribución porcentual por CLUES (Base 100%)' : 'Distribución porcentual por entidad (Base 100%)'}
+        subtitle={cluesMode
+          ? 'Porcentaje sobre el total de registros de cada CLUES: ECE (verde), Ambos sistemas (dorado) y SINBA (rojo).'
+          : 'Porcentaje sobre el total de CLUES de cada entidad: ECE (verde), Ambos sistemas (dorado) y SINBA (rojo).'}
         className="h-full"
       >
-        <div style={{ height: '220px' }}>
-          <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={percentSummary} margin={{ top: 16, right: 16, left: 8, bottom: 8 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" vertical={false} />
-              <XAxis dataKey="name" tick={{ fontSize: 12, fill: '#6B7280' }} axisLine={false} tickLine={false} />
-              <YAxis domain={[0, 100]} tickFormatter={(value) => `${value}%`} tick={{ fontSize: 11, fill: '#6B7280' }} width={42} />
-              <Tooltip
-                contentStyle={tooltipStyle}
-                formatter={(value: unknown) => [`${Number(value ?? 0).toFixed(1)}%`, 'Participación']}
-              />
-              <Bar dataKey="value" radius={[8, 8, 0, 0]}>
-                {percentSummary.map((entry) => (
-                  <Cell key={entry.name} fill={entry.fill} />
-                ))}
-              </Bar>
-              <LabelList dataKey="value" position="top" formatter={(value: unknown) => `${Number(value ?? 0).toFixed(1)}%`} style={{ fill: '#374151', fontSize: 11 }} />
-            </BarChart>
-          </ResponsiveContainer>
+        <div className={percentChartNeedsScroll ? 'overflow-x-auto pb-2' : ''}>
+          <div style={percentChartWidth ? { width: `${percentChartWidth}px`, minWidth: `${percentChartWidth}px`, height: '420px' } : { height: '420px' }}>
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={percentPerEntidad} margin={{ top: 16, right: 22, left: 0, bottom: 86 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" vertical={false} />
+                <XAxis
+                  dataKey="eje"
+                  angle={-90}
+                  textAnchor="end"
+                  tick={{ fontSize: 10, fill: '#6B7280' }}
+                  height={96}
+                  interval={0}
+                  minTickGap={cluesMode ? 8 : 0}
+                />
+                <YAxis
+                  domain={[0, 100]}
+                  ticks={[0, 20, 40, 60, 80, 100]}
+                  tickFormatter={(v) => `${v}%`}
+                  tick={{ fontSize: 11, fill: '#6B7280' }}
+                  width={42}
+                />
+                <Tooltip
+                  contentStyle={tooltipStyle}
+                  labelFormatter={(_label, payload) => {
+                    const item = payload?.[0]?.payload as { ejeFull?: string; totalClues?: number } | undefined;
+                    return item ? `${item.ejeFull} (Total: ${formatTooltipNumber(item.totalClues)} CLUES)` : String(_label);
+                  }}
+                  formatter={(value: unknown, name: string, item) => {
+                    const payload = item?.payload as { eceCount?: number; sinbaCount?: number; ambasCount?: number; totalClues?: number } | undefined;
+                    const count = name === 'ECE' ? payload?.eceCount : name === 'AMBAS' ? payload?.ambasCount : payload?.sinbaCount;
+                    return [
+                      `${Number(value ?? 0).toFixed(1)}% (${formatTooltipNumber(count)} CLUES)`,
+                      name,
+                    ];
+                  }}
+                  cursor={{ fill: '#F9FAFB' }}
+                />
+                <Legend verticalAlign="top" iconType="circle" wrapperStyle={{ fontSize: '11px', color: '#6B7280', paddingBottom: '8px' }} />
+                <Bar dataKey="pctEce" name="ECE" stackId="clues" fill="#047857" />
+                <Bar dataKey="pctAmbas" name="AMBAS" stackId="clues" fill="#A57F2C" />
+                <Bar dataKey="pctSinba" name="SINBA" stackId="clues" fill="#B91C1C" />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
         </div>
       </ChartCard>
 
