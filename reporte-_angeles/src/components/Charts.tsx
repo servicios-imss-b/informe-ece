@@ -1705,8 +1705,8 @@ export function AvanceCharts({
                 />
                 <Legend verticalAlign="top" iconType="circle" wrapperStyle={{ fontSize: '11px', color: '#6B7280', paddingBottom: '8px' }} />
                 <Bar dataKey="pctEce" name="ECE" stackId="clues" fill="#047857" />
-                <Bar dataKey="pctAmbas" name="AMBAS" stackId="clues" fill="#A57F2C" />
-                <Bar dataKey="pctSinba" name="SINBA" stackId="clues" fill="#B91C1C" />
+                <Bar dataKey="pctSinba" name="SINBA" stackId="clues" fill="#B45309" />
+                <Bar dataKey="pctAmbas" name="AMBAS" stackId="clues" fill="#334155" />
               </BarChart>
             </ResponsiveContainer>
           </div>
