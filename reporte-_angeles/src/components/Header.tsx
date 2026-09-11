@@ -3,12 +3,16 @@ const LOGO_URL = 'https://imssbienestar.gob.mx/assets/img/imb_b.svg';
 
 export function Header({
   onLogoClick,
+  lastUpdateLabel,
+  comparisonLabel,
   eyebrow,
   title,
   subtitle,
   hideBanner,
 }: {
   onLogoClick?: () => void;
+  lastUpdateLabel?: string;
+  comparisonLabel?: string;
   eyebrow?: string;
   title?: string;
   subtitle?: string;
@@ -36,7 +40,16 @@ export function Header({
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="ml-3 text-right leading-tight">
+            <p className="text-[9px] font-semibold uppercase text-gray-400">Actualizado</p>
+            <p className="mt-0.5 text-[10px] font-medium text-gray-600 sm:text-xs">
+              {lastUpdateLabel ?? 'Sin actualizacion'}
+            </p>
+            {comparisonLabel ? (
+              <p className="mt-0.5 text-[9px] font-medium text-gray-500 sm:text-[10px]">
+                {comparisonLabel}
+              </p>
+            ) : null}
           </div>
         </div>
       </nav>

@@ -61,6 +61,8 @@ type IndicadorCardsPayload = {
 };
 
 type InfraestructuraCardsPayload = {
+  fecha_corte?: string;
+  fecha_corte_anterior?: string | null;
   consultas?: IndicadorCardsPayload;
   procedimientos_quirurgicos?: IndicadorCardsPayload;
   egresos_hospitalarios?: IndicadorCardsPayload;
@@ -201,6 +203,18 @@ function formatLastUpdateLabel(date: Date): string {
   return `${day} ${month} ${year}, ${String(hour12).padStart(2, '0')}:${minute} ${ampm}`;
 }
 
+function formatCutoffDate(value?: string | null): string | null {
+  if (!value) return null;
+  const [year, month, day] = value.split('-').map(Number);
+  if (!year || !month || !day) return value;
+
+  return new Intl.DateTimeFormat('es-MX', {
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric',
+  }).format(new Date(year, month - 1, day));
+}
+
 function formatCellValue(value: unknown, key?: string): string {
   if (value === null || value === undefined || value === '') return '-';
   if (typeof value === 'boolean') return value ? 'Si' : 'No';
@@ -315,7 +329,8 @@ export default function App() {
       }
 
       const updatedFromScript = parseDateValue(tablas.baseMeta.scriptLastRunAt);
-      setLastUpdate(updatedFromScript ?? inferDataUpdatedAt(tablas.baseAn));
+      const updatedFromData = inferDataUpdatedAt(tablas.baseAn);
+      setLastUpdate(updatedFromScript ?? updatedFromData ?? parseDateValue(import.meta.env.VITE_BUILD_TIME));
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Ocurrio un error al cargar datos');
     } finally {
@@ -329,6 +344,13 @@ export default function App() {
     if (!lastUpdate) return 'Sin actualizacion';
     return formatLastUpdateLabel(lastUpdate);
   }, [lastUpdate]);
+
+  const comparisonLabel = useMemo(() => {
+    const currentCutoff = formatCutoffDate(infraCards?.fecha_corte);
+    const previousCutoff = formatCutoffDate(infraCards?.fecha_corte_anterior);
+    if (!currentCutoff || !previousCutoff) return undefined;
+    return `Compara ${currentCutoff} vs ${previousCutoff}`;
+  }, [infraCards]);
 
   const stats = useMemo<DashboardStats>(() => {
     // baseAn ya no se usa — los datos vienen de resumen y resultado directamente
@@ -672,6 +694,9 @@ export default function App() {
         ece: number;
         sinba: number;
         ambas: number;
+        deltaEce: number;
+        deltaSinba: number;
+        deltaAmbas: number;
       }>();
 
       for (const row of detalle) {
@@ -680,7 +705,15 @@ export default function App() {
         const sinba = toBoolLike(row.reporta_sinba_bool);
 
         if (!byEntidad.has(entidad)) {
-          byEntidad.set(entidad, { entidad, ece: 0, sinba: 0, ambas: 0 });
+          byEntidad.set(entidad, {
+            entidad,
+            ece: 0,
+            sinba: 0,
+            ambas: 0,
+            deltaEce: 0,
+            deltaSinba: 0,
+            deltaAmbas: 0,
+          });
         }
 
         const agg = byEntidad.get(entidad);
@@ -689,6 +722,10 @@ export default function App() {
         if (ece && sinba) agg.ambas += 1;
         else if (ece) agg.ece += 1;
         else if (sinba) agg.sinba += 1;
+
+        agg.deltaEce += toNumber(row.delta_clues_ece);
+        agg.deltaSinba += toNumber(row.delta_clues_sinba);
+        agg.deltaAmbas += toNumber(row.delta_clues_ambas);
       }
 
       const rows = Array.from(byEntidad.values())
@@ -702,16 +739,16 @@ export default function App() {
             total_clues: total,
             clues_evaluadas: total,
             pct_cobertura: total > 0 ? 100 : 0,
-            delta_ece: 0,
-            delta_sinba: 0,
-            delta_ambas: 0,
+            delta_ece: item.deltaEce,
+            delta_sinba: item.deltaSinba,
+            delta_ambas: item.deltaAmbas,
           };
         })
         .sort((a, b) => b.total_clues - a.total_clues);
 
       return {
-        fecha_corte: avanceCoberturaEntidad?.fecha_corte,
-        fecha_corte_anterior: avanceCoberturaEntidad?.fecha_corte_anterior ?? null,
+        fecha_corte: infraCards?.fecha_corte ?? avanceCoberturaEntidad?.fecha_corte,
+        fecha_corte_anterior: infraCards?.fecha_corte_anterior ?? avanceCoberturaEntidad?.fecha_corte_anterior ?? null,
         rows,
       } as AvanceCoberturaEntidadPayload;
     };
@@ -1380,6 +1417,8 @@ export default function App() {
     <div className="min-h-screen bg-gray-50">
       <Header
         onLogoClick={handleLogoClick}
+        lastUpdateLabel={loading ? 'Consultando...' : lastUpdateLabel}
+        comparisonLabel={loading ? undefined : comparisonLabel}
         eyebrow={headerContent.eyebrow}
         title={headerContent.title}
         subtitle={headerContent.subtitle}

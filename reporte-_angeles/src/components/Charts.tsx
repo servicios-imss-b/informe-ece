@@ -1527,6 +1527,9 @@ export function AvanceCharts({
     entidad?: string;
     reporta_ece_bool?: boolean | string | number;
     reporta_sinba_bool?: boolean | string | number;
+    delta_clues_ece?: number | string;
+    delta_clues_sinba?: number | string;
+    delta_clues_ambas?: number | string;
   }>;
   selectedEntidadFilter?: string;
 }) {
@@ -1572,9 +1575,9 @@ export function AvanceCharts({
           ece: ece && !sinba ? 1 : 0,
           sinba: !ece && sinba ? 1 : 0,
           ambas: ece && sinba ? 1 : 0,
-          delta_ece: 0,
-          delta_sinba: 0,
-          delta_ambas: 0,
+          delta_ece: Number(row.delta_clues_ece ?? 0),
+          delta_sinba: Number(row.delta_clues_sinba ?? 0),
+          delta_ambas: Number(row.delta_clues_ambas ?? 0),
         };
       })
       .filter((row) => row.entidad)
@@ -1582,10 +1585,27 @@ export function AvanceCharts({
 
   const sourceRows = cluesMode ? cluesRows : rows;
 
+  const formatCutoffDate = (value?: string | null) => {
+    if (!value) return null;
+    const [year, month, day] = value.split('-').map(Number);
+    if (!year || !month || !day) return value;
+    return new Intl.DateTimeFormat('es-MX', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+    }).format(new Date(year, month - 1, day));
+  };
+
+  const currentCutoff = formatCutoffDate(avanceCoberturaEntidad?.fecha_corte);
+  const previousCutoff = formatCutoffDate(avanceCoberturaEntidad?.fecha_corte_anterior);
+  const comparisonPeriod = currentCutoff && previousCutoff
+    ? `${currentCutoff} vs ${previousCutoff}`
+    : 'corte actual vs corte anterior';
+
   const formatDeltaLabel = (delta: number) => {
-    if (delta > 0) return `▲ +${formatTooltipNumber(delta)} vs corte anterior (historico)`;
-    if (delta < 0) return `▼ ${formatTooltipNumber(delta)} vs corte anterior (historico)`;
-    return '● 0 vs corte anterior (historico)';
+    if (delta > 0) return `▲ +${formatTooltipNumber(delta)}`;
+    if (delta < 0) return `▼ ${formatTooltipNumber(delta)}`;
+    return '● 0';
   };
 
   const data = [...sourceRows]
@@ -1642,8 +1662,8 @@ export function AvanceCharts({
   const percentChartWidth = percentChartNeedsScroll ? Math.max(1400, percentPerEntidad.length * 72) : undefined;
 
   const subtitle = cluesMode
-    ? `Tendencia por CLUES | ECE ${formatDeltaLabel(deltaEce)} | SINBA ${formatDeltaLabel(deltaSinba)} | AMBAS ${formatDeltaLabel(deltaAmbas)}`
-    : `Tendencia por entidad | ECE ${formatDeltaLabel(deltaEce)} | SINBA ${formatDeltaLabel(deltaSinba)} | AMBAS ${formatDeltaLabel(deltaAmbas)}`;
+    ? `Comparación ${comparisonPeriod} por CLUES | ECE ${formatDeltaLabel(deltaEce)} | SINBA ${formatDeltaLabel(deltaSinba)} | AMBAS ${formatDeltaLabel(deltaAmbas)}`
+    : `Comparación ${comparisonPeriod} por entidad | ECE ${formatDeltaLabel(deltaEce)} | SINBA ${formatDeltaLabel(deltaSinba)} | AMBAS ${formatDeltaLabel(deltaAmbas)}`;
 
   if (!data.length) {
     return (
