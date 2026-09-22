@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { Fragment, useEffect, useMemo, useState } from 'react';
 import { Database, Building2, Layers3, AlertTriangle, LayoutGrid, Gauge, FileSearch, ClipboardList, Stethoscope, Scissors, LogOut, X, Download } from 'lucide-react';
 import { Header } from './components/Header';
 import { AvanceCharts, AvanceSummaryCards } from './components/Charts';
@@ -19,7 +19,7 @@ type DataTabKey =
   | 'tabla_unidades'
   | 'faltantes_por_estado'
   | 'tabla_faltantes_por_estado';
-type MainTabKey = 'infraestructura' | 'avance' | 'pendientes';
+type MainTabKey = 'infraestructura' | 'avance' | 'pendientes' | 'intercambio';
 type AvanceIndicadorKey = 'consultas' | 'procedimientos_quirurgicos' | 'egresos_hospitalarios';
 type PendientesTabKey = 'estado_consultas' | 'clues_consultas';
 
@@ -237,6 +237,39 @@ function formatCellValue(value: unknown, key?: string): string {
 function formatThousands(value: number): string {
   return new Intl.NumberFormat('es-MX').format(value);
 }
+
+const intercambioServicios = [
+  {
+    grupo: 'Atención general',
+    filas: [
+      { tipo: 'Personas atendidas', total: '215,888', imss: '---' },
+      { tipo: 'Atenciones ofrecidas', total: '594,211', imss: '84,710 (14%)' },
+    ],
+  },
+  {
+    grupo: 'Consulta',
+    filas: [
+      { tipo: 'Personas en consulta', total: '107,801', imss: '---' },
+      { tipo: 'Consultas', total: '235,430', imss: '66,024 (28%)' },
+    ],
+  },
+  {
+    grupo: 'Urgencias',
+    filas: [
+      { tipo: 'Personas en urgencias', total: '131,422', imss: '---' },
+      { tipo: 'Atenciones', total: '268,151', imss: '14,221 (5%)' },
+    ],
+  },
+  {
+    grupo: 'Hospitalización',
+    filas: [
+      { tipo: 'Personas en hospitalización', total: '29,186', imss: '---' },
+      { tipo: 'Eventos de hospitalización', total: '57,277', imss: '2,736 (5%)' },
+      { tipo: 'Eventos de cirugías', total: '30,871', imss: '1,632 (5%)' },
+      { tipo: 'UCI', total: '2,482', imss: '97 (4%)' },
+    ],
+  },
+] as const;
 
 function formatDeltaLabel(delta: number): string {
   if (delta > 0) return `▲ +${formatThousands(delta)} vs corte anterior (historico)`;
@@ -1111,6 +1144,7 @@ export default function App() {
     { key: 'infraestructura', label: 'Informe hospitales – Transición al Sistema ECE', icon: LayoutGrid },
     { key: 'avance', label: 'Tablero de avance', icon: Gauge },
     { key: 'pendientes', label: 'Informe de clues pendientes', icon: FileSearch },
+    { key: 'intercambio', label: 'Intercambio de servicios', icon: ClipboardList },
   ];
 
   const avanceIndicadorTabs: { key: AvanceIndicadorKey; label: string; icon: typeof LayoutGrid }[] = [
@@ -1138,6 +1172,14 @@ export default function App() {
         eyebrow: 'Panel de Seguimiento',
         title: 'Informe de CLUES Pendientes',
         subtitle: 'Consulta el seguimiento de unidades y registros pendientes por completar.',
+      };
+    }
+
+    if (mainTab === 'intercambio') {
+      return {
+        eyebrow: 'Panel de Seguimiento',
+        title: 'Intercambio de servicios en números',
+        subtitle: 'Consulta el resumen de atenciones y servicios compartidos con IMSS.',
       };
     }
 
@@ -1760,6 +1802,117 @@ export default function App() {
                     </div>
                   </div>
                 </section>
+              )}
+
+              {mainTab === 'intercambio' && (
+                <div className="space-y-6">
+                  <section className="card overflow-hidden border-slate-200 bg-white shadow-sm">
+                    <div className="border-b border-slate-200 bg-white px-5 py-5 sm:px-8">
+                      <h2 className="text-2xl font-bold tracking-tight text-slate-800 sm:text-3xl">Intercambio de servicios en números</h2>
+                    </div>
+                    <div className="ece-inline-filters border-b border-gray-100 px-5 py-4 sm:px-8">
+                      <div className="ece-filter-group">
+                        <label className="ece-filter-label" htmlFor="filtro-intercambio-entidad">Entidad</label>
+                        <div className="relative">
+                          <input
+                            id="filtro-intercambio-entidad"
+                            value={selectedEntidadFilter}
+                            onChange={(e) => {
+                              const value = e.target.value.trim().toUpperCase() === 'TODAS' ? '' : e.target.value;
+                              setSelectedEntidadFilter(value);
+                            }}
+                            onFocus={() => setShowEntidadSuggestions(true)}
+                            onBlur={() => setTimeout(() => setShowEntidadSuggestions(false), 120)}
+                            className="ece-filter-select"
+                            placeholder="Buscar entidad..."
+                            autoComplete="off"
+                          />
+                          {showEntidadSuggestions && entidadSuggestions.length > 0 && toText(selectedEntidadFilter) && (
+                            <div className="absolute z-20 mt-1 max-h-56 w-full overflow-auto rounded-xl border border-gray-200 bg-white p-1 shadow-lg">
+                              {entidadSuggestions.map((entidad) => (
+                                <button
+                                  key={entidad}
+                                  type="button"
+                                  onMouseDown={(e) => {
+                                    e.preventDefault();
+                                    setSelectedEntidadFilter(entidad);
+                                    setShowEntidadSuggestions(false);
+                                  }}
+                                  className="block w-full rounded-lg px-2 py-1.5 text-left text-xs text-gray-700 hover:bg-gray-100"
+                                >
+                                  {entidad}
+                                </button>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                      <div className="ece-filter-group">
+                        <label className="ece-filter-label" htmlFor="filtro-intercambio-clues">CLUES</label>
+                        <div className="relative">
+                          <input
+                            id="filtro-intercambio-clues"
+                            value={selectedCluesFilter}
+                            onChange={(e) => setSelectedCluesFilter(e.target.value)}
+                            onFocus={() => setShowCluesSuggestions(true)}
+                            onBlur={() => setTimeout(() => setShowCluesSuggestions(false), 120)}
+                            className="ece-filter-select"
+                            placeholder="Buscar CLUES o unidad..."
+                            autoComplete="off"
+                          />
+                          {showCluesSuggestions && cluesSuggestions.length > 0 && toText(selectedCluesFilter) && (
+                            <div className="absolute z-20 mt-1 max-h-56 w-full overflow-auto rounded-xl border border-gray-200 bg-white p-1 shadow-lg">
+                              {cluesSuggestions.map((option) => (
+                                <button
+                                  key={`${option.clues}::${option.unidad}`}
+                                  type="button"
+                                  onMouseDown={(e) => {
+                                    e.preventDefault();
+                                    setSelectedCluesFilter(`${option.clues} ${option.unidad}`.trim());
+                                    setShowCluesSuggestions(false);
+                                  }}
+                                  className="block w-full rounded-lg px-2 py-1.5 text-left text-xs text-gray-700 hover:bg-gray-100"
+                                >
+                                  <span className="font-semibold">{option.clues}</span> - {option.unidad || 'Sin nombre'}
+                                </button>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="overflow-x-auto px-5 pb-2 pt-5 sm:px-8 sm:pb-7">
+                      <table className="min-w-[640px] w-full border-separate border-spacing-0 overflow-hidden rounded-xl border border-slate-200 text-left">
+                        <thead>
+                          <tr className="bg-imss-green text-white">
+                            <th className="px-4 py-4 text-sm font-bold uppercase tracking-wide sm:px-5">Tipo de atención</th>
+                            <th className="px-4 py-4 text-center text-sm font-bold uppercase tracking-wide sm:px-5">Total</th>
+                            <th className="px-4 py-4 text-center text-sm font-bold uppercase tracking-wide sm:px-5">Con IMSS</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {intercambioServicios.map((grupo) => (
+                            <Fragment key={grupo.grupo}>
+                              <tr aria-hidden="true">
+                                <td colSpan={3} className="h-5 bg-white p-0" />
+                              </tr>
+                              {grupo.filas.map((fila, index) => (
+                                <tr key={fila.tipo} className={`${index % 2 === 0 ? 'bg-slate-50' : 'bg-white'} transition-colors hover:bg-emerald-50`}>
+                                  <td className="border-b border-slate-200 px-4 py-3.5 text-base font-medium text-slate-800 sm:px-5 sm:text-lg">{fila.tipo}</td>
+                                  <td className="border-b border-slate-200 px-4 py-3.5 text-center text-base font-semibold tabular-nums text-slate-800 sm:text-lg">{fila.total}</td>
+                                  <td className="border-b border-slate-200 px-4 py-3.5 text-center text-base font-semibold tabular-nums text-slate-800 sm:text-lg">{fila.imss}</td>
+                                </tr>
+                              ))}
+                            </Fragment>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                    <p className="px-5 pb-5 text-xs text-slate-500 sm:px-8 sm:text-sm">
+                      Fuente: Bases de datos PHEDS y MOCE. De noviembre del 2025 a la fecha de corte.
+                    </p>
+                  </section>
+                </div>
               )}
 
               {mainTab === 'avance' && (
