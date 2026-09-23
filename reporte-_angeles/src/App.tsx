@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useMemo, useState } from 'react';
-import { Database, Building2, Layers3, AlertTriangle, LayoutGrid, Gauge, FileSearch, ClipboardList, Stethoscope, Scissors, LogOut, X, Download } from 'lucide-react';
+import { Database, Building2, Layers3, AlertTriangle, LayoutGrid, Gauge, FileSearch, Stethoscope, Scissors, LogOut, X, Download } from 'lucide-react';
 import { Header } from './components/Header';
 import { AvanceCharts, AvanceSummaryCards } from './components/Charts';
 import { DataTable } from './components/DataTable';
@@ -19,7 +19,7 @@ type DataTabKey =
   | 'tabla_unidades'
   | 'faltantes_por_estado'
   | 'tabla_faltantes_por_estado';
-type MainTabKey = 'infraestructura' | 'avance' | 'pendientes' | 'intercambio';
+type MainTabKey = 'infraestructura' | 'avance' | 'pendientes';
 type AvanceIndicadorKey = 'consultas' | 'procedimientos_quirurgicos' | 'egresos_hospitalarios';
 type PendientesTabKey = 'estado_consultas' | 'clues_consultas';
 
@@ -91,6 +91,24 @@ type CluesFilterOption = {
   clues: string;
   unidad: string;
   entidad: string;
+};
+
+type IntercambioMoceRow = {
+  modulo?: string;
+  clues?: string;
+  entidad?: string;
+  fecha?: string;
+  fecha_registro?: string;
+  nombre_de_la_unidad?: string;
+  atenciones_totales?: number;
+  atenciones_derechohabientes?: number;
+};
+
+type PersonaConsultaRow = {
+  fecha?: string;
+  clues?: string;
+  entidad?: string;
+  curp_hash32?: string;
 };
 
 function toText(value: unknown): string {
@@ -215,6 +233,50 @@ function formatCutoffDate(value?: string | null): string | null {
   }).format(new Date(year, month - 1, day));
 }
 
+function formatIntercambioPeriod(startValue: string, endValue: string): string {
+  const start = toText(startValue);
+  const end = toText(endValue);
+  if (!start && !end) return 'De noviembre del 2025 a la fecha de corte.';
+
+  const formatDate = (value: string) => {
+    const [year, month, day] = value.split('-').map(Number);
+    const date = new Date(year, month - 1, day);
+    return new Intl.DateTimeFormat('es-MX', { day: 'numeric', month: 'long', year: 'numeric' }).format(date);
+  };
+
+  if (start && !end) {
+    const [year, month, day] = start.split('-').map(Number);
+    if (day === 1) {
+      const monthName = new Intl.DateTimeFormat('es-MX', { month: 'long' }).format(new Date(year, month - 1, day));
+      return `De ${monthName} del ${year} a la fecha de corte.`;
+    }
+    return `Del ${formatDate(start)} a la fecha de corte.`;
+  }
+
+  if (!start && end) return `Hasta el ${formatDate(end)}.`;
+  return `Del ${formatDate(start)} al ${formatDate(end)}.`;
+}
+
+function toIsoDate(year: number, month: number, day: number): string {
+  return `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+}
+
+const INTERCAMBIO_MIN_DATE = '2026-01-01';
+
+function getIntercambioStartDate(value: string): string {
+  const selectedDate = toText(value);
+  return !selectedDate || selectedDate < INTERCAMBIO_MIN_DATE
+    ? INTERCAMBIO_MIN_DATE
+    : selectedDate;
+}
+
+function formatPickerDate(value: string): string {
+  if (!value) return '';
+  const [year, month, day] = value.split('-').map(Number);
+  return new Intl.DateTimeFormat('es-MX', { day: 'numeric', month: 'short', year: 'numeric' })
+    .format(new Date(year, month - 1, day));
+}
+
 function formatCellValue(value: unknown, key?: string): string {
   if (value === null || value === undefined || value === '') return '-';
   if (typeof value === 'boolean') return value ? 'Si' : 'No';
@@ -242,31 +304,31 @@ const intercambioServicios = [
   {
     grupo: 'Atención general',
     filas: [
-      { tipo: 'Personas atendidas', total: '215,888', imss: '---' },
-      { tipo: 'Atenciones ofrecidas', total: '594,211', imss: '84,710 (14%)' },
+      { tipo: 'Personas atendidas', total: '0', imss: '---', modulo: 'personas_atendidas' },
+      { tipo: 'Atenciones ofrecidas', total: '0', imss: '84,710 (14%)', modulo: 'atenciones_ofrecidas' },
     ],
   },
   {
     grupo: 'Consulta',
     filas: [
-      { tipo: 'Personas en consulta', total: '107,801', imss: '---' },
-      { tipo: 'Consultas', total: '235,430', imss: '66,024 (28%)' },
+      { tipo: 'Personas en consulta', total: '0', imss: '---', modulo: 'personas_consulta' },
+      { tipo: 'Consultas', total: '0', imss: '---', modulo: 'moce' },
     ],
   },
   {
     grupo: 'Urgencias',
     filas: [
-      { tipo: 'Personas en urgencias', total: '131,422', imss: '---' },
-      { tipo: 'Atenciones', total: '268,151', imss: '14,221 (5%)' },
+      { tipo: 'Personas en urgencias', total: '0', imss: '---', modulo: 'personas_urgencias' },
+      { tipo: 'Atenciones', total: '268,151', imss: '14,221 (5%)', modulo: 'urgencias' },
     ],
   },
   {
     grupo: 'Hospitalización',
     filas: [
-      { tipo: 'Personas en hospitalización', total: '29,186', imss: '---' },
-      { tipo: 'Eventos de hospitalización', total: '57,277', imss: '2,736 (5%)' },
-      { tipo: 'Eventos de cirugías', total: '30,871', imss: '1,632 (5%)' },
-      { tipo: 'UCI', total: '2,482', imss: '97 (4%)' },
+      { tipo: 'Personas en hospitalización', total: '0', imss: '---', modulo: 'personas_hospitalizacion' },
+      { tipo: 'Eventos de hospitalización', total: '57,277', imss: '2,736 (5%)', modulo: 'egresos' },
+      { tipo: 'Eventos de cirugías', total: '30,871', imss: '1,632 (5%)', modulo: 'cirugias' },
+      { tipo: 'UCI', total: '2,482', imss: '97 (4%)', modulo: 'uci' },
     ],
   },
 ] as const;
@@ -286,6 +348,14 @@ export default function App() {
   const [dataTab, setDataTab] = useState<DataTabKey>('clues');
   const [selectedCluesFilter, setSelectedCluesFilter] = useState<string>('');
   const [selectedEntidadFilter, setSelectedEntidadFilter] = useState<string>('');
+  const [selectedModuloFilter, setSelectedModuloFilter] = useState<string>('');
+  const [selectedFechaInicio, setSelectedFechaInicio] = useState<string>('');
+  const [selectedFechaFinal, setSelectedFechaFinal] = useState<string>('');
+  const [datePickerOpen, setDatePickerOpen] = useState(false);
+  const [datePickerTarget, setDatePickerTarget] = useState<'inicio' | 'final'>('inicio');
+  const [datePickerStep, setDatePickerStep] = useState<'year' | 'month' | 'day' | 'confirm-final'>('year');
+  const [datePickerYear, setDatePickerYear] = useState(() => new Date().getFullYear());
+  const [datePickerMonth, setDatePickerMonth] = useState(() => new Date().getMonth());
   const [showCluesSuggestions, setShowCluesSuggestions] = useState(false);
   const [showEntidadSuggestions, setShowEntidadSuggestions] = useState(false);
   const [showEceVideo, setShowEceVideo] = useState(false);
@@ -311,6 +381,11 @@ export default function App() {
   const [lastUpdate, setLastUpdate] = useState<Date | null>(null);
   const [infraCards, setInfraCards] = useState<InfraestructuraCardsPayload | null>(null);
   const [avanceCoberturaEntidad, setAvanceCoberturaEntidad] = useState<AvanceCoberturaEntidadPayload | null>(null);
+  const [intercambioMoce, setIntercambioMoce] = useState<IntercambioMoceRow[]>([]);
+  const [personasConsulta, setPersonasConsulta] = useState<PersonaConsultaRow[]>([]);
+  const [personasUrgencias, setPersonasUrgencias] = useState<PersonaConsultaRow[]>([]);
+  const [personasHospitalizacion, setPersonasHospitalizacion] = useState<PersonaConsultaRow[]>([]);
+  const [personasAtendidas, setPersonasAtendidas] = useState<PersonaConsultaRow[]>([]);
 
   async function load() {
     try {
@@ -347,6 +422,61 @@ export default function App() {
         }
       } catch {
         setInfraCards(null);
+      }
+
+      try {
+        const intercambioRes = await fetch(`${import.meta.env.BASE_URL}intercambio_servicios.json?_cb=${Date.now()}`);
+        if (intercambioRes.ok) {
+          setIntercambioMoce(await intercambioRes.json() as IntercambioMoceRow[]);
+        } else {
+          setIntercambioMoce([]);
+        }
+      } catch {
+        setIntercambioMoce([]);
+      }
+
+      try {
+        const personasRes = await fetch(`${import.meta.env.BASE_URL}personas_consulta.json?_cb=${Date.now()}`);
+        if (personasRes.ok) {
+          setPersonasConsulta(await personasRes.json() as PersonaConsultaRow[]);
+        } else {
+          setPersonasConsulta([]);
+        }
+      } catch {
+        setPersonasConsulta([]);
+      }
+
+      try {
+        const personasUrgenciasRes = await fetch(`${import.meta.env.BASE_URL}personas_urgencias.json?_cb=${Date.now()}`);
+        if (personasUrgenciasRes.ok) {
+          setPersonasUrgencias(await personasUrgenciasRes.json() as PersonaConsultaRow[]);
+        } else {
+          setPersonasUrgencias([]);
+        }
+      } catch {
+        setPersonasUrgencias([]);
+      }
+
+      try {
+        const personasHospitalizacionRes = await fetch(`${import.meta.env.BASE_URL}personas_hospitalizacion.json?_cb=${Date.now()}`);
+        if (personasHospitalizacionRes.ok) {
+          setPersonasHospitalizacion(await personasHospitalizacionRes.json() as PersonaConsultaRow[]);
+        } else {
+          setPersonasHospitalizacion([]);
+        }
+      } catch {
+        setPersonasHospitalizacion([]);
+      }
+
+      try {
+        const personasAtendidasRes = await fetch(`${import.meta.env.BASE_URL}personas_atendidas.json?_cb=${Date.now()}`);
+        if (personasAtendidasRes.ok) {
+          setPersonasAtendidas(await personasAtendidasRes.json() as PersonaConsultaRow[]);
+        } else {
+          setPersonasAtendidas([]);
+        }
+      } catch {
+        setPersonasAtendidas([]);
       }
 
       try {
@@ -1089,6 +1219,44 @@ export default function App() {
     return Array.from(values).sort((a, b) => a.localeCompare(b, 'es'));
   }, [cluesFilterOptions, resumen]);
 
+  const intercambioDateRange = useMemo(() => {
+    const fechas = [
+      ...intercambioMoce.map((row) => toText(row.fecha || row.fecha_registro)),
+      ...personasAtendidas.map((row) => toText(row.fecha)),
+    ].filter((fecha) => /^\d{4}-\d{2}-\d{2}$/.test(fecha));
+
+    if (fechas.length === 0) return { min: '', max: '' };
+    fechas.sort();
+    return { min: fechas.find((fecha) => fecha >= INTERCAMBIO_MIN_DATE) ?? '', max: fechas[fechas.length - 1] };
+  }, [intercambioMoce, personasAtendidas]);
+
+  const intercambioCalendarYears = useMemo(() => {
+    if (!intercambioDateRange.min || !intercambioDateRange.max) return [] as number[];
+    const minYear = Number(intercambioDateRange.min.slice(0, 4));
+    const maxYear = Number(intercambioDateRange.max.slice(0, 4));
+    return Array.from({ length: maxYear - minYear + 1 }, (_, index) => maxYear - index);
+  }, [intercambioDateRange]);
+
+  const intercambioCalendarDays = useMemo(() => {
+    const firstDay = new Date(datePickerYear, datePickerMonth, 1);
+    const leadingDays = (firstDay.getDay() + 6) % 7;
+    const daysInMonth = new Date(datePickerYear, datePickerMonth + 1, 0).getDate();
+    return Array.from({ length: leadingDays + daysInMonth }, (_, index) => (
+      index < leadingDays ? null : index - leadingDays + 1
+    ));
+  }, [datePickerMonth, datePickerYear]);
+
+  const intercambioDateFilterLabel = selectedFechaInicio || selectedFechaFinal
+    ? `${selectedFechaInicio ? formatPickerDate(selectedFechaInicio) : 'Sin inicio'} - ${selectedFechaFinal ? formatPickerDate(selectedFechaFinal) : 'Fecha de corte'}`
+    : 'Seleccionar periodo';
+
+  useEffect(() => {
+    if (!loading && intercambioDateRange.min && intercambioDateRange.max && !selectedFechaInicio && !selectedFechaFinal) {
+      setSelectedFechaInicio(intercambioDateRange.min);
+      setSelectedFechaFinal(intercambioDateRange.max);
+    }
+  }, [intercambioDateRange, loading, selectedFechaFinal, selectedFechaInicio]);
+
   const entidadSuggestions = useMemo(() => {
     const term = toText(selectedEntidadFilter).toLowerCase();
     if (!term) return [] as string[];
@@ -1140,11 +1308,170 @@ export default function App() {
     return ranked;
   }, [cluesFilterOptionsByEntidad, selectedCluesFilter]);
 
+  const metricasIntercambio = useMemo(() => {
+    const filtroClues = toText(selectedCluesFilter).toLowerCase();
+    const filtroEntidad = normalizeKey(selectedEntidadFilter);
+    const filtroModulo = toText(selectedModuloFilter).toLowerCase();
+    const fechaInicio = getIntercambioStartDate(selectedFechaInicio);
+    const fechaFinal = toText(selectedFechaFinal);
+
+    const agregados = intercambioMoce
+      .filter((row) => {
+        const clues = toText(row.clues).toLowerCase();
+        const unidad = toText(row.nombre_de_la_unidad).toLowerCase();
+        const entidad = normalizeKey(row.entidad);
+        const modulo = toText(row.modulo).toLowerCase();
+        const fecha = toText(row.fecha || row.fecha_registro).toLowerCase();
+        return (!filtroClues || `${clues} ${unidad}`.includes(filtroClues))
+          && (!filtroEntidad || entidad === filtroEntidad)
+          && (!filtroModulo || modulo === filtroModulo)
+          && (!fechaInicio || fecha >= fechaInicio)
+          && (!fechaFinal || fecha <= fechaFinal);
+      })
+      .reduce<Record<string, { total: number; derechohabientes: number }>>((resultado, row) => {
+        const modulo = toText(row.modulo).toLowerCase();
+        if (!modulo) return resultado;
+        const actual = resultado[modulo] ?? { total: 0, derechohabientes: 0 };
+        resultado[modulo] = {
+          total: actual.total + toNumber(row.atenciones_totales),
+          derechohabientes: actual.derechohabientes + toNumber(row.atenciones_derechohabientes),
+        };
+        return resultado;
+      }, {});
+
+    return Object.fromEntries(
+      Object.entries(agregados).map(([modulo, valores]) => [modulo, {
+        ...valores,
+        porcentaje: valores.total > 0 ? (valores.derechohabientes / valores.total) * 100 : 0,
+      }]),
+    );
+  }, [intercambioMoce, selectedCluesFilter, selectedEntidadFilter, selectedFechaFinal, selectedFechaInicio, selectedModuloFilter]);
+
+  const atencionesOfrecidasTotal = useMemo(
+    () => ['moce', 'urgencias', 'egresos', 'cirugias', 'uci']
+      .reduce((total, modulo) => total + (metricasIntercambio[modulo]?.total ?? 0), 0),
+    [metricasIntercambio],
+  );
+
+  const atencionesOfrecidasImss = useMemo(
+    () => ['moce', 'urgencias', 'egresos', 'cirugias', 'uci']
+      .reduce((total, modulo) => total + (metricasIntercambio[modulo]?.derechohabientes ?? 0), 0),
+    [metricasIntercambio],
+  );
+
+  const atencionesOfrecidasPorcentaje = atencionesOfrecidasTotal > 0
+    ? (atencionesOfrecidasImss / atencionesOfrecidasTotal) * 100
+    : 0;
+
+  const personasConsultaUnicas = useMemo(() => {
+    const filtroClues = toText(selectedCluesFilter).toLowerCase();
+    const filtroEntidad = normalizeKey(selectedEntidadFilter);
+    const filtroModulo = toText(selectedModuloFilter).toLowerCase();
+    const fechaInicio = getIntercambioStartDate(selectedFechaInicio);
+    const fechaFinal = toText(selectedFechaFinal);
+    const curps = new Set<string>();
+
+    if (filtroModulo && filtroModulo !== 'moce') return 0;
+
+    for (const row of personasConsulta) {
+      const clues = toText(row.clues).toLowerCase();
+      const entidad = normalizeKey(row.entidad);
+      const fecha = toText(row.fecha);
+      const curp = toText(row.curp_hash32);
+
+      if (!curp) continue;
+      if (filtroClues && !clues.includes(filtroClues)) continue;
+      if (filtroEntidad && entidad !== filtroEntidad) continue;
+      if (fechaInicio && fecha < fechaInicio) continue;
+      if (fechaFinal && fecha > fechaFinal) continue;
+      curps.add(curp);
+    }
+
+    return curps.size;
+  }, [personasConsulta, selectedCluesFilter, selectedEntidadFilter, selectedFechaFinal, selectedFechaInicio, selectedModuloFilter]);
+
+  const personasUrgenciasUnicas = useMemo(() => {
+    const filtroClues = toText(selectedCluesFilter).toLowerCase();
+    const filtroEntidad = normalizeKey(selectedEntidadFilter);
+    const filtroModulo = toText(selectedModuloFilter).toLowerCase();
+    const fechaInicio = getIntercambioStartDate(selectedFechaInicio);
+    const fechaFinal = toText(selectedFechaFinal);
+    const curps = new Set<string>();
+
+    if (filtroModulo && filtroModulo !== 'urgencias') return 0;
+
+    for (const row of personasUrgencias) {
+      const clues = toText(row.clues).toLowerCase();
+      const entidad = normalizeKey(row.entidad);
+      const fecha = toText(row.fecha);
+      const curp = toText(row.curp_hash32);
+
+      if (!curp) continue;
+      if (filtroClues && !clues.includes(filtroClues)) continue;
+      if (filtroEntidad && entidad !== filtroEntidad) continue;
+      if (fechaInicio && fecha < fechaInicio) continue;
+      if (fechaFinal && fecha > fechaFinal) continue;
+      curps.add(curp);
+    }
+
+    return curps.size;
+  }, [personasUrgencias, selectedCluesFilter, selectedEntidadFilter, selectedFechaFinal, selectedFechaInicio, selectedModuloFilter]);
+
+  const personasHospitalizacionUnicas = useMemo(() => {
+    const filtroClues = toText(selectedCluesFilter).toLowerCase();
+    const filtroEntidad = normalizeKey(selectedEntidadFilter);
+    const filtroModulo = toText(selectedModuloFilter).toLowerCase();
+    const fechaInicio = getIntercambioStartDate(selectedFechaInicio);
+    const fechaFinal = toText(selectedFechaFinal);
+    const curps = new Set<string>();
+
+    if (filtroModulo && filtroModulo !== 'egresos') return 0;
+
+    for (const row of personasHospitalizacion) {
+      const clues = toText(row.clues).toLowerCase();
+      const entidad = normalizeKey(row.entidad);
+      const fecha = toText(row.fecha);
+      const curp = toText(row.curp_hash32);
+
+      if (!curp) continue;
+      if (filtroClues && !clues.includes(filtroClues)) continue;
+      if (filtroEntidad && entidad !== filtroEntidad) continue;
+      if (fechaInicio && fecha < fechaInicio) continue;
+      if (fechaFinal && fecha > fechaFinal) continue;
+      curps.add(curp);
+    }
+
+    return curps.size;
+  }, [personasHospitalizacion, selectedCluesFilter, selectedEntidadFilter, selectedFechaFinal, selectedFechaInicio, selectedModuloFilter]);
+
+  const personasAtendidasUnicas = useMemo(() => {
+    const filtroClues = toText(selectedCluesFilter).toLowerCase();
+    const filtroEntidad = normalizeKey(selectedEntidadFilter);
+    const fechaInicio = getIntercambioStartDate(selectedFechaInicio);
+    const fechaFinal = toText(selectedFechaFinal);
+    const curps = new Set<string>();
+
+    for (const row of personasAtendidas) {
+      const clues = toText(row.clues).toLowerCase();
+      const entidad = normalizeKey(row.entidad);
+      const fecha = toText(row.fecha);
+      const curp = toText(row.curp_hash32);
+
+      if (!curp) continue;
+      if (filtroClues && !clues.includes(filtroClues)) continue;
+      if (filtroEntidad && entidad !== filtroEntidad) continue;
+      if (fechaInicio && fecha < fechaInicio) continue;
+      if (fechaFinal && fecha > fechaFinal) continue;
+      curps.add(curp);
+    }
+
+    return curps.size;
+  }, [personasAtendidas, selectedCluesFilter, selectedEntidadFilter, selectedFechaFinal, selectedFechaInicio]);
+
   const mainTabs: { key: MainTabKey; label: string; icon: typeof LayoutGrid }[] = [
     { key: 'infraestructura', label: 'Informe hospitales – Transición al Sistema ECE', icon: LayoutGrid },
     { key: 'avance', label: 'Tablero de avance', icon: Gauge },
     { key: 'pendientes', label: 'Informe de clues pendientes', icon: FileSearch },
-    { key: 'intercambio', label: 'Intercambio de servicios', icon: ClipboardList },
   ];
 
   const avanceIndicadorTabs: { key: AvanceIndicadorKey; label: string; icon: typeof LayoutGrid }[] = [
@@ -1172,14 +1499,6 @@ export default function App() {
         eyebrow: 'Panel de Seguimiento',
         title: 'Informe de CLUES Pendientes',
         subtitle: 'Consulta el seguimiento de unidades y registros pendientes por completar.',
-      };
-    }
-
-    if (mainTab === 'intercambio') {
-      return {
-        eyebrow: 'Panel de Seguimiento',
-        title: 'Intercambio de servicios en números',
-        subtitle: 'Consulta el resumen de atenciones y servicios compartidos con IMSS.',
       };
     }
 
@@ -1430,6 +1749,19 @@ export default function App() {
         selectedEntidad: selectedEntidadFilter,
         selectedClues: selectedCluesFilter,
         trendCharts: pptTrendCharts,
+        intercambioRows: [
+          { tipo: 'Personas atendidas', total: personasAtendidasUnicas, conImss: '---' },
+          { tipo: 'Atenciones ofrecidas', total: atencionesOfrecidasTotal, conImss: `${formatThousands(atencionesOfrecidasImss)} (${Math.round(atencionesOfrecidasPorcentaje)}%)` },
+          { tipo: 'Personas en consulta', total: personasConsultaUnicas, conImss: '---' },
+          { tipo: 'Consultas', total: metricasIntercambio.moce?.total ?? 0, conImss: `${formatThousands(metricasIntercambio.moce?.derechohabientes ?? 0)} (${Math.round(metricasIntercambio.moce?.porcentaje ?? 0)}%)` },
+          { tipo: 'Personas en urgencias', total: personasUrgenciasUnicas, conImss: '---' },
+          { tipo: 'Atenciones', total: metricasIntercambio.urgencias?.total ?? 0, conImss: `${formatThousands(metricasIntercambio.urgencias?.derechohabientes ?? 0)} (${Math.round(metricasIntercambio.urgencias?.porcentaje ?? 0)}%)` },
+          { tipo: 'Personas en hospitalización', total: personasHospitalizacionUnicas, conImss: '---' },
+          { tipo: 'Eventos de hospitalización', total: metricasIntercambio.egresos?.total ?? 0, conImss: `${formatThousands(metricasIntercambio.egresos?.derechohabientes ?? 0)} (${Math.round(metricasIntercambio.egresos?.porcentaje ?? 0)}%)` },
+          { tipo: 'Eventos de cirugías', total: metricasIntercambio.cirugias?.total ?? 0, conImss: `${formatThousands(metricasIntercambio.cirugias?.derechohabientes ?? 0)} (${Math.round(metricasIntercambio.cirugias?.porcentaje ?? 0)}%)` },
+          { tipo: 'UCI', total: metricasIntercambio.uci?.total ?? 0, conImss: `${formatThousands(metricasIntercambio.uci?.derechohabientes ?? 0)} (${Math.round(metricasIntercambio.uci?.porcentaje ?? 0)}%)` },
+        ],
+        intercambioFuente: `Fuente: Bases de datos PHEDS y MOCE. ${formatIntercambioPeriod(selectedFechaInicio, selectedFechaFinal)}`,
       });
     } catch (err) {
       const message = err instanceof Error ? err.message : 'No se pudo generar el PowerPoint.';
@@ -1455,6 +1787,42 @@ export default function App() {
     exportarExcel(rows, 'resumen_cambios_clues', 'Cambios por CLUES');
   };
 
+  const openIntercambioDatePicker = () => {
+    const baseDate = selectedFechaInicio || intercambioDateRange.min || toIsoDate(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
+    const [year, month] = baseDate.split('-').map(Number);
+    setDatePickerYear(year);
+    setDatePickerMonth(month - 1);
+    setDatePickerTarget('inicio');
+    setDatePickerStep('year');
+    setDatePickerOpen(true);
+  };
+
+  const selectIntercambioCalendarDay = (day: number) => {
+    const date = toIsoDate(datePickerYear, datePickerMonth, day);
+    if (datePickerTarget === 'inicio') {
+      setSelectedFechaInicio(date);
+      setSelectedFechaFinal('');
+      setDatePickerStep('confirm-final');
+      return;
+    }
+
+    setSelectedFechaFinal(date);
+    setDatePickerOpen(false);
+  };
+
+  const useTodayAsIntercambioCutoff = () => {
+    setSelectedFechaFinal(intercambioDateRange.max);
+    setDatePickerOpen(false);
+  };
+
+  const chooseIntercambioEndDate = () => {
+    const [year, month] = selectedFechaInicio.split('-').map(Number);
+    setDatePickerYear(year || new Date().getFullYear());
+    setDatePickerMonth((month || 1) - 1);
+    setDatePickerTarget('final');
+    setDatePickerStep('year');
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       <Header
@@ -1474,8 +1842,8 @@ export default function App() {
         ) : (
           <>
             <div className="space-y-4">
-              <div className="flex flex-wrap gap-2">
-                {mainTabs.map(({ key, label, icon: Icon }) => (
+              <div className="space-y-2">
+                {mainTabs.filter(({ key }) => key === 'infraestructura').map(({ key, label, icon: Icon }) => (
                   <button
                     key={key}
                     onClick={() => setMainTab(key)}
@@ -1487,6 +1855,20 @@ export default function App() {
                     {label}
                   </button>
                 ))}
+                <div className="flex flex-wrap gap-2">
+                  {mainTabs.filter(({ key }) => key !== 'infraestructura').map(({ key, label, icon: Icon }) => (
+                    <button
+                      key={key}
+                      onClick={() => setMainTab(key)}
+                      className={`flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition-all ${
+                        mainTab === key ? 'tab-active' : 'tab-inactive'
+                      }`}
+                    >
+                      <Icon className="h-4 w-4" />
+                      {label}
+                    </button>
+                  ))}
+                </div>
               </div>
 
               {mainTab === 'infraestructura' && (
@@ -1804,7 +2186,7 @@ export default function App() {
                 </section>
               )}
 
-              {mainTab === 'intercambio' && (
+              {mainTab === 'infraestructura' && (
                 <div className="space-y-6">
                   <section className="card overflow-hidden border-slate-200 bg-white shadow-sm">
                     <div className="border-b border-slate-200 bg-white px-5 py-5 sm:px-8">
@@ -1812,73 +2194,166 @@ export default function App() {
                     </div>
                     <div className="ece-inline-filters border-b border-gray-100 px-5 py-4 sm:px-8">
                       <div className="ece-filter-group">
-                        <label className="ece-filter-label" htmlFor="filtro-intercambio-entidad">Entidad</label>
-                        <div className="relative">
-                          <input
-                            id="filtro-intercambio-entidad"
-                            value={selectedEntidadFilter}
-                            onChange={(e) => {
-                              const value = e.target.value.trim().toUpperCase() === 'TODAS' ? '' : e.target.value;
-                              setSelectedEntidadFilter(value);
-                            }}
-                            onFocus={() => setShowEntidadSuggestions(true)}
-                            onBlur={() => setTimeout(() => setShowEntidadSuggestions(false), 120)}
-                            className="ece-filter-select"
-                            placeholder="Buscar entidad..."
-                            autoComplete="off"
-                          />
-                          {showEntidadSuggestions && entidadSuggestions.length > 0 && toText(selectedEntidadFilter) && (
-                            <div className="absolute z-20 mt-1 max-h-56 w-full overflow-auto rounded-xl border border-gray-200 bg-white p-1 shadow-lg">
-                              {entidadSuggestions.map((entidad) => (
-                                <button
-                                  key={entidad}
-                                  type="button"
-                                  onMouseDown={(e) => {
-                                    e.preventDefault();
-                                    setSelectedEntidadFilter(entidad);
-                                    setShowEntidadSuggestions(false);
-                                  }}
-                                  className="block w-full rounded-lg px-2 py-1.5 text-left text-xs text-gray-700 hover:bg-gray-100"
-                                >
-                                  {entidad}
-                                </button>
-                              ))}
-                            </div>
-                          )}
-                        </div>
+                        <label className="ece-filter-label" htmlFor="filtro-intercambio-modulo">Módulo</label>
+                        <select
+                          id="filtro-intercambio-modulo"
+                          value={selectedModuloFilter}
+                          onChange={(e) => setSelectedModuloFilter(e.target.value)}
+                          className="ece-filter-select"
+                        >
+                          <option value="">Todos los módulos</option>
+                          <option value="moce">Consultas</option>
+                          <option value="urgencias">Urgencias</option>
+                          <option value="egresos">Hospitalización</option>
+                          <option value="cirugias">Cirugías</option>
+                          <option value="uci">UCI</option>
+                        </select>
                       </div>
-                      <div className="ece-filter-group">
-                        <label className="ece-filter-label" htmlFor="filtro-intercambio-clues">CLUES</label>
-                        <div className="relative">
-                          <input
-                            id="filtro-intercambio-clues"
-                            value={selectedCluesFilter}
-                            onChange={(e) => setSelectedCluesFilter(e.target.value)}
-                            onFocus={() => setShowCluesSuggestions(true)}
-                            onBlur={() => setTimeout(() => setShowCluesSuggestions(false), 120)}
-                            className="ece-filter-select"
-                            placeholder="Buscar CLUES o unidad..."
-                            autoComplete="off"
-                          />
-                          {showCluesSuggestions && cluesSuggestions.length > 0 && toText(selectedCluesFilter) && (
-                            <div className="absolute z-20 mt-1 max-h-56 w-full overflow-auto rounded-xl border border-gray-200 bg-white p-1 shadow-lg">
-                              {cluesSuggestions.map((option) => (
-                                <button
-                                  key={`${option.clues}::${option.unidad}`}
-                                  type="button"
-                                  onMouseDown={(e) => {
-                                    e.preventDefault();
-                                    setSelectedCluesFilter(`${option.clues} ${option.unidad}`.trim());
-                                    setShowCluesSuggestions(false);
-                                  }}
-                                  className="block w-full rounded-lg px-2 py-1.5 text-left text-xs text-gray-700 hover:bg-gray-100"
-                                >
-                                  <span className="font-semibold">{option.clues}</span> - {option.unidad || 'Sin nombre'}
-                                </button>
-                              ))}
-                            </div>
-                          )}
-                        </div>
+                      <div className="ece-filter-group relative">
+                        <label className="ece-filter-label" htmlFor="filtro-intercambio-periodo">Periodo</label>
+                        <button
+                          id="filtro-intercambio-periodo"
+                          type="button"
+                          onClick={openIntercambioDatePicker}
+                          className="ece-filter-select flex items-center justify-between gap-3 text-left"
+                        >
+                          <span>{intercambioDateFilterLabel}</span>
+                          <span aria-hidden="true" className="text-slate-400">▾</span>
+                        </button>
+
+                        {datePickerOpen && (
+                          <div className="absolute left-0 z-30 mt-1 w-[350px] max-w-[calc(100vw-2rem)] rounded-lg border border-slate-200 bg-white p-4 shadow-xl">
+                            {datePickerStep === 'confirm-final' ? (
+                              <div className="space-y-4">
+                                <div>
+                                  <p className="text-sm font-semibold text-slate-800">Fecha de inicio: {formatPickerDate(selectedFechaInicio)}</p>
+                                  <p className="mt-1 text-sm text-slate-600">¿El corte es a la última fecha disponible?</p>
+                                </div>
+                                <div className="flex gap-2">
+                                  <button type="button" onClick={useTodayAsIntercambioCutoff} className="rounded-md bg-imss-green px-3 py-2 text-sm font-semibold text-white">
+                                    Sí, fecha de corte
+                                  </button>
+                                  <button type="button" onClick={chooseIntercambioEndDate} className="rounded-md border border-slate-300 px-3 py-2 text-sm font-semibold text-slate-700">
+                                    No, elegir final
+                                  </button>
+                                </div>
+                              </div>
+                            ) : (
+                              <>
+                                <div className="mb-3 flex items-center justify-between gap-3">
+                                  <div>
+                                    <p className="text-sm font-semibold text-slate-800">
+                                      {datePickerTarget === 'inicio' ? 'Fecha de inicio' : 'Fecha final'}
+                                    </p>
+                                    <p className="text-xs text-slate-500">
+                                      {datePickerStep === 'year' ? '1. Selecciona el año' : datePickerStep === 'month' ? '2. Selecciona el mes' : '3. Selecciona el día'}
+                                    </p>
+                                  </div>
+                                  {(selectedFechaInicio || selectedFechaFinal) && (
+                                    <button
+                                      type="button"
+                                      onClick={() => {
+                                        setSelectedFechaInicio('');
+                                        setSelectedFechaFinal('');
+                                        setDatePickerOpen(false);
+                                      }}
+                                      className="text-xs font-semibold text-imss-green hover:underline"
+                                    >
+                                      Limpiar
+                                    </button>
+                                  )}
+                                </div>
+                                {intercambioDateRange.min && (
+                                  <p className="mb-3 text-xs text-slate-500">
+                                    Datos disponibles: {formatPickerDate(intercambioDateRange.min)} a {formatPickerDate(intercambioDateRange.max)}.
+                                  </p>
+                                )}
+
+                                {datePickerStep === 'year' && (
+                                  <div className="grid grid-cols-3 gap-2">
+                                    {intercambioCalendarYears.map((year) => (
+                                      <button
+                                        key={year}
+                                        type="button"
+                                        onClick={() => {
+                                          setDatePickerYear(year);
+                                          setDatePickerStep('month');
+                                        }}
+                                        className={`rounded-md border px-3 py-2 text-sm font-semibold ${datePickerYear === year ? 'border-imss-green bg-imss-green text-white' : 'border-slate-200 text-slate-700 hover:bg-slate-50'}`}
+                                      >
+                                        {year}
+                                      </button>
+                                    ))}
+                                  </div>
+                                )}
+
+                                {datePickerStep === 'month' && (
+                                  <div className="grid grid-cols-3 gap-2">
+                                    {Array.from({ length: 12 }, (_, month) => (
+                                      (() => {
+                                        const monthStart = toIsoDate(datePickerYear, month, 1);
+                                        const monthEnd = toIsoDate(datePickerYear, month, new Date(datePickerYear, month + 1, 0).getDate());
+                                        const disabled = Boolean(intercambioDateRange.min) && (monthEnd < intercambioDateRange.min || monthStart > intercambioDateRange.max);
+                                        return (
+                                          <button
+                                            key={month}
+                                            type="button"
+                                            disabled={disabled}
+                                            onClick={() => {
+                                              setDatePickerMonth(month);
+                                              setDatePickerStep('day');
+                                            }}
+                                            className={`rounded-md border px-2 py-2 text-sm font-semibold ${datePickerMonth === month ? 'border-imss-green bg-imss-green text-white' : 'border-slate-200 text-slate-700 hover:bg-slate-50'} disabled:cursor-not-allowed disabled:border-slate-100 disabled:bg-slate-50 disabled:text-slate-300`}
+                                          >
+                                            {new Intl.DateTimeFormat('es-MX', { month: 'short' }).format(new Date(datePickerYear, month, 1))}
+                                          </button>
+                                        );
+                                      })()
+                                    ))}
+                                  </div>
+                                )}
+
+                                {datePickerStep === 'day' && (
+                                  <>
+                                    <p className="mb-2 text-center text-sm font-semibold capitalize text-slate-700">
+                                      {new Intl.DateTimeFormat('es-MX', { month: 'long', year: 'numeric' }).format(new Date(datePickerYear, datePickerMonth, 1))}
+                                    </p>
+                                    <div className="grid grid-cols-7 gap-1 text-center text-xs">
+                                      {['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'].map((day) => <span key={day} className="py-1 font-semibold text-slate-500">{day}</span>)}
+                                      {intercambioCalendarDays.map((day, index) => {
+                                        if (!day) return <span key={`blank-${index}`} />;
+                                        const date = toIsoDate(datePickerYear, datePickerMonth, day);
+                                        const disabled = (datePickerTarget === 'final' && Boolean(selectedFechaInicio) && date < selectedFechaInicio)
+                                          || (Boolean(intercambioDateRange.min) && (date < intercambioDateRange.min || date > intercambioDateRange.max));
+                                        return (
+                                          <button
+                                            key={date}
+                                            type="button"
+                                            disabled={disabled}
+                                            onClick={() => selectIntercambioCalendarDay(day)}
+                                            className="aspect-square rounded-md border border-slate-100 text-sm font-medium text-slate-700 hover:border-imss-green hover:bg-emerald-50 disabled:cursor-not-allowed disabled:border-transparent disabled:text-slate-300"
+                                          >
+                                            {String(day).padStart(2, '0')}
+                                          </button>
+                                        );
+                                      })}
+                                    </div>
+                                  </>
+                                )}
+
+                                {datePickerStep !== 'year' && (
+                                  <button
+                                    type="button"
+                                    onClick={() => setDatePickerStep(datePickerStep === 'day' ? 'month' : 'year')}
+                                    className="mt-4 text-xs font-semibold text-slate-600 hover:text-imss-green"
+                                  >
+                                    Volver
+                                  </button>
+                                )}
+                              </>
+                            )}
+                          </div>
+                        )}
                       </div>
                     </div>
                     <div className="overflow-x-auto px-5 pb-2 pt-5 sm:px-8 sm:pb-7">
@@ -1899,8 +2374,28 @@ export default function App() {
                               {grupo.filas.map((fila, index) => (
                                 <tr key={fila.tipo} className={`${index % 2 === 0 ? 'bg-slate-50' : 'bg-white'} transition-colors hover:bg-emerald-50`}>
                                   <td className="border-b border-slate-200 px-4 py-3.5 text-base font-medium text-slate-800 sm:px-5 sm:text-lg">{fila.tipo}</td>
-                                  <td className="border-b border-slate-200 px-4 py-3.5 text-center text-base font-semibold tabular-nums text-slate-800 sm:text-lg">{fila.total}</td>
-                                  <td className="border-b border-slate-200 px-4 py-3.5 text-center text-base font-semibold tabular-nums text-slate-800 sm:text-lg">{fila.imss}</td>
+                                  <td className="border-b border-slate-200 px-4 py-3.5 text-center text-base font-semibold tabular-nums text-slate-800 sm:text-lg">
+                                    {fila.modulo === 'personas_atendidas'
+                                      ? formatThousands(personasAtendidasUnicas)
+                                      : fila.modulo === 'atenciones_ofrecidas'
+                                        ? formatThousands(atencionesOfrecidasTotal)
+                                      : fila.modulo === 'personas_consulta'
+                                      ? formatThousands(personasConsultaUnicas)
+                                      : fila.modulo === 'personas_urgencias'
+                                        ? formatThousands(personasUrgenciasUnicas)
+                                        : fila.modulo === 'personas_hospitalizacion'
+                                          ? formatThousands(personasHospitalizacionUnicas)
+                                      : fila.modulo ? formatThousands(metricasIntercambio[fila.modulo]?.total ?? 0) : fila.total}
+                                  </td>
+                                  <td className="border-b border-slate-200 px-4 py-3.5 text-center text-base font-semibold tabular-nums text-slate-800 sm:text-lg">
+                                    {fila.modulo === 'personas_atendidas' || fila.modulo === 'personas_consulta' || fila.modulo === 'personas_urgencias' || fila.modulo === 'personas_hospitalizacion'
+                                      ? fila.imss
+                                      : fila.modulo === 'atenciones_ofrecidas'
+                                        ? `${formatThousands(atencionesOfrecidasImss)} (${Math.round(atencionesOfrecidasPorcentaje)}%)`
+                                      : fila.modulo
+                                      ? `${formatThousands(metricasIntercambio[fila.modulo]?.derechohabientes ?? 0)} (${Math.round(metricasIntercambio[fila.modulo]?.porcentaje ?? 0)}%)`
+                                      : fila.imss}
+                                  </td>
                                 </tr>
                               ))}
                             </Fragment>
@@ -1909,7 +2404,7 @@ export default function App() {
                       </table>
                     </div>
                     <p className="px-5 pb-5 text-xs text-slate-500 sm:px-8 sm:text-sm">
-                      Fuente: Bases de datos PHEDS y MOCE. De noviembre del 2025 a la fecha de corte.
+                      Fuente: Bases de datos PHEDS y MOCE. {formatIntercambioPeriod(selectedFechaInicio, selectedFechaFinal)}
                     </p>
                   </section>
                 </div>

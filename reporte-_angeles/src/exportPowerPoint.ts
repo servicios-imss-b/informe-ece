@@ -31,6 +31,12 @@ type PptTrendChart = {
   points: PptTrendPoint[];
 };
 
+type PptIntercambioRow = {
+  tipo: string;
+  total: number;
+  conImss: string;
+};
+
 type PptTrendSlidePlan = {
   slidePath: string;
   relsPath: string;
@@ -411,12 +417,76 @@ function upsertPresentationSlideRelationship(presentationRelsXml: string, relId:
   return presentationRelsXml.replace('</Relationships>', `${rel}</Relationships>`);
 }
 
+async function updateIntercambioTableInSlide2(
+  zip: JSZip,
+  rows: PptIntercambioRow[],
+  fuente: string,
+): Promise<void> {
+  const slidePath = 'ppt/slides/slide2.xml';
+  const slideFile = zip.file(slidePath);
+  if (!slideFile || rows.length === 0) return;
+
+  const xmlDoc = new DOMParser().parseFromString(await slideFile.async('string'), 'application/xml');
+  if (xmlDoc.getElementsByTagName('parsererror')[0]) return;
+
+  const byType = new Map(rows.map((row) => [row.tipo, row]));
+  const tableRows = Array.from(xmlDoc.getElementsByTagName('a:tr'));
+  const tableGrid = xmlDoc.getElementsByTagName('a:tblGrid')[0];
+
+  if (tableGrid) {
+    const gridColumns = Array.from(tableGrid.getElementsByTagName('a:gridCol'));
+    if (gridColumns.length >= 4) {
+      const removedWidth = Number(gridColumns[2].getAttribute('w')) || 0;
+      const lastWidth = Number(gridColumns[3].getAttribute('w')) || 0;
+      gridColumns[3].setAttribute('w', String(removedWidth + lastWidth));
+      gridColumns[2].parentNode?.removeChild(gridColumns[2]);
+    }
+  }
+
+  const setCellText = (cell: Element, value: string) => {
+    const textNodes = Array.from(cell.getElementsByTagName('a:t'));
+    textNodes.forEach((node, index) => {
+      node.textContent = index === 0 ? value : '';
+    });
+  };
+
+  for (const tableRow of tableRows) {
+    const cells = Array.from(tableRow.getElementsByTagName('a:tc'));
+    if (cells.length < 3) continue;
+
+    if (cells.length >= 4) {
+      cells[2].parentNode?.removeChild(cells[2]);
+    }
+
+    const visibleCells = Array.from(tableRow.getElementsByTagName('a:tc'));
+    if (visibleCells.length < 3) continue;
+
+    const label = Array.from(visibleCells[0].getElementsByTagName('a:t'))
+      .map((node) => node.textContent ?? '')
+      .join('')
+      .trim();
+    const row = byType.get(label);
+    if (!row) continue;
+
+    setCellText(visibleCells[1], formatThousands(row.total));
+    setCellText(visibleCells[visibleCells.length - 1], row.conImss);
+  }
+
+  const fuenteNode = Array.from(xmlDoc.getElementsByTagName('a:t'))
+    .find((node) => (node.textContent ?? '').startsWith('Fuente: Bases de datos PHEDS y MOCE.'));
+  if (fuenteNode) fuenteNode.textContent = fuente;
+
+  zip.file(slidePath, new XMLSerializer().serializeToString(xmlDoc));
+}
+
 export async function descargarInformeTransicionDesdePlantilla(opts: {
   templateUrl: string;
   sections: PptSection[];
   selectedEntidad: string;
   selectedClues: string;
   trendCharts: PptTrendChart[];
+  intercambioRows: PptIntercambioRow[];
+  intercambioFuente: string;
 }): Promise<void> {
   const [consultas, procedimientos, egresos] = opts.sections;
   if (!consultas || !procedimientos || !egresos) {
@@ -564,6 +634,7 @@ export async function descargarInformeTransicionDesdePlantilla(opts: {
   xml = new XMLSerializer().serializeToString(xmlDoc);
 
   zip.file(slidePath, xml);
+  await updateIntercambioTableInSlide2(zip, opts.intercambioRows, opts.intercambioFuente);
 
   const contentTypesPath = '[Content_Types].xml';
   const contentTypesFile = zip.file(contentTypesPath);
